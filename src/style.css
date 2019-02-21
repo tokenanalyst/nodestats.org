@@ -1,0 +1,38 @@
+.body, html {
+  max-width: 100%;
+}
+.navbar {
+  width: 100%;
+}
+.title-box {
+  margin: auto;
+  padding-left: 180px;
+  text-align: center;
+}
+.table-box {
+  font-size: 20px;
+}
+.box {
+  width: 100%;
+}
+.graph {
+  text-align: center;
+  border: 1px solid black;
+}
+.text {
+  text-align: center;
+  border: 1px solid black;
+}
+.data {
+  text-align: center;
+  border: 1px solid black;
+}
+nav {
+  border-bottom: 1px solid black;
+  margin-bottom: 50px;
+}
+@media (min-width: 700px) {
+  html {
+    width: 100%;
+  }
+}
