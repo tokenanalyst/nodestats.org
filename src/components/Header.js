@@ -7,8 +7,10 @@ class Header extends React.Component {
   }
 
   openBurger() {
-    let x = document.getElementById('menu');
-    x.classList.toggle('is-active');
+    const burger = document.getElementById('menu');
+    const burgerButton = document.getElementById('burgerButton');
+    burger.classList.toggle('is-active');
+    burgerButton.classList.toggle('is-active');
   }
 
 
@@ -16,7 +18,7 @@ class Header extends React.Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" onClick={this.openBurger}>
+          <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" id="burgerButton" onClick={this.openBurger} target="menu">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>

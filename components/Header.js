@@ -33,8 +33,10 @@ var Header = function (_React$Component) {
   _createClass(Header, [{
     key: 'openBurger',
     value: function openBurger() {
-      var x = document.getElementById('menu');
-      x.classList.toggle('is-active');
+      var burger = document.getElementById('menu');
+      var burgerButton = document.getElementById('burgerButton');
+      burger.classList.toggle('is-active');
+      burgerButton.classList.toggle('is-active');
     }
   }, {
     key: 'render',
@@ -47,7 +49,7 @@ var Header = function (_React$Component) {
           { className: 'navbar-brand' },
           _react2.default.createElement(
             'a',
-            { role: 'button', className: 'navbar-burger burger', 'aria-label': 'menu', 'aria-expanded': 'false', onClick: this.openBurger },
+            { role: 'button', className: 'navbar-burger burger', 'aria-label': 'menu', 'aria-expanded': 'false', id: 'burgerButton', onClick: this.openBurger, target: 'menu' },
             _react2.default.createElement('span', { 'aria-hidden': 'true' }),
             _react2.default.createElement('span', { 'aria-hidden': 'true' }),
             _react2.default.createElement('span', { 'aria-hidden': 'true' })

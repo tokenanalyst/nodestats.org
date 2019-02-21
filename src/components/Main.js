@@ -77,6 +77,13 @@ class Main extends React.Component {
             </div>
           </div>
         </div>
+        <footer className="footer">
+          <div className="content has-text-centered">
+            <p>
+              Created by TokenAnalyst
+            </p>
+          </div>
+        </footer>
       </section>
     )
   }

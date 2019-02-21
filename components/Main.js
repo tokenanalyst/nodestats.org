@@ -161,6 +161,19 @@ var Main = function (_React$Component) {
               _react2.default.createElement(_GethRow2.default, null)
             )
           )
+        ),
+        _react2.default.createElement(
+          'footer',
+          { className: 'footer' },
+          _react2.default.createElement(
+            'div',
+            { className: 'content has-text-centered' },
+            _react2.default.createElement(
+              'p',
+              null,
+              'Created by TokenAnalyst'
+            )
+          )
         )
       );
     }
