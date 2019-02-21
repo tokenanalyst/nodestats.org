@@ -8,6 +8,7 @@
   margin: auto;
   padding-left: 180px;
   text-align: center;
+  background-color: blue;
 }
 .table-box {
   font-size: 20px;
@@ -30,6 +31,9 @@
 nav {
   border-bottom: 1px solid black;
   margin-bottom: 50px;
+}
+.white {
+  color: white;
 }
 @media (min-width: 700px) {
   html {
