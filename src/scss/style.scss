@@ -1,14 +1,25 @@
 .body, html {
   max-width: 100%;
 }
-.navbar {
-  width: 100%;
+.Bitmex-link {
+  padding-right: 0;
+}
+.TokenAnalyst-link {
+  padding-left: 0
+}
+.main-box {
+
 }
 .title-box {
   margin: auto;
   padding-left: 180px;
   text-align: center;
-  background-color: blue;
+}
+.node-type {
+  font-size: 28px;
+}
+.not-used {
+  color: white;
 }
 .table-box {
   font-size: 20px;
@@ -32,11 +43,22 @@ nav {
   border-bottom: 1px solid black;
   margin-bottom: 50px;
 }
-.white {
-  color: white;
-}
 @media (min-width: 700px) {
   html {
     width: 100%;
+  }
+}
+@media (max-width: 450px) {
+  .graph {
+    display: none;
+  }
+  .node-type {
+    font-size: 20px;
+  }
+  .button {
+    width: 140px;
+  }
+  .line {
+    display: none;
   }
 }

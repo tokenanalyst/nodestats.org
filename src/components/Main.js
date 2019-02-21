@@ -15,13 +15,13 @@ class Main extends React.Component {
     return (
       <section>
         <div className="columns">
-          <div className="columns column is-8 is-offset-2">
+          <div className="columns column is-8 is-offset-2 is-mobile main-box">
             <div className="column is-6">
               <div className="content has-text-centered">
                 <h2>Parity</h2>
               </div>
-              <div className="content has-text-centered">
-                <h2>Full Node (1 hr avg)</h2>
+              <div className="content has-text-centered node-type">
+                <p>Full Node (1 hr avg)</p>
               </div>
               <ParityRow />
               <ParityRow />
@@ -35,8 +35,8 @@ class Main extends React.Component {
               <div className="content has-text-centered">
                 <h2>Geth</h2>
               </div>
-              <div className="content has-text-centered">
-                <h2 className="white">Full Node (1 hr avg)</h2>
+              <div className="content has-text-centered node-type not-used">
+                <p className="">Full Node (1 hr avg)</p>
               </div>
               <GethRow />
               <GethRow />
@@ -48,11 +48,12 @@ class Main extends React.Component {
             </div>
           </div>
         </div>
+        <br />
         <div className="columns">
-          <div className="columns column is-8 is-offset-2">
+          <div className="columns column is-8 is-offset-2 is-mobile">
             <div className="column is-6">
-              <div className="content has-text-centered">
-                <h2>Full Node (1 hr avg)</h2>
+              <div className="content has-text-centered node-type">
+                <p>Fast Node (1 hr avg)</p>
               </div>
               <ParityRow />
               <ParityRow />
@@ -63,8 +64,8 @@ class Main extends React.Component {
               <ParityRow />
             </div>
             <div className="column is-6">
-              <div className="content has-text-centered">
-                <h2 className="white">Full Node (1 hr avg)</h2>
+              <div className="content has-text-centered node-type not-used">
+                <p className="white">Full Node (1 hr avg)</p>
               </div>
               <GethRow />
               <GethRow />

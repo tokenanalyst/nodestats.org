@@ -13,20 +13,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function ParityRow() {
   return _react2.default.createElement(
     "section",
-    { className: "columns" },
+    { className: "columns is-mobile" },
     _react2.default.createElement(
       "p",
-      { className: "column is-3 graph" },
+      { className: "column is-3-desktop graph" },
       "graph"
     ),
     _react2.default.createElement(
       "p",
-      { className: "column is-6 text" },
+      { className: "column is-8-mobile is-6-desktop text" },
       "Text"
     ),
     _react2.default.createElement(
       "p",
-      { className: "column is-3 data" },
+      { className: "column is-4-mobile is-3-desktop data" },
       "Data"
     )
   );

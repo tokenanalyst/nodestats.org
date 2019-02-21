@@ -52,7 +52,7 @@ var Main = function (_React$Component) {
           { className: 'columns' },
           _react2.default.createElement(
             'div',
-            { className: 'columns column is-8 is-offset-2' },
+            { className: 'columns column is-8 is-offset-2 is-mobile main-box' },
             _react2.default.createElement(
               'div',
               { className: 'column is-6' },
@@ -67,9 +67,9 @@ var Main = function (_React$Component) {
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'content has-text-centered' },
+                { className: 'content has-text-centered node-type' },
                 _react2.default.createElement(
-                  'h2',
+                  'p',
                   null,
                   'Full Node (1 hr avg)'
                 )
@@ -96,10 +96,10 @@ var Main = function (_React$Component) {
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'content has-text-centered' },
+                { className: 'content has-text-centered node-type not-used' },
                 _react2.default.createElement(
-                  'h2',
-                  { className: 'white' },
+                  'p',
+                  { className: '' },
                   'Full Node (1 hr avg)'
                 )
               ),
@@ -113,22 +113,23 @@ var Main = function (_React$Component) {
             )
           )
         ),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
           'div',
           { className: 'columns' },
           _react2.default.createElement(
             'div',
-            { className: 'columns column is-8 is-offset-2' },
+            { className: 'columns column is-8 is-offset-2 is-mobile' },
             _react2.default.createElement(
               'div',
               { className: 'column is-6' },
               _react2.default.createElement(
                 'div',
-                { className: 'content has-text-centered' },
+                { className: 'content has-text-centered node-type' },
                 _react2.default.createElement(
-                  'h2',
+                  'p',
                   null,
-                  'Full Node (1 hr avg)'
+                  'Fast Node (1 hr avg)'
                 )
               ),
               _react2.default.createElement(_ParityRow2.default, null),
@@ -144,9 +145,9 @@ var Main = function (_React$Component) {
               { className: 'column is-6' },
               _react2.default.createElement(
                 'div',
-                { className: 'content has-text-centered' },
+                { className: 'content has-text-centered node-type not-used' },
                 _react2.default.createElement(
-                  'h2',
+                  'p',
                   { className: 'white' },
                   'Full Node (1 hr avg)'
                 )
