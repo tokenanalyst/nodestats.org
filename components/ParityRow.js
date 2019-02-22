@@ -24,7 +24,7 @@ function ParityRow() {
       _react2.default.createElement(_Charts2.default, null)
     ),
     _react2.default.createElement(
-      'p',
+      'div',
       { className: 'column is-8-mobile is-6-desktop text' },
       'Text ',
       _react2.default.createElement(

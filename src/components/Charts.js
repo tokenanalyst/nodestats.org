@@ -15,14 +15,13 @@ class Charts extends React.Component {
 
   render() {
     const test = this.state.test;
-    console.log('test is', test)
     return (
       <section>
         {test
 
           ?
 
-          <div className="chartBox">
+          <div className="chart-box">
             <div style={{ maxWidth: 900 }}>
               <Chart
                 width={80}
@@ -36,10 +35,13 @@ class Charts extends React.Component {
                 ]}
                 options={{
                   title: 'Test Chart',
-                  chartArea: { width: '100%' },
+
+                  tooltip: {isHtml: true},
+                  legend: 'none',
+                  chartArea: { width: '200%', height: '100%' },
                   hAxis: {
                     title: 'h axis',
-                    minValue: 0,
+                    minValue: 0
                   },
                   vAxis: {
                     title: 'v axis',

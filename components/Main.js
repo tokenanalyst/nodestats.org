@@ -18,10 +18,6 @@ var _GethRow = require('./GethRow');
 
 var _GethRow2 = _interopRequireDefault(_GethRow);
 
-var _reactGoogleCharts = require('react-google-charts');
-
-var _reactGoogleCharts2 = _interopRequireDefault(_reactGoogleCharts);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47,25 +43,25 @@ var Main = function (_React$Component) {
   _createClass(Main, [{
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         'section',
         null,
         _react2.default.createElement(
           'div',
           { className: 'columns' },
+          _react2.default.createElement('div', { className: 'vl' }),
           _react2.default.createElement(
             'div',
-            { className: 'columns column is-8 is-offset-2 is-mobile main-box' },
+            { className: 'columns column is-8 is-offset-2 is-mobile is-tablet main-box' },
             _react2.default.createElement(
               'div',
               { className: 'column is-6' },
               _react2.default.createElement(
                 'div',
-                { className: 'content has-text-centered' },
+                { className: 'content has-text-centered company-name', onScroll: this.changeColor },
                 _react2.default.createElement(
                   'h2',
-                  null,
+                  { className: '', id: 'bar' },
                   'Parity'
                 )
               ),
@@ -91,7 +87,7 @@ var Main = function (_React$Component) {
               { className: 'column is-6' },
               _react2.default.createElement(
                 'div',
-                { className: 'content has-text-centered' },
+                { className: 'content has-text-centered company-name' },
                 _react2.default.createElement(
                   'h2',
                   null,

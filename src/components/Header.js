@@ -22,6 +22,9 @@ class Header extends React.Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
+          <div className="navbar-item is-centered">
+            <h1 className="title">Nodestats.org</h1>
+          </div>
           <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" id="burgerButton" onClick={this.openBurger} target="menu">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -34,10 +37,7 @@ class Header extends React.Component {
             <span className="navbar-item line">|</span>
             <a href="#" className="navbar-item TokenAnalyst-link">TokenAnalyst</a>
           </div>
-          <div className="navbar-item is-centered">
-            <h1>Nodestats.org</h1>
-          </div>
-          <div className="navbar-end container is-vcentered">
+          <div className="navbar-end container is-vcentered button-box">
             <h3 className="button navbar-item" onClick={this.openModal}>About/info</h3>
           </div>
         </div>

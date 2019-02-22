@@ -51,13 +51,12 @@ var Charts = function (_React$Component) {
     key: 'render',
     value: function render() {
       var test = this.state.test;
-      console.log('test is', test);
       return _react2.default.createElement(
         'section',
         null,
         test ? _react2.default.createElement(
           'div',
-          { className: 'chartBox' },
+          { className: 'chart-box' },
           _react2.default.createElement(
             'div',
             { style: { maxWidth: 900 } },
@@ -73,7 +72,10 @@ var Charts = function (_React$Component) {
               data: [['Test', 'Geth', 'Parity'], ['test 1, 1', 20, 88], ['test 2, 2', 45, 133]],
               options: {
                 title: 'Test Chart',
-                chartArea: { width: '100%' },
+
+                tooltip: { isHtml: true },
+                legend: 'none',
+                chartArea: { width: '200%', height: '100%' },
                 hAxis: {
                   title: 'h axis',
                   minValue: 0

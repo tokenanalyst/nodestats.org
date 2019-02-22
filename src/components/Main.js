@@ -2,7 +2,6 @@ import React from 'react';
 // import axios from 'axios'; for later
 import ParityRow from './ParityRow';
 import GethRow from './GethRow';
-import Chart from 'react-google-charts';
 
 class Main extends React.Component {
   constructor(props) {
@@ -10,16 +9,15 @@ class Main extends React.Component {
     this.state = {};
   }
 
-
   render() {
-
     return (
       <section>
         <div className="columns">
-          <div className="columns column is-8 is-offset-2 is-mobile main-box">
+          <div className="vl"></div>
+          <div className="columns column is-8 is-offset-2 is-mobile is-tablet main-box">
             <div className="column is-6">
-              <div className="content has-text-centered">
-                <h2>Parity</h2>
+              <div className="content has-text-centered company-name" onScroll={this.changeColor}>
+                <h2 className="" id="bar" >Parity</h2>
               </div>
               <div className="content has-text-centered node-type">
                 <p>Full Node (1 hr avg)</p>
@@ -33,7 +31,7 @@ class Main extends React.Component {
               <ParityRow />
             </div>
             <div className="column is-6">
-              <div className="content has-text-centered">
+              <div className="content has-text-centered company-name">
                 <h2>Geth</h2>
               </div>
               <div className="content has-text-centered node-type not-used">

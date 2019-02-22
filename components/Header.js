@@ -58,6 +58,15 @@ var Header = function (_React$Component) {
           'div',
           { className: 'navbar-brand' },
           _react2.default.createElement(
+            'div',
+            { className: 'navbar-item is-centered' },
+            _react2.default.createElement(
+              'h1',
+              { className: 'title' },
+              'Nodestats.org'
+            )
+          ),
+          _react2.default.createElement(
             'a',
             { role: 'button', className: 'navbar-burger burger', 'aria-label': 'menu', 'aria-expanded': 'false', id: 'burgerButton', onClick: this.openBurger, target: 'menu' },
             _react2.default.createElement('span', { 'aria-hidden': 'true' }),
@@ -89,16 +98,7 @@ var Header = function (_React$Component) {
           ),
           _react2.default.createElement(
             'div',
-            { className: 'navbar-item is-centered' },
-            _react2.default.createElement(
-              'h1',
-              null,
-              'Nodestats.org'
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'navbar-end container is-vcentered' },
+            { className: 'navbar-end container is-vcentered button-box' },
             _react2.default.createElement(
               'h3',
               { className: 'button navbar-item', onClick: this.openModal },
