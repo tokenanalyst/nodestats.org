@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Modal = require('./Modal');
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37,6 +41,12 @@ var Header = function (_React$Component) {
       var burgerButton = document.getElementById('burgerButton');
       burger.classList.toggle('is-active');
       burgerButton.classList.toggle('is-active');
+    }
+  }, {
+    key: 'openModal',
+    value: function openModal() {
+      var modal = document.getElementById('modal');
+      modal.classList.toggle('is-active');
     }
   }, {
     key: 'render',
@@ -91,11 +101,12 @@ var Header = function (_React$Component) {
             { className: 'navbar-end container is-vcentered' },
             _react2.default.createElement(
               'h3',
-              { className: 'button navbar-item' },
+              { className: 'button navbar-item', onClick: this.openModal },
               'About/info'
             )
           )
-        )
+        ),
+        _react2.default.createElement(_Modal2.default, null)
       );
     }
   }]);

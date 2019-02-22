@@ -2,6 +2,7 @@ import React from 'react';
 // import axios from 'axios'; for later
 import ParityRow from './ParityRow';
 import GethRow from './GethRow';
+import Chart from 'react-google-charts';
 
 class Main extends React.Component {
   constructor(props) {

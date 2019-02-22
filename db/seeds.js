@@ -3,11 +3,14 @@ const { dbURI } = require('../config/environment');
 const Stats = require('../models/stats');
 
 const statsData = [{
-  name: 'Grant'
+  name: 'Grant',
+  testNumber: 4
 }, {
-  name: 'Jai'
+  name: 'Jai',
+  testNumber: 7
 }, {
-  name: 'Sid'
+  name: 'Sid',
+  testNumber: 8
 }]
 
 mongoose.connect(dbURI);

@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from './Modal';
 
 class Header extends React.Component {
   constructor(props) {
@@ -12,7 +13,10 @@ class Header extends React.Component {
     burger.classList.toggle('is-active');
     burgerButton.classList.toggle('is-active');
   }
-
+  openModal() {
+    const modal = document.getElementById('modal');
+    modal.classList.toggle('is-active');
+  }
 
   render() {
     return (
@@ -34,9 +38,10 @@ class Header extends React.Component {
             <h1>Nodestats.org</h1>
           </div>
           <div className="navbar-end container is-vcentered">
-            <h3 className="button navbar-item">About/info</h3>
+            <h3 className="button navbar-item" onClick={this.openModal}>About/info</h3>
           </div>
         </div>
+        <Modal />
       </nav>
     )
   }

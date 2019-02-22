@@ -18,6 +18,10 @@ var _GethRow = require('./GethRow');
 
 var _GethRow2 = _interopRequireDefault(_GethRow);
 
+var _reactGoogleCharts = require('react-google-charts');
+
+var _reactGoogleCharts2 = _interopRequireDefault(_reactGoogleCharts);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
