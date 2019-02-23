@@ -1,9 +1,11 @@
 .body, html {
+}
+.geth {
 
 }
-.vl {
+.page-divide {
   border-left: 6px solid black;
-  height: 1000px;
+  height: 1255px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
@@ -38,14 +40,28 @@
 .graph {
   text-align: center;
   border: 1px solid black;
+  transition: transform 1s;
+  font-size: 20px;
+  background-color: white;
+}
+.graph:hover {
+
 }
 .text {
   text-align: center;
   border: 1px solid black;
+  font-size: 20px;
+}
+.text:hover {
+  box-shadow: 5px 5px 5px #999999;
 }
 .data {
   text-align: center;
   border: 1px solid black;
+  font-size: 20px;
+}
+.data:hover {
+  box-shadow: 5px 3px 2px #999999;
 }
 nav {
   border-bottom: 6px solid black;
@@ -56,6 +72,9 @@ nav {
   position: absolute;
   right: 0;
   top: 0;
+}
+.footer {
+  border-top: 6px solid black;
 }
 .button {
 }
@@ -78,7 +97,9 @@ nav {
   padding: 5px 20px;
 }
 .chart:hover {
-  border: 1px solid rgba(0, 222, 0, 1);
+  box-shadow: 5px 2px 2px #999999;
+  transform: scale(2);
+  z-index: 1;
 }
 .icon:hover {
  cursor: pointer;
@@ -166,10 +187,6 @@ nav {
   .line {
     display: none;
   }
-}
-circle:hover {
-  visibility: visible;
-  opacity: 1;
 }
 div.google-visualization-tooltip {
   height: 50px;

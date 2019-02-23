@@ -13,10 +13,10 @@ class Main extends React.Component {
     return (
       <section>
         <div className="columns">
-          <div className="vl"></div>
+          <div className="page-divide"></div>
           <div className="columns column is-8 is-offset-2 is-mobile is-tablet main-box">
             <div className="column is-6">
-              <div className="content has-text-centered company-name" onScroll={this.changeColor}>
+              <div className="content has-text-centered company-name">
                 <h2 className="" id="bar" >Parity</h2>
               </div>
               <div className="content has-text-centered node-type">
@@ -30,7 +30,7 @@ class Main extends React.Component {
               <ParityRow />
               <ParityRow />
             </div>
-            <div className="column is-6">
+            <div className="column is-6 geth">
               <div className="content has-text-centered company-name">
                 <h2>Geth</h2>
               </div>

@@ -63,7 +63,7 @@ var Charts = function (_React$Component) {
             _react2.default.createElement(_reactGoogleCharts2.default, {
               width: 80,
               height: 50,
-              chartType: 'AreaChart',
+              chartType: 'ColumnChart',
               loader: _react2.default.createElement(
                 'div',
                 null,
@@ -73,7 +73,7 @@ var Charts = function (_React$Component) {
               options: {
                 title: 'Test Chart',
 
-                tooltip: { isHtml: true },
+                // tooltip: {isHtml: true},
                 legend: 'none',
                 chartArea: { width: '200%', height: '100%' },
                 hAxis: {

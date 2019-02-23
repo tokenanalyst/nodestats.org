@@ -49,7 +49,7 @@ var Main = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'columns' },
-          _react2.default.createElement('div', { className: 'vl' }),
+          _react2.default.createElement('div', { className: 'page-divide' }),
           _react2.default.createElement(
             'div',
             { className: 'columns column is-8 is-offset-2 is-mobile is-tablet main-box' },
@@ -58,7 +58,7 @@ var Main = function (_React$Component) {
               { className: 'column is-6' },
               _react2.default.createElement(
                 'div',
-                { className: 'content has-text-centered company-name', onScroll: this.changeColor },
+                { className: 'content has-text-centered company-name' },
                 _react2.default.createElement(
                   'h2',
                   { className: '', id: 'bar' },
@@ -84,7 +84,7 @@ var Main = function (_React$Component) {
             ),
             _react2.default.createElement(
               'div',
-              { className: 'column is-6' },
+              { className: 'column is-6 geth' },
               _react2.default.createElement(
                 'div',
                 { className: 'content has-text-centered company-name' },

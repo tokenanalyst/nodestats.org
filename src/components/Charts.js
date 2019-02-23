@@ -26,7 +26,7 @@ class Charts extends React.Component {
               <Chart
                 width={80}
                 height={50}
-                chartType="AreaChart"
+                chartType="ColumnChart"
                 loader={<div>Loading Chart</div>}
                 data={[
                   ['Test', 'Geth', 'Parity'],
@@ -36,7 +36,7 @@ class Charts extends React.Component {
                 options={{
                   title: 'Test Chart',
 
-                  tooltip: {isHtml: true},
+                  // tooltip: {isHtml: true},
                   legend: 'none',
                   chartArea: { width: '200%', height: '100%' },
                   hAxis: {
