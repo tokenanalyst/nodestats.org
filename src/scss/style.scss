@@ -1,15 +1,13 @@
 .body, html {
 }
-.geth {
-
-}
 .page-divide {
   border-left: 6px solid black;
-  height: 1255px;
+  height: 1300px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
   top: 0;
+  z-index: -1;
 }
 .Bitmex-link {
   padding-right: 0;
@@ -19,9 +17,7 @@
   padding-left: 0;
   font-size: 20px;
 }
-.main-box {
 
-}
 .title-box {
   margin: auto;
   padding-left: 180px;
@@ -77,6 +73,7 @@ nav {
 }
 .footer {
   border-top: 6px solid black;
+  z-index: 2;
 }
 .button {
   font-size: 20px;
@@ -173,7 +170,7 @@ nav {
     display: none;
   }
   .page-divide {
-    height: 1172px;
+    height: 1200px;
   }
   .Bitmex-link {
     padding: 10px;
@@ -202,7 +199,7 @@ nav {
 }
 @media (max-width: 400px) {
   .page-divide {
-    height: 1283px;
+    height: 1300px;
   }
 }
 // For if we use the custom tooltip

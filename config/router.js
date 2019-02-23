@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const stats = require('../controllers/stats')
+const stats = require('../controllers/stats');
 
 router.route('/nodestats')
   .get(stats.index)

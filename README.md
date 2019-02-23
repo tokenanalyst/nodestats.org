@@ -3,8 +3,9 @@ Nodestats Website - Bitmex | TokenAnalyst
 
 
 # How to run
-* mongod
 * npx babel --watch src --out-dir . --presets react-app/prod
+  <!-- This loads the Components -->
 * yarn start:server
+<!-- Starts server -->
 * yarn start: client
-* yarn seed(optional)
+<!-- Opens in Browser -->
