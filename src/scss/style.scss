@@ -13,9 +13,11 @@
 }
 .Bitmex-link {
   padding-right: 0;
+  font-size: 20px;
 }
 .TokenAnalyst-link {
-  padding-left: 0
+  padding-left: 0;
+  font-size: 20px;
 }
 .main-box {
 
@@ -77,8 +79,12 @@ nav {
   border-top: 6px solid black;
 }
 .button {
+  font-size: 20px;
 }
 .button-box {
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
   width: 50px;
 }
 .company-name {
@@ -140,9 +146,6 @@ nav {
   visibility: visible;
   opacity: 1;
 }
-.google-visualization-tooltip {
-  color: white;
-}
 @media (min-width: 750px) {
   html {
     width: 100%;
@@ -163,11 +166,20 @@ nav {
   .node-type {
     font-size: 20px;
   }
-  .button {
-    width: 140px;
+  .button-box {
+    text-align: center;
   }
   .line {
     display: none;
+  }
+  .page-divide {
+    height: 1172px;
+  }
+  .Bitmex-link {
+    padding: 10px;
+  }
+  .TokenAnalyst-link {
+    padding: 10px;
   }
 }
 
@@ -188,30 +200,41 @@ nav {
     display: none;
   }
 }
-div.google-visualization-tooltip {
-  height: 50px;
-  width: 120px;
-  background-color: #999;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  top: 0%;
-  right: 0%;
-  margin-left: -60px;
+@media (max-width: 400px) {
+  .page-divide {
+    height: 1283px;
+  }
 }
-div.google-visualization-tooltip::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-div.google-visualization-tooltip-item span {
-  padding: 0;
-}
+// For if we use the custom tooltip
+
+// div.google-visualization-tooltip {
+//   height: 50px;
+//   width: 120px;
+//   background-color: #999;
+//   color: #fff;
+//   text-align: center;
+//   padding: 5px 0;
+//   border-radius: 6px;
+//   position: absolute;
+//   z-index: 1;
+//   top: 0%;
+//   right: 0%;
+//   margin-left: -60px;
+// }
+//
+// div.google-visualization-tooltip::after {
+//   content: "";
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   margin-left: -5px;
+//   border-width: 5px;
+//   border-style: solid;
+//   border-color: #555 transparent transparent transparent;
+// }
+// div.google-visualization-tooltip-item span {
+//   padding: 0;
+// }
+// .google-visualization-tooltip {
+//   color: white;
+// }

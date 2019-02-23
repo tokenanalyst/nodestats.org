@@ -98,9 +98,9 @@ var Header = function (_React$Component) {
           ),
           _react2.default.createElement(
             'div',
-            { className: 'navbar-end container is-vcentered button-box' },
+            { className: 'navbar-end is-vcentered button-box is-centered-mobile' },
             _react2.default.createElement(
-              'h3',
+              'button',
               { className: 'button navbar-item', onClick: this.openModal },
               'About/info'
             )

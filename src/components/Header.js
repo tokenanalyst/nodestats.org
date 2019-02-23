@@ -37,8 +37,8 @@ class Header extends React.Component {
             <span className="navbar-item line">|</span>
             <a href="#" className="navbar-item TokenAnalyst-link">TokenAnalyst</a>
           </div>
-          <div className="navbar-end container is-vcentered button-box">
-            <h3 className="button navbar-item" onClick={this.openModal}>About/info</h3>
+          <div className="navbar-end is-vcentered button-box is-centered-mobile">
+            <button className="button navbar-item" onClick={this.openModal}>About/info</button>
           </div>
         </div>
         <Modal />
