@@ -1,7 +1,7 @@
 import React from 'react';
 import Charts from './Charts';
 
-function ParityRow() {
+function ParityRow( {stats}) {
   return (
     <section className="columns is-mobile">
       <div className="column is-4-mobile is-3-desktop graph chart">
@@ -12,6 +12,8 @@ function ParityRow() {
         <i className="fas fa-info-circle">
         </i>
       </span>
+      </div>
+      <div>
       </div>
       <p className="column is-4-mobile is-3-desktop data">Data</p>
     </section>

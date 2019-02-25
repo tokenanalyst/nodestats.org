@@ -2,7 +2,7 @@
 }
 .page-divide {
   border-left: 6px solid black;
-  height: 1300px;
+  height: 1800px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
@@ -25,6 +25,8 @@
 }
 .node-type {
   font-size: 28px;
+  background-color: black;
+  color: white;
 }
 .not-used {
   color: white;
@@ -170,7 +172,7 @@ nav {
     display: none;
   }
   .page-divide {
-    height: 1200px;
+    height: 1800px;
   }
   .Bitmex-link {
     padding: 10px;
@@ -179,6 +181,7 @@ nav {
     padding: 10px;
   }
 }
+
 
 @media (max-width: 600px) {
   .graph {
@@ -199,7 +202,7 @@ nav {
 }
 @media (max-width: 400px) {
   .page-divide {
-    height: 1300px;
+    height: 1800px;
   }
 }
 // For if we use the custom tooltip

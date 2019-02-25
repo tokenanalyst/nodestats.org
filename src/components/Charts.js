@@ -16,7 +16,7 @@ class Charts extends React.Component {
             <Chart
               width={80}
               height={50}
-              chartType="ColumnChart"
+              chartType="LineChart"
               loader={<div>Loading Chart</div>}
               data={[
                 ['Test', 'Geth', 'Parity'],
