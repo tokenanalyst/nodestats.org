@@ -12,23 +12,23 @@ class Charts extends React.Component {
     return (
       <section>
         <div className="chart-box">
-          <div style={{ maxWidth: 900 }}>
+          <div style={{ maxWidth: 1000 }}>
             <Chart
               width={80}
               height={50}
-              chartType="LineChart"
+              chartType="AreaChart"
               loader={<div>Loading Chart</div>}
               data={[
-                ['Test', 'Geth', 'Parity'],
-                ['test 1, 1', 20, 88],
-                ['test 2, 2', 45, 133]
+                ['Test', 'Geth'],
+                ['test 1, 1', 20],
+                ['test 2, 2', 45]
               ]}
               options={{
                 title: 'Test Chart',
 
                 // tooltip: {isHtml: true},
                 legend: 'none',
-                chartArea: { width: '200%', height: '100%' },
+                chartArea: { width: '100%', height: '100%' },
                 hAxis: {
                   title: 'h axis',
                   minValue: 0

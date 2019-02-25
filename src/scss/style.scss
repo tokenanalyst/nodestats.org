@@ -1,4 +1,5 @@
 .body, html {
+  scroll-behavior: smooth;
 }
 .main-box {
   margin-top: 50px;
@@ -10,6 +11,7 @@
   left: 50%;
   margin-left: -3px;
   top: 0;
+  bottom: 0;
   z-index: -1;
 }
 .Bitmex-link {
@@ -20,7 +22,9 @@
   padding-left: 0;
   font-size: 20px;
 }
-
+.subtitle {
+  padding-right: 100px;
+}
 .title-box {
   margin: auto;
   padding-left: 180px;
@@ -96,13 +100,19 @@ nav {
   margin-bottom: 10px;
   width: 50px;
 }
-.company-name {
-  position: sticky;
-  top: 0;
-  background-color: white;
-  width: 100%;
-  z-index: 2;
-  background: linear-gradient(white);
+// .company-name {
+//   position: sticky;
+//   top: 0;
+//   background-color: white;
+//   width: 100%;
+//   z-index: 2;
+//   background: linear-gradient(white);
+// }
+.company {
+  margin-right: 8px;
+}
+.company-icon {
+  font-size: 22px;
 }
 .footer {
   margin-top: 80px;
@@ -152,6 +162,46 @@ nav {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+.navs {
+  position: fixed;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  color: black;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+.fast {
+  bottom: 20px;
+  right: 10px;
+}
+.archive {
+  bottom: 20px;
+  right: 115px;
+}
+.full {
+  bottom: 20px;
+  right: 70px;
+}
+.scroll-box {
+  position: fixed;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  color: black;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: white;
+}
+.move-page-up:hover {
+  background-color: #555;
+}
+.move-page-down:hover {
+  background-color: #555;
 }
 @media (min-width: 750px) {
   html {
@@ -204,6 +254,15 @@ nav {
   }
   .TokenAnalyst-link {
     padding: 10px;
+  }
+  .scroll-box {
+    width: 110%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  .navs {
+    display: none;
   }
 }
 @media (max-width: 740px) {

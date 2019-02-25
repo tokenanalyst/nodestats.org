@@ -3,6 +3,7 @@ import axios from 'axios';
 import ParityRow from './ParityRow';
 import GethRow from './GethRow';
 import Modal from './Modal';
+import {scrollFunction, topFunction, hide, show} from '../lib/arrowFunctions';
 
 class Main extends React.Component {
   constructor(props) {
@@ -10,14 +11,9 @@ class Main extends React.Component {
     this.state = {};
   }
 
-  openModal() {
-    const modal = document.getElementById('modal');
-    modal.classList.toggle('is-active');
-  }
-
   componentDidMount() {
     axios.get('https://api.tfl.gov.uk/Line/Mode/tube/Status')
-      .then(result => this.setState({ stats: result.data }));
+      .then(result => this.setState({ stats: result.data }))
   }
 
   render() {
@@ -30,8 +26,9 @@ class Main extends React.Component {
           <div className="columns column is-8 is-offset-2 is-mobile is-tablet main-box">
             <div className="column is-6">
               <span className="content has-text-centered company-name">
-                <h2 className="subtitle" onClick={this.openModal}>Parity
-                  <span className="icon has-text-info">
+                <h2 className=""><span className="company">Parity</span>
+                  <span className="icon has-text-info company-icon tooltip">
+                    <p className="tooltiptext">Tooltip text</p>
                     <i className="fas fa-info-circle">
                     </i>
                   </span>
@@ -61,8 +58,8 @@ class Main extends React.Component {
             </div>
             <div className="column is-6 geth">
               <span className="content has-text-centered company-name">
-                <h2 className="subtitle">Geth
-                  <span className="icon has-text-info tooltip">
+                <h2 className=""><span className="company">Geth</span>
+                  <span className="icon company-icon has-text-info tooltip">
                     <p className="tooltiptext">Tooltip text</p>
                     <i className="fas fa-info-circle">
                     </i>
@@ -70,7 +67,7 @@ class Main extends React.Component {
                 </h2>
               </span>
               <div className="content has-text-centered node-type not-used">
-                <p className="">Full Node</p>
+                <p id="full">Full Node</p>
               </div>
               <div className="columns is-mobile">
                 <div className="column is-one-quarter table-header">
@@ -98,7 +95,7 @@ class Main extends React.Component {
           <div className="columns column is-8 is-offset-2 is-mobile">
             <div className="column is-6">
               <div className="content has-text-centered node-type">
-                <p>Fast Node</p>
+                <p id="fast">Fast Node</p>
               </div>
               <div className="columns is-mobile">
                 <div className="column is-one-quarter is-one-quarter-desktop table-header">
@@ -121,7 +118,7 @@ class Main extends React.Component {
             </div>
             <div className="column is-6">
               <div className="content has-text-centered node-type not-used">
-                <p className="white">Full Node</p>
+                <p className="white">Fast Node</p>
               </div>
               <div className="columns is-mobile">
                 <div className="column is-one-quarter table-header">
@@ -148,7 +145,7 @@ class Main extends React.Component {
           <div className="columns column is-8 is-offset-2 is-mobile">
             <div className="column is-6">
               <div className="content has-text-centered node-type">
-                <p>Archive Node</p>
+                <p id="archive">Archive Node</p>
               </div>
               <div className="columns is-mobile">
                 <div className="column is-one-quarter is-one-quarter-desktop table-header">
@@ -170,6 +167,9 @@ class Main extends React.Component {
               <ParityRow text="D.S Network bandwidth"/>
             </div>
           </div>
+          <a href="#archive" className="archive navs">Archive</a>
+          <a href="#fast" className="fast navs">Fast</a>
+          <a href="#full" className="full navs">Full</a>
           <Modal />
         </div>
         <footer className="footer">
