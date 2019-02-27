@@ -1,11 +1,11 @@
 const statsData = [{
   name: 'Grant',
-  testNumber: 4
+  testNumber: 467.773
 }, {
   name: 'Jai',
-  testNumber: 7
+  testNumber: 79.201
 }, {
   name: 'Sid',
-  testNumber: 8
+  testNumber: 867.89998
 }]
 module.exports = {data: statsData}

@@ -32,13 +32,15 @@ class Header extends React.Component {
           </a>
         </div>
         <div id="menu" className="navbar-menu">
-          <div className="navbar-start">
-            <a href="#" className="navbar-item Bitmex-link">Bitmex</a>
-            <span className="navbar-item line">|</span>
-            <a href="#" className="navbar-item TokenAnalyst-link">TokenAnalyst</a>
-          </div>
-          <div className="navbar-end is-vcentered button-box is-centered-mobile">
-            <button className="button navbar-item" onClick={this.openModal}>About/info</button>
+          <div className="navbar-end">
+            <div className="navbar-item links">
+              <a href="#" className="Bitmex-link">Bitmex</a>
+              <span className="line">|</span>
+              <a href="#" className="TokenAnalyst-link">TokenAnalyst</a>
+            </div>
+            <div className="is-vcentered button-box is-centered-mobile">
+              <button className="button navbar-item" onClick={this.openModal}>About/info</button>
+            </div>
           </div>
         </div>
         <Modal />
