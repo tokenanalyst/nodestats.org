@@ -76,7 +76,6 @@
   font-size: 17px;
 }
 .text:hover {
-  box-shadow: 5px 5px 5px #999999;
 }
 .fa-info-circle {
   text-align: right;
@@ -90,7 +89,13 @@
   font-size: 15px;
 }
 .data:hover {
-  box-shadow: 5px 3px 2px #999999;
+
+}
+.bitmex-logo {
+  right: 0;
+}
+.tokenanalyst-logo {
+  left: 0;
 }
 .mobile-data {
   display: none;
@@ -142,13 +147,7 @@ nav {
   padding: 0;
   height: 144px;
 }
-rect {
-  g {
-    height: 50px;
-  }
-}
 .chart:hover {
-  box-shadow: 5px 2px 2px #999999;
   // transform: scale(1.5);
   // z-index: 1;
 }

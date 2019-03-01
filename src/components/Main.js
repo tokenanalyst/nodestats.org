@@ -239,6 +239,7 @@ class Main extends React.Component {
     const gFull24Hr = this.state.gethFull24Hr;
     const pArchive = this.state.pArchive1Hr;
     const pArchive24Hr = this.state.parityArchive24Hr;
+    console.log('parchive is', pArchive)
 
     return (
       <section>
@@ -383,11 +384,11 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <ParityRow text="Mins not at tip of the chain"/>
-                  <ParityRow pData={pArchive[0].mean} chartData={pArchive24Hr.archiveCpuData} text="CPU Usage"/>
-                  <ParityRow chartData={pArchive24Hr.archiveRamData} text="Memory (RAM) Usage"/>
-                  <ParityRow text="# of Peers"/>
+                  <ParityRow pData={pArchive[0].mean} gData={pArchive[0].mean} chartData={pArchive24Hr.archiveCpuData} text="CPU Usage"/>
+                  <ParityRow pData={pArchive[1].mean} gData={pArchive[1].mean} chartData={pArchive24Hr.archiveRamData} text="Memory (RAM) Usage"/>
+                  <ParityRow pData={pArchive[3].mean} gData={pArchive[3].mean} text="# of Peers"/>
                   <ParityRow  text="Chain data size"/>
-                  <ParityRow  text="Upstream"/>
+                  <ParityRow pData={pArchive[3].mean} gData={pArchive[3].mean}  text="Upstream"/>
                   <ParityRow text="Downstream"/>
                 </div>
               </div>
@@ -402,21 +403,20 @@ class Main extends React.Component {
             </div>
             <footer className="footer">
               <div className="content has-text-centered">
-                <div className="columns has-text-centered">
-                  <div className="column">
-                    <figure className="image is-128x128">
+                <div className="columns">
+                  <div className="column is-4"></div>
+                  <div className="column is-2">
+                    <figure className="image is-128x128 bitmex-logo">
                       <img src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png" alt="Bitmex Logo"/>
                     </figure>
                   </div>
-                  <div>
-                    <figure className="image is-128x128">
+                  <div className="column is-2">
+                    <figure className="image is-128x128 tokenanalyst-logo">
                       <img src="/images/Screenshot 2019-03-01 at 16.54.06.png" alt="TokenAnalyst Logo"/>
                     </figure>
                   </div>
+                  <div className="column is-4"></div>
                 </div>
-                <p>
-              Created by TokenAnalyst
-                </p>
                 <p className="disclaimer">
                 This material should not be the basis for making investment
                 decisions, nor be construed as a recommendation to engage in
