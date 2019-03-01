@@ -138,7 +138,14 @@ nav {
 .chart {
 }
 .charts {
-  margin: 0;
+  margin-left: 0;
+  padding: 0;
+  height: 144px;
+}
+rect {
+  g {
+    height: 50px;
+  }
 }
 .chart:hover {
   box-shadow: 5px 2px 2px #999999;
@@ -205,6 +212,10 @@ nav {
 .navs {
   position: absolute;
 }
+.disclaimer {
+  font-size: 10px;
+  text-align: center;
+}
 .arrowDown {
   cursor: pointer;
   position: fixed;
@@ -258,6 +269,9 @@ nav {
   }
 }
 @media (max-width: 1024px) {
+  .chart {
+    height: 100px;
+  }
   .data {
     font-size: 10px;
   }

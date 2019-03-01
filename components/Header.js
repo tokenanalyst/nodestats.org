@@ -79,30 +79,34 @@ var Header = function (_React$Component) {
           { id: 'menu', className: 'navbar-menu' },
           _react2.default.createElement(
             'div',
-            { className: 'navbar-start' },
+            { className: 'navbar-end' },
             _react2.default.createElement(
-              'a',
-              { href: '#', className: 'navbar-item Bitmex-link' },
-              'Bitmex'
+              'div',
+              { className: 'navbar-item links' },
+              _react2.default.createElement(
+                'a',
+                { href: '#', className: 'Bitmex-link' },
+                'Bitmex'
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: 'line' },
+                '|'
+              ),
+              _react2.default.createElement(
+                'a',
+                { href: '#', className: 'TokenAnalyst-link' },
+                'TokenAnalyst'
+              )
             ),
             _react2.default.createElement(
-              'span',
-              { className: 'navbar-item line' },
-              '|'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'navbar-item TokenAnalyst-link' },
-              'TokenAnalyst'
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'navbar-end is-vcentered button-box is-centered-mobile' },
-            _react2.default.createElement(
-              'button',
-              { className: 'button navbar-item', onClick: this.openModal },
-              'About/info'
+              'div',
+              { className: 'is-vcentered button-box is-centered-mobile' },
+              _react2.default.createElement(
+                'button',
+                { className: 'button navbar-item', onClick: this.openModal },
+                'About/info'
+              )
             )
           )
         ),
