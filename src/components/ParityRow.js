@@ -1,13 +1,13 @@
 import React from 'react';
 import Charts from './Charts';
 
-function ParityRow({ text, pData, gData }) {
+function ParityRow({ text, pData, gData, chartData }) {
+  console.log('2nd', chartData)
   return (
     <section className="columns row" id="parityTest">
       <div className="column is-3 graph chart">
-        <Charts />
+        <Charts chartData={chartData} className=""/>
       </div>
-
       <span className="column is-6-desktop text">
         <div className="columns is-mobile">
           <p className="column is-10-desktop is-10">{ text } <span className="mobile-table-header">(1hr)</span></p>
@@ -22,19 +22,16 @@ function ParityRow({ text, pData, gData }) {
       </div>
       {(() => {
         if (pData < gData) {
-          const x = parseInt(pData);
           return <p className="column is-3-desktop data red" id="pData">
-            {x.toPrecision()}
+            {pData}
           </p>
         } if (pData > gData) {
-          const x = parseInt(pData);
           return <p className="column is-3-desktop data green" id="pData">
-            {x.toPrecision()}
+            {pData}
           </p>
         } if (pData === gData) {
-          const x = parseInt(pData);
           return <p className="column is-3-desktop data black" id="pData">
-            {x.toPrecision()}
+            {pData}
           </p>
         }
       }

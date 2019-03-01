@@ -6,20 +6,18 @@ function GethRow({ text, gData, pData }) {
   return (
     <section className="columns row" id="gethTest">
       {(() => {
+        const x = gData;
         if (pData < gData) {
-          const x = parseInt(gData);
           return <p className="column is-3-desktop data desktop-data green" id="pData">
-            {x.toPrecision()}
+            {x}
           </p>
         } if (pData > gData) {
-          const x = parseInt(gData);
           return <p className="column is-3-desktop data desktop-data red" id="pData">
-            {x.toPrecision()}
+            {x}
           </p>
         } if (pData === gData) {
-          const x = parseInt(gData);
           return <p className="column is-3-desktop data desktop-data black" id="pData">
-            {x.toPrecision()}
+            {x}
           </p>
         }
       }
@@ -45,7 +43,7 @@ function GethRow({ text, gData, pData }) {
           </p>
         } if (pData === gData) {
           return <p className="column is-3-desktop data mobile-data black" id="pData">
-            {pData}
+            {gData}
           </p>
         }
       }

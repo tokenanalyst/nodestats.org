@@ -4,40 +4,119 @@ import ParityRow from './ParityRow';
 import GethRow from './GethRow';
 import Modal from './Modal';
 import {scrollDown, clickTooltip, scrollFunction, scrollFunction2, scrollUp} from '../lib/navigationFunctions';
-import {tester} from '../lib/comparison';
+
+const baseUrl = 'http://lb-api-2c97d9e50f6a4e75.elb.eu-west-2.amazonaws.com'
+const pFast1Hr = ['/parity-fast-cpu-1h-avg', '/parity-fast-ram-1h-avg', '/parity-fast-disk-1h-avg', '/parity-fast-peers-1h-avg', '/parity-fast-nettx-1h-avg', '/parity-fast-netrx-1h-avg', '/parity-fast-sync-1h-avg'];
+const pFull1Hr = ['/parity-full-cpu-1h-avg', '/parity-full-ram-1h-avg', '/parity-full-disk-1h-avg', '/parity-full-peers-1h-avg', '/parity-full-nettx-1h-avg', '/parity-full-netrx-1h-avg', '/parity-full-sync-1h-afull'];
+const pFast24Hr = ['/parity-fast-cpu-24h', '/parity-fast-ram-24h', '/parity-fast-disk-24h', '/parity-fast-peers-24h', '/parity-fast-nettx-24h', '/parity-fast-netrx-24h', '/parity-fast-sync-24h'];
+const gFast1Hr = ['/geth-fast-cpu-1h-avg', '/geth-fast-ram-1h-avg', '/geth-fast-disk-1h-avg', '/geth-fast-peers-1h-avg', '/geth-fast-nettx-1h-avg', '/geth-fast-netrx-1h-avg', '/geth-fast-sync-1h-avg'];
+
+// http://lb-api-2c97d9e50f6a4e75.elb.eu-west-2.amazonaws.com/parity-full-netrx-1h-avg
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.myRef1 = React.createRef();
-    this.myRef2 = React.createRef();
-    this.tester = this.tester.bind(this);
-  }
-
-
-  tester() {
-    const x = parseInt(this.myRef1.current);
-    const y = parseInt(this.myRef2.current);
-    console.log('hi', x, y);
   }
 
   componentDidMount() {
-    axios.get('/api/nodestats')
-      .then(result => this.setState({ stats: result.data }))
-      .then(this.tester)
-      .then(window.onscroll = function() {
-        scrollFunction()
-        scrollFunction2()
-      })
+    var that = this;
+    axios.all([
+      axios.get(`${baseUrl}${pFast1Hr[0]}`),
+      axios.get(`${baseUrl}${pFast1Hr[1]}`),
+      axios.get(`${baseUrl}${pFast1Hr[2]}`),
+      axios.get(`${baseUrl}${pFast1Hr[3]}`),
+      axios.get(`${baseUrl}${pFast1Hr[4]}`),
+      axios.get(`${baseUrl}${pFast1Hr[5]}`)
+    ])
+      .then(axios.spread(function (pFastCpu, pFastRam, pFastDisk, pFastPeer, pFastNettx, pFastNettrx) {
+        var fastCpuData = pFastCpu.data || [];
+        var fastRamData = pFastRam.data || [];
+        var fastDiskData = pFastDisk.data || [];
+        var fastPeerData = pFastPeer.data || [];
+        var fastNettxData = pFastNettx.data || [];
+        var fastNettrxData = pFastNettrx.data || [];
+        var pFast1Hr = fastCpuData.concat(fastRamData).concat(fastDiskData).concat(fastPeerData).concat(fastNettxData).concat(fastNettrxData);
+        that.setState({ pFast1Hr: pFast1Hr })
+      }))
+      .catch(error => console.log(error));
+    axios.all([
+      axios.get(`${baseUrl}${gFast1Hr[0]}`),
+      axios.get(`${baseUrl}${gFast1Hr[1]}`),
+      axios.get(`${baseUrl}${gFast1Hr[2]}`),
+      axios.get(`${baseUrl}${gFast1Hr[3]}`),
+      axios.get(`${baseUrl}${gFast1Hr[4]}`),
+      axios.get(`${baseUrl}${gFast1Hr[5]}`)
+    ])
+      .then(axios.spread(function (gFastCpu, gFastRam, gFastDisk, gFastPeer, gFastNettx, gFastNettrx) {
+        var fastCpuData = gFastCpu.data || [];
+        var fastRamData = gFastRam.data || [];
+        var fastDiskData = gFastDisk.data || [];
+        var fastPeerData = gFastPeer.data || [];
+        var fastNettxData = gFastNettx.data || [];
+        var fastNettrxData = gFastNettrx.data || [];
+        var gFast1Hr = fastCpuData.concat(fastRamData).concat(fastDiskData).concat(fastPeerData).concat(fastNettxData).concat(fastNettrxData);
+        that.setState({ gFast1Hr: gFast1Hr })
+      }))
+      .catch(error => console.log(error));
+    axios.all([
+      axios.get(`${baseUrl}${pFull1Hr[0]}`),
+      axios.get(`${baseUrl}${pFull1Hr[1]}`),
+      axios.get(`${baseUrl}${pFull1Hr[2]}`),
+      axios.get(`${baseUrl}${pFull1Hr[3]}`),
+      axios.get(`${baseUrl}${pFull1Hr[4]}`),
+      axios.get(`${baseUrl}${pFull1Hr[5]}`)
+    ])
+      .then(axios.spread(function (pFullCpu, pFullRam, pFullDisk, pFullPeer, pFullNettx, pFullNettrx) {
+        var fullCpuData = pFullCpu.data || [];
+        var fullRamData = pFullRam.data || [];
+        var fullDiskData = pFullDisk.data || [];
+        var fullPeerData = pFullPeer.data || [];
+        var fullNettxData = pFullNettx.data || [];
+        var fullNettrxData = pFullNettrx.data || [];
+        var pFull1Hr = fullCpuData.concat(fullRamData).concat(fullDiskData).concat(fullPeerData).concat(fullNettxData).concat(fullNettrxData);
+        that.setState({ pFull1Hr: pFull1Hr })
+      }))
+      .catch(error => console.log(error));
+    axios.all([
+      axios.get(`${baseUrl}${pFast24Hr[0]}`),
+      axios.get(`${baseUrl}${pFast24Hr[1]}`),
+      axios.get(`${baseUrl}${pFast24Hr[2]}`),
+      axios.get(`${baseUrl}${pFast24Hr[3]}`),
+      axios.get(`${baseUrl}${pFast24Hr[4]}`),
+      axios.get(`${baseUrl}${pFast24Hr[5]}`)
+    ])
+      .then(axios.spread(function (p24FastCpu, p24FastRam, p24FastDisk, p24FastPeer, p24FastNettx, p24FastNettrx) {
+        var fastCpuData = p24FastCpu.data || [];
+        var fastRamData = p24FastRam.data || [];
+        var fastDiskData = p24FastDisk.data || [];
+        var fastPeerData = p24FastPeer.data || [];
+        var fastNettxData = p24FastNettx.data || [];
+        var fastNettrxData = p24FastNettrx.data || [];
+        var parityFast24Hr = {fastCpuData ,fastRamData, fastDiskData, fastPeerData, fastNettxData, fastNettrxData};
+        that.setState({ parityFast24Hr: parityFast24Hr })
+      }))
+      .catch(error => console.log(error));
   }
+  // axios.get(`http://lb-api-2c97d9e50f6a4e75.elb.eu-west-2.amazonaws.com${fast1Hr[0]}`)
+  //   .then(result => this.setState({ stats: result.data }))
+  //   .then(window.onscroll = function() {
+  //     scrollFunction()
+  //     scrollFunction2()
+  //   })
+  // }
+
 
   render() {
-    const stats = this.state.stats;
-    console.log('stats is', this.props, stats)
+    const pFast = this.state.pFast1Hr;
+    const pFull = this.state.pFull1Hr;
+    const gFast = this.state.gFast1Hr;
+    const pFast24Hr = this.state.parityFast24Hr;
+    // const stats1 = this.state.stats1;
+    console.log('pFast is', this.props, pFast, gFast, pFull, pFast24Hr)
     return (
       <section>
-        {stats
+        {pFast && gFast && pFast24Hr
           ?
           <div>
             <div className="columns">
@@ -67,13 +146,13 @@ class Main extends React.Component {
                       <h3>1hr avg</h3>
                     </div>
                   </div>
-                  <ParityRow pData={stats.Stats.data[0].testNumber} gData={stats.Stats.data[1].testNumber} text="Mins not at tip of the chain"/>
-                  <ParityRow pData={stats.Stats.data[2].testNumber} gData={stats.Stats.data[1].testNumber} text="CPU Usage"/>
-                  <ParityRow pData={stats.Stats.data[2].testNumber} gData={stats.Stats.data[0].testNumber} text="Memory (RAM) Usage"/>
-                  <ParityRow pData={stats.Stats.data[1].testNumber} gData={stats.Stats.data[1].testNumber} text="# of Peers"/>
-                  <ParityRow pData={stats.Stats.data[2].testNumber} gData={stats.Stats.data[0].testNumber} text="Chain data size"/>
-                  <ParityRow pData={stats.Stats.data[1].testNumber} gData={stats.Stats.data[2].testNumber} text="Upstream"/>
-                  <ParityRow pData={stats.Stats.data[1].testNumber} gData={stats.Stats.data[0].testNumber} text="Downstream"/>
+                  <ParityRow pData={pFast[0].mean} gData={gFast} text="Mins not at tip of the chain"/>
+                  <ParityRow pData={pFast[0].mean} gData={gFast} text="CPU Usage"/>
+                  <ParityRow pData={pFast[1].mean} gData={gFast} text="Memory (RAM) Usage"/>
+                  <ParityRow pData={pFast[3].mean} gData={gFast} text="# of Peers"/>
+                  <ParityRow pData={pFast[2].mean} gData={gFast} text="Chain data size"/>
+                  <ParityRow pData={pFast[4].mean} gData={gFast} text="Upstream"/>
+                  <ParityRow pData={pFast[5].mean} gData={gFast} text="Downstream"/>
                 </div>
                 <div className="column is-6 geth">
                   <span className="content has-text-centered company-name">
@@ -99,13 +178,13 @@ class Main extends React.Component {
                       <h3>24hr avg</h3>
                     </div>
                   </div>
-                  <GethRow pData={stats.Stats.data[0].testNumber} gData={stats.Stats.data[1].testNumber} text="Mins not at tip of the chain"/>
-                  <GethRow pData={stats.Stats.data[2].testNumber} gData={stats.Stats.data[1].testNumber} text="CPU Usage"/>
-                  <GethRow pData={stats.Stats.data[2].testNumber} gData={stats.Stats.data[0].testNumber} text="Memory (RAM) Usage"/>
-                  <GethRow pData={stats.Stats.data[1].testNumber} gData={stats.Stats.data[1].testNumber} text="# of Peers"/>
-                  <GethRow pData={stats.Stats.data[2].testNumber} gData={stats.Stats.data[0].testNumber} text="Chain data size"/>
-                  <GethRow pData={stats.Stats.data[1].testNumber} gData={stats.Stats.data[2].testNumber} text="Upstream"/>
-                  <GethRow pData={stats.Stats.data[1].testNumber} gData={stats.Stats.data[0].testNumber} text="Downstream"/>
+                  <GethRow pData={pFast[0].mean} gData={gFast} text="Mins not at tip of the chain"/>
+                  <GethRow pData={pFast[0].mean} gData={gFast} text="CPU Usage"/>
+                  <GethRow pData={pFast[1].mean} gData={gFast} text="Memory (RAM) Usage"/>
+                  <GethRow pData={pFast[3].mean} gData={gFast} text="# of Peers"/>
+                  <GethRow pData={pFast[2].mean} gData={gFast} text="Chain data size"/>
+                  <GethRow pData={pFast[4].mean} gData={gFast} text="Upstream"/>
+                  <GethRow pData={pFast[5].mean} gData={gFast} text="Downstream"/>
                 </div>
               </div>
             </div>
@@ -127,17 +206,13 @@ class Main extends React.Component {
                       <h3>1hr avg</h3>
                     </div>
                   </div>
-                  <ParityRow text="Mins not at tip of the chain"/>
-                  <ParityRow text="CPU Usage"/>
-                  <ParityRow text="Memory (RAM) Usage"/>
-                  {stats.data && stats.data.map(stats =>
-                    <div key={stats}>
-                      <ParityRow data={stats.mean} text="# of Peers"/>
-                    </div>
-                  )}
-                  <ParityRow text="Chain data size"/>
-                  <ParityRow text="Upstream"/>
-                  <ParityRow text="Downstream"/>
+                  <ParityRow pData={pFast[0].mean} gData={gFast} text="Mins not at tip of the chain"/>
+                  <ParityRow pData={pFast[0].mean} gData={gFast} chartData={pFast24Hr.fastCpuData} text="CPU Usage"/>
+                  <ParityRow pData={pFast[1].mean} gData={gFast} chartData={pFast24Hr.fastRamData} text="Memory (RAM) Usage"/>
+                  <ParityRow pData={pFast[3].mean} gData={gFast} chartData={pFast24Hr.fastPeerData} text="# of Peers"/>
+                  <ParityRow pData={pFast[2].mean} gData={gFast} chartData={pFast24Hr.fastDiskData} text="Chain data size"/>
+                  <ParityRow pData={pFast[4].mean} gData={gFast} chartData={pFast24Hr.fastNettxData} text="Upstream"/>
+                  <ParityRow pData={pFast[5].mean} gData={gFast} chartData={pFast24Hr.fastNettrxData} text="Downstream"/>
                 </div>
                 <div className="column is-6">
                   <div className="content has-text-centered node-type not-used">
@@ -154,13 +229,13 @@ class Main extends React.Component {
                       <h3>24hr avg</h3>
                     </div>
                   </div>
-                  <GethRow text="Mins not at tip of the chain"/>
-                  <GethRow text="CPU Usage"/>
-                  <GethRow text="Memory (RAM) Usage"/>
-                  <GethRow text="# of Peers"/>
-                  <GethRow text="Chain data size"/>
-                  <GethRow text="Upstream"/>
-                  <GethRow text="Downstream"/>
+                  <GethRow pData={pFast[0].mean} gData={gFast} text="Mins not at tip of the chain"/>
+                  <GethRow pData={pFast[0].mean} gData={gFast} text="CPU Usage"/>
+                  <GethRow pData={pFast[1].mean} gData={gFast} text="Memory (RAM) Usage"/>
+                  <GethRow pData={pFast[3].mean} gData={gFast} text="# of Peers"/>
+                  <GethRow pData={pFast[2].mean} gData={gFast} text="Chain data size"/>
+                  <GethRow pData={pFast[4].mean} gData={gFast} text="Upstream"/>
+                  <GethRow pData={pFast[5].mean} gData={gFast} text="Downstream"/>
                 </div>
               </div>
             </div>
@@ -168,7 +243,7 @@ class Main extends React.Component {
               <div className="columns column is-10 is-offset-1 is-mobile">
                 <div className="column is-6">
                   <div className="content has-text-centered node-type">
-                    <p id="archive" ref={this.myRef}>Archive Node</p>
+                    <p id="archive">Archive Node</p>
                   </div>
                   <div className="columns is-mobile">
                     <div className="column is-one-quarter is-one-quarter-desktop table-header">

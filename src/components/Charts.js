@@ -1,40 +1,57 @@
 import React from 'react'
 import Chart from 'react-google-charts'
 
-function Charts({ gData }) {
-  const num = parseInt(gData);
+function Charts({ chartData }) {
+  const arrayValues = [];
+  const arrayTimes = [];
   return (
     <section>
-      <div className="chart-box">
-        <div style={{ maxWidth: 1000 }}>
-          <Chart
-            width={80}
-            height={50}
-            chartType="AreaChart"
-            loader={<div>Loading Chart</div>}
-            data={[
-              ['Test', 'Geth'],
-              ['test 1, 1', num],
-              ['test 2, 2', num]
-            ]}
-            options={{
-              title: 'Test Chart',
+      {chartData
+        ?
+        <div className="chart-box">
+          {(() => {
+            console.log('chart data is', chartData, arrayValues, arrayTimes)
+            for (let i = 0; i < chartData.length; i++) {
+              arrayValues.push(chartData[i].value);
+              arrayTimes.push(chartData[i].time);
+            }
+          })()}
+          <div style={{ maxWidth: 1000 }}>
+            <Chart
+              className="charts"
+              width={130}
+              height={50}
+              chartType="AreaChart"
+              loader={<div>Loading Chart</div>}
+              data={[
+                ['Data', '2'],
+                [arrayTimes[0], arrayValues[0]],
+                [arrayTimes[100], arrayValues[50]],
+                [arrayTimes[200], arrayValues[200]],
+                [arrayTimes[300], arrayValues[300]],
+                [arrayTimes[400], arrayValues[400]],
+                [arrayTimes[500], arrayValues[500]],
+                [arrayTimes[600], arrayValues[600]],
+                [arrayTimes[700], arrayValues[700]],
+                [arrayTimes[800], arrayValues[800]],
+                [arrayTimes[900], arrayValues[900]],
+                [arrayTimes[1000], arrayValues[1000]],
+                [arrayTimes[1100], arrayValues[1100]],
+                [arrayTimes[1200], arrayValues[1200]],
+                [arrayTimes[1300], arrayValues[1300]]
 
-              // tooltip: {isHtml: true},
-              legend: 'none',
-              chartArea: { width: '100%', height: '100%' },
-              hAxis: {
-                title: 'h axis',
-                minValue: 0
-              },
-              vAxis: {
-                title: 'v axis',
-              }
-            }}
-            legendToggle
-          />
+              ]}
+              options={{
+                legend: 'none',
+                chart: {
+                }
+              }}
+            />
+          </div>
         </div>
-      </div>
+        :
+        <p>Please Wait....</p>
+      }
     </section>
   );
 }
