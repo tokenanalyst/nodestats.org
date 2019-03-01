@@ -24,7 +24,7 @@ function ParityCharts({ chartData }) {
               chartType="AreaChart"
               loader={<div>Loading Chart</div>}
               data={[
-                ['Data', 'Values'],
+                ['Time', 'Values'],
                 [arrayTimes[0], arrayValues[0]],
                 [arrayTimes[100], arrayValues[50]],
                 [arrayTimes[200], arrayValues[200]],

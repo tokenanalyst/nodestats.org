@@ -2,22 +2,22 @@ import React from 'react';
 import GethCharts from './GethCharts';
 import Modal from './Modal';
 
-function GethRow({ text, gData, pData, chartData }) {
+function GethRow({ text, gData, pData, chartData, unit }) {
   return (
     <section className="columns row" id="gethTest">
       {(() => {
-        const x = gData;
+        const x = parseFloat(Math.round(pData * 100) / 100).toFixed(2);
         if (pData < gData) {
           return <p className="column is-4-desktop data desktop-data green" id="pData">
-            {x}
+            {x}{unit}
           </p>
         } if (pData > gData) {
           return <p className="column is-4-desktop data desktop-data red" id="pData">
-            {x}
+            {x}{unit}
           </p>
         } if (pData === gData) {
           return <p className="column is-4-desktop data desktop-data black" id="pData">
-            {x}
+            {x}{unit}
           </p>
         }
       }
@@ -33,17 +33,18 @@ function GethRow({ text, gData, pData, chartData }) {
         </div>
       </span>
       {(() => {
+        const x = parseFloat(Math.round(pData * 100) / 100).toFixed(2);
         if (pData < gData) {
           return <p className="column is-3-desktop data mobile-data green" id="pData">
-            {gData}
+            {x}{unit}
           </p>
         } if (pData > gData) {
           return <p className="column is-3-desktop data mobile-data red" id="pData">
-            {gData}
+            {x}{unit}
           </p>
         } if (pData === gData) {
           return <p className="column is-3-desktop data mobile-data black" id="pData">
-            {gData}
+            {x}{unit}
           </p>
         }
       }
