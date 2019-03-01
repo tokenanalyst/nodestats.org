@@ -20,11 +20,11 @@ function Charts({ chartData }) {
             <Chart
               className="charts"
               width={130}
-              height={50}
+              height={70}
               chartType="AreaChart"
               loader={<div>Loading Chart</div>}
               data={[
-                ['Data', '2'],
+                ['Data', 'Values'],
                 [arrayTimes[0], arrayValues[0]],
                 [arrayTimes[100], arrayValues[50]],
                 [arrayTimes[200], arrayValues[200]],

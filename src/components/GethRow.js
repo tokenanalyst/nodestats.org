@@ -2,7 +2,7 @@ import React from 'react';
 import Charts from './Charts';
 import Modal from './Modal';
 
-function GethRow({ text, gData, pData }) {
+function GethRow({ text, gData, pData, chartData }) {
   return (
     <section className="columns row" id="gethTest">
       {(() => {
@@ -49,7 +49,7 @@ function GethRow({ text, gData, pData }) {
       }
       )()}
       <div className="column is-3 graph chart">
-        <Charts gData={gData} className=""/>
+        <Charts chartData={chartData} className=""/>
       </div>
       <Modal />
     </section>

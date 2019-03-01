@@ -10,6 +10,7 @@ const pFast1Hr = ['/parity-fast-cpu-1h-avg', '/parity-fast-ram-1h-avg', '/parity
 const pFull1Hr = ['/parity-full-cpu-1h-avg', '/parity-full-ram-1h-avg', '/parity-full-disk-1h-avg', '/parity-full-peers-1h-avg', '/parity-full-nettx-1h-avg', '/parity-full-netrx-1h-avg', '/parity-full-sync-1h-afull'];
 const pFast24Hr = ['/parity-fast-cpu-24h', '/parity-fast-ram-24h', '/parity-fast-disk-24h', '/parity-fast-peers-24h', '/parity-fast-nettx-24h', '/parity-fast-netrx-24h', '/parity-fast-sync-24h'];
 const gFast1Hr = ['/geth-fast-cpu-1h-avg', '/geth-fast-ram-1h-avg', '/geth-fast-disk-1h-avg', '/geth-fast-peers-1h-avg', '/geth-fast-nettx-1h-avg', '/geth-fast-netrx-1h-avg', '/geth-fast-sync-1h-avg'];
+const gFast24Hr = ['/geth-fast-cpu-24h', '/geth-fast-ram-24h', '/geth-fast-disk-24h', '/geth-fast-peers-24h', '/geth-fast-nettx-24h', '/geth-fast-netrx-24h', '/geth-fast-sync-24h'];
 
 // http://lb-api-2c97d9e50f6a4e75.elb.eu-west-2.amazonaws.com/parity-full-netrx-1h-avg
 
@@ -97,6 +98,25 @@ class Main extends React.Component {
         that.setState({ parityFast24Hr: parityFast24Hr })
       }))
       .catch(error => console.log(error));
+    axios.all([
+      axios.get(`${baseUrl}${gFast24Hr[0]}`),
+      axios.get(`${baseUrl}${gFast24Hr[1]}`),
+      axios.get(`${baseUrl}${gFast24Hr[2]}`),
+      axios.get(`${baseUrl}${gFast24Hr[3]}`),
+      axios.get(`${baseUrl}${gFast24Hr[4]}`),
+      axios.get(`${baseUrl}${gFast24Hr[5]}`)
+    ])
+      .then(axios.spread(function (g24FastCpu, g24FastRam, g24FastDisk, g24FastPeer, g24FastNettx, g24FastNettrx) {
+        var fastCpuData = g24FastCpu.data || [];
+        var fastRamData = g24FastRam.data || [];
+        var fastDiskData = g24FastDisk.data || [];
+        var fastPeerData = g24FastPeer.data || [];
+        var fastNettxData = g24FastNettx.data || [];
+        var fastNettrxData = g24FastNettrx.data || [];
+        var gethFast24Hr = {fastCpuData ,fastRamData, fastDiskData, fastPeerData, fastNettxData, fastNettrxData};
+        that.setState({ gethFast24Hr: gethFast24Hr })
+      }))
+      .catch(error => console.log(error));
   }
   // axios.get(`http://lb-api-2c97d9e50f6a4e75.elb.eu-west-2.amazonaws.com${fast1Hr[0]}`)
   //   .then(result => this.setState({ stats: result.data }))
@@ -112,11 +132,12 @@ class Main extends React.Component {
     const pFull = this.state.pFull1Hr;
     const gFast = this.state.gFast1Hr;
     const pFast24Hr = this.state.parityFast24Hr;
+    const gFast24Hr = this.state.gethFast24Hr;
     // const stats1 = this.state.stats1;
-    console.log('pFast is', this.props, pFast, gFast, pFull, pFast24Hr)
+    console.log('pFast is', this.props, pFast, gFast, pFull, gFast24Hr)
     return (
       <section>
-        {pFast && gFast && pFast24Hr
+        {pFast && gFast && pFast24Hr && gFast24Hr
           ?
           <div>
             <div className="columns">
@@ -230,12 +251,12 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <GethRow pData={pFast[0].mean} gData={gFast} text="Mins not at tip of the chain"/>
-                  <GethRow pData={pFast[0].mean} gData={gFast} text="CPU Usage"/>
-                  <GethRow pData={pFast[1].mean} gData={gFast} text="Memory (RAM) Usage"/>
-                  <GethRow pData={pFast[3].mean} gData={gFast} text="# of Peers"/>
-                  <GethRow pData={pFast[2].mean} gData={gFast} text="Chain data size"/>
-                  <GethRow pData={pFast[4].mean} gData={gFast} text="Upstream"/>
-                  <GethRow pData={pFast[5].mean} gData={gFast} text="Downstream"/>
+                  <GethRow pData={pFast[0].mean} gData={gFast} chartData={gFast24Hr.fastCpuData} text="CPU Usage"/>
+                  <GethRow pData={pFast[1].mean} gData={gFast} chartData={gFast24Hr.fastRamData} text="Memory (RAM) Usage"/>
+                  <GethRow pData={pFast[3].mean} gData={gFast} chartData={gFast24Hr.fastPeerData} text="# of Peers"/>
+                  <GethRow pData={pFast[2].mean} gData={gFast} chartData={gFast24Hr.fastDiskData} text="Chain data size"/>
+                  <GethRow pData={pFast[4].mean} gData={gFast} chartData={gFast24Hr.fastNettxData} text="Upstream"/>
+                  <GethRow pData={pFast[5].mean} gData={gFast} chartData={gFast24Hr.fastNettrxData} text="Downstream"/>
                 </div>
               </div>
             </div>
