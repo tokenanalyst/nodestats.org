@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Main from './components/Main';
 import Header from './components/Header';
 import 'bulma';
+import './scss/style.scss';
 
 class App extends React.Component {
 
