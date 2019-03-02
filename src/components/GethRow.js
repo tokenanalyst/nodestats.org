@@ -6,7 +6,7 @@ function GethRow({ text, gData, pData, chartData, unit }) {
   return (
     <section className="columns row" id="gethTest">
       {(() => {
-        const x = parseFloat(Math.round(pData * 100) / 100).toFixed(2);
+        const x = parseFloat(Math.round(gData * 100) / 100).toFixed(2);
         if (pData < gData) {
           return <p className="column is-4-desktop data desktop-data green" id="pData">
             {x}{unit}
@@ -33,7 +33,7 @@ function GethRow({ text, gData, pData, chartData, unit }) {
         </div>
       </span>
       {(() => {
-        const x = parseFloat(Math.round(pData * 100) / 100).toFixed(2);
+        const x = parseFloat(Math.round(gData * 100) / 100).toFixed(2);
         if (pData < gData) {
           return <p className="column is-3-desktop data mobile-data green" id="pData">
             {x}{unit}

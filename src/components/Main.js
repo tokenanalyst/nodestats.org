@@ -43,7 +43,7 @@ class Main extends React.Component {
         var fastPeerData = pFastPeer.data || [];
         var fastNettxData = pFastNettx.data || [];
         var fastNettrxData = pFastNettrx.data || [];
-        var pFast1Hr = fastCpuData.concat(fastRamData).concat(fastDiskData).concat(fastPeerData).concat(fastNettxData).concat(fastNettrxData);
+        var pFast1Hr = {fastCpuData, fastRamData, fastDiskData, fastPeerData, fastNettxData, fastNettrxData};
         that.setState({ pFast1Hr: pFast1Hr })
       }))
       .catch(error => console.log(error));
@@ -62,7 +62,7 @@ class Main extends React.Component {
         var fastPeerData = gFastPeer.data || [];
         var fastNettxData = gFastNettx.data || [];
         var fastNettrxData = gFastNettrx.data || [];
-        var gFast1Hr = fastCpuData.concat(fastRamData).concat(fastDiskData).concat(fastPeerData).concat(fastNettxData).concat(fastNettrxData);
+        var gFast1Hr = {fastCpuData, fastRamData, fastDiskData, fastPeerData, fastNettxData, fastNettrxData};
         that.setState({ gFast1Hr: gFast1Hr })
       }))
       .catch(error => console.log(error));
@@ -81,7 +81,7 @@ class Main extends React.Component {
         var fullPeerData = pFullPeer.data || [];
         var fullNettxData = pFullNettx.data || [];
         var fullNettrxData = pFullNettrx.data || [];
-        var pFull1Hr = fullCpuData.concat(fullRamData).concat(fullDiskData).concat(fullPeerData).concat(fullNettxData).concat(fullNettrxData);
+        var pFull1Hr = {fullCpuData, fullRamData, fullDiskData, fullPeerData, fullNettxData, fullNettrxData};
         that.setState({ pFull1Hr: pFull1Hr })
       }))
       .catch(error => console.log(error));
@@ -100,7 +100,7 @@ class Main extends React.Component {
         var fullPeerData = gFullPeer.data || [];
         var fullNettxData = gFullNettx.data || [];
         var fullNettrxData = gFullNettrx.data || [];
-        var gFull1Hr = fullCpuData.concat(fullRamData).concat(fullDiskData).concat(fullPeerData).concat(fullNettxData).concat(fullNettrxData);
+        var gFull1Hr = {fullCpuData, fullRamData, fullDiskData, fullPeerData,fullNettxData, fullNettrxData};
         that.setState({ gFull1Hr: gFull1Hr })
       }))
       .catch(error => console.log(error));
@@ -195,7 +195,7 @@ class Main extends React.Component {
         var archivePeerData = pArchivePeer.data || [];
         var archiveNettxData = pArchiveNettx.data || [];
         var archiveNettrxData = pArchiveNettrx.data || [];
-        var pArchive1Hr = archiveCpuData.concat(archiveRamData).concat(archiveDiskData).concat(archivePeerData).concat(archiveNettxData).concat(archiveNettrxData);
+        var pArchive1Hr = {archiveCpuData, archiveRamData, archiveDiskData, archivePeerData, archiveNettxData, archiveNettrxData};
         that.setState({ pArchive1Hr: pArchive1Hr })
       }))
       .catch(error => console.log(error));
@@ -243,6 +243,7 @@ class Main extends React.Component {
     const gFull24Hr = this.state.gethFull24Hr;
     const pArchive = this.state.pArchive1Hr;
     const pArchive24Hr = this.state.parityArchive24Hr;
+
     console.log('parchive is', gFast)
 
     return (
@@ -278,12 +279,12 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <ParityRow text="Mins not at tip of the chain"/>
-                  <ParityRow pData={pFull[0].mean} gData={gFull[0].mean} chartData={pFull24Hr.fullCpuData} text="CPU Usage" unit="%"/>
-                  <ParityRow pData={pFull[1].mean} gData={gFull[1].mean} chartData={pFull24Hr.fullRamData} text="Memory (RAM) Usage" unit="%"/>
-                  <ParityRow pData={pFull[3].mean} gData={gFull[3].mean} chartData={pFull24Hr.fullPeerData} text="# of Peers" unit=" Peers"/>
-                  <ParityRow pData={pFull[2].mean} gData={gFull[2].mean} chartData={pFull24Hr.fullDiskData} text="Chain data size"/>
-                  <ParityRow pData={pFull[4].mean} gData={gFull[4].mean} chartData={pFull24Hr.fullNettxData} text="Upstream" unit="Kb/s"/>
-                  <ParityRow pData={pFull[5].mean} gData={gFull[5].mean} chartData={pFull24Hr.fullNettrxData} text="Downstream" unit="Kb/s"/>
+                  <ParityRow pData={pFull.fullCpuData[0].mean} gData={gFull.fullCpuData[0].mean} chartData={pFull24Hr.fullCpuData} text="CPU Usage" unit=" %"/>
+                  <ParityRow pData={pFull.fullRamData[0].mean} gData={gFull.fullRamData[0].mean} chartData={pFull24Hr.fullRamData} text="Memory (RAM) Usage"/>
+                  <ParityRow pData={pFull.fullPeerData[0].mean} gData={gFull.fullPeerData[0].mean} chartData={pFull24Hr.fullPeerData} text="# of Peers" unit=" Peers"/>
+                  <ParityRow pData={pFull.fullDiskData[0].mean} gData={gFull.fullDiskData[0].mean} chartData={pFull24Hr.fullDiskData} text="Chain data size"/>
+                  <ParityRow pData={pFull.fullNettxData[0].mean} gData={gFull.fullNettxData[0].mean} chartData={pFull24Hr.fullNettxData} text="Upstream" unit=" Kb/s"/>
+                  <ParityRow pData={pFull.fullNettrxData[0].mean} gData={gFull.fullNettrxData[0].mean} chartData={pFull24Hr.fullNettrxData} text="Downstream" unit=" Kb/s"/>
                 </div>
                 <div className="column is-6 geth">
                   <span className="content has-text-centered company-name">
@@ -310,12 +311,12 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <GethRow text="Mins not at tip of the chain"/>
-                  <GethRow pData={pFull[0].mean} gData={gFull[0].mean} chartData={gFull24Hr.fullCpuData} text="CPU Usage" unit="%"/>
-                  <GethRow pData={pFull[1].mean} gData={gFull[1].mean} chartData={gFull24Hr.fullRamData} text="Memory (RAM) Usage" unit="%"/>
-                  <GethRow pData={pFull[3].mean} gData={gFull[3].mean} chartData={gFull24Hr.fullPeerData} text="# of Peers" unit=" Peers"/>
-                  <GethRow pData={pFull[2].mean} gData={gFull[2].mean} chartData={gFull24Hr.fullDiskData} text="Chain data size"/>
-                  <GethRow pData={pFull[4].mean} gData={gFull[4].mean} chartData={gFull24Hr.fullNettxData} text="Upstream" unit="Kb/s"/>
-                  <GethRow pData={pFull[5].mean} gData={gFull[5].mean} chartData={gFull24Hr.fullNettrxData} text="Downstream" unit="Kb/s"/>
+                  <GethRow pData={pFull.fullCpuData[0].mean} gData={gFull.fullCpuData[0].mean} chartData={gFull24Hr.fullCpuData} text="CPU Usage" unit=" %"/>
+                  <GethRow pData={pFull.fullRamData[0].mean} gData={gFull.fullRamData[0].mean} chartData={gFull24Hr.fullRamData} text="Memory (RAM) Usage"/>
+                  <GethRow pData={pFull.fullPeerData[0].mean} gData={gFull.fullPeerData[0].mean} chartData={gFull24Hr.fullPeerData} text="# of Peers" unit=" Peers"/>
+                  <GethRow pData={pFull.fullDiskData[0].mean} gData={gFull.fullDiskData[0].mean} chartData={gFull24Hr.fullDiskData} text="Chain data size"/>
+                  <GethRow pData={pFull.fullNettxData[0].mean} gData={gFull.fullNettxData[0].mean} chartData={gFull24Hr.fullNettxData} text="Upstream" unit=" Kb/s"/>
+                  <GethRow pData={pFull.fullNettrxData[0].mean} gData={gFull.fullNettrxData[0].mean} chartData={gFull24Hr.fullNettrxData} text="Downstream" unit=" Kb/s"/>
                 </div>
               </div>
             </div>
@@ -338,12 +339,12 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <ParityRow text="Mins not at tip of the chain"/>
-                  <ParityRow pData={pFast[0].mean} gData={gFast[0].mean} chartData={pFast24Hr.fastCpuData} text="CPU Usage" unit="%"/>
-                  <ParityRow pData={pFast[1].mean} gData={gFast[1].mean} chartData={pFast24Hr.fastRamData} text="Memory (RAM) Usage" unit="%"/>
-                  <ParityRow pData={pFast[3].mean} gData={gFast[3].mean} chartData={pFast24Hr.fastPeerData} text="# of Peers" unit=" Peers"/>
-                  <ParityRow pData={pFast[2].mean} gData={gFast[2].mean} chartData={pFast24Hr.fastDiskData} text="Chain data size"/>
-                  <ParityRow pData={pFast[4].mean} gData={gFast[4].mean} chartData={pFast24Hr.fastNettxData} text="Upstream" unit="Kb/s"/>
-                  <ParityRow pData={pFast[5].mean} gData={gFast[0].mean} chartData={pFast24Hr.fastNettrxData} text="Downstream" unit="Kb/s"/>
+                  <ParityRow pData={pFast.fastCpuData[0].mean} gData={gFast.fastCpuData[0].mean} chartData={pFast24Hr.fastCpuData} text="CPU Usage" unit=" %"/>
+                  <ParityRow pData={pFast.fastRamData[0].mean} gData={gFast.fastRamData[0].mean} chartData={pFast24Hr.fastRamData} text="Memory (RAM) Usage" />
+                  <ParityRow pData={pFast.fastPeerData[0].mean} chartData={pFast24Hr.fastPeerData} text="# of Peers" unit=" Peers"/>
+                  <ParityRow pData={pFast.fastDiskData[0].mean} gData={gFast.fastDiskData[0].mean} chartData={pFast24Hr.fastDiskData} text="Chain data size"/>
+                  <ParityRow pData={pFast.fastNettxData[0].mean} gData={gFast.fastNettxData[0].mean} chartData={pFast24Hr.fastNettxData} text="Upstream" unit=" Kb/s"/>
+                  <ParityRow pData={pFast.fastNettrxData[0].mean} gData={gFast.fastNettrxData[0].mean} chartData={pFast24Hr.fastNettrxData} text="Downstream" unit=" Kb/s"/>
                 </div>
                 <div className="column is-6">
                   <div className="content has-text-centered node-type not-used">
@@ -361,12 +362,12 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <GethRow text="Mins not at tip of the chain"/>
-                  <GethRow pData={pFast[0].mean} chartData={gFast24Hr.fastCpuData} text="CPU Usage" unit="%"/>
-                  <GethRow pData={pFast[1].mean} gData={pFast[1].mean} chartData={gFast24Hr.fastRamData} text="Memory (RAM) Usage" unit="%"/>
-                  <GethRow pData={pFast[3].mean} gData={pFast[3].mean} chartData={gFast24Hr.fastPeerData} text="# of Peers" unit=" Peers"/>
-                  <GethRow pData={pFast[2].mean} gData={pFast[2].mean} chartData={gFast24Hr.fastDiskData} text="Chain data size"/>
-                  <GethRow pData={pFast[4].mean} gData={pFast[4].mean} chartData={gFast24Hr.fastNettxData} text="Upstream" unit="Kb/s"/>
-                  <GethRow pData={pFast[5].mean} chartData={gFast24Hr.fastNettrxData} text="Downstream" unit="Kb/s"/>
+                  <GethRow pData={pFast.fastCpuData[0].mean} gData={gFast.fastCpuData[0].mean} chartData={gFast24Hr.fastCpuData} text="CPU Usage" unit=" %"/>
+                  <GethRow pData={pFast.fastRamData[0].mean} gData={gFast.fastRamData[0].mean} chartData={gFast24Hr.fastRamData} text="Memory (RAM) Usage"/>
+                  <GethRow pData={pFast.fastPeerData[0].mean} chartData={gFast24Hr.fastPeerData} text="# of Peers" unit=" Peers"/>
+                  <GethRow pData={pFast.fastDiskData[0].mean} gData={gFast.fastDiskData[0].mean} chartData={gFast24Hr.fastDiskData} text="Chain data size"/>
+                  <GethRow pData={pFast.fastNettxData[0].mean} gData={gFast.fastNettxData[0].mean} chartData={gFast24Hr.fastNettxData} text="Upstream" unit=" Kb/s"/>
+                  <GethRow pData={pFast.fastNettrxData[0].mean} gData={gFast.fastNettrxData[0].mean} chartData={gFast24Hr.fastNettrxData} text="Downstream" unit=" Kb/s"/>
                 </div>
               </div>
             </div>
@@ -388,12 +389,12 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <ParityRow text="Mins not at tip of the chain"/>
-                  <ParityRow pData={pArchive[0].mean} gData={pArchive[0].mean} chartData={pArchive24Hr.archiveCpuData} text="CPU Usage" unit="%"/>
-                  <ParityRow pData={pArchive[1].mean} gData={pArchive[1].mean} chartData={pArchive24Hr.archiveRamData} text="Memory (RAM) Usage" unit="%"/>
-                  <ParityRow pData={pArchive[3].mean} gData={pArchive[3].mean} text="# of Peers" unit="Peers"/>
-                  <ParityRow pData={pArchive[2].mean} gData={pArchive[2].mean}  text="Chain data size"/>
-                  <ParityRow pData={pArchive[3].mean} gData={pArchive[3].mean}  text="Upstream" unit="Kb/s"/>
-                  <ParityRow text="Downstream" unit="Kb/s"/>
+                  <ParityRow pData={pArchive.archiveCpuData[0].mean} gData={pArchive.archiveCpuData[0].mean} chartData={pArchive24Hr.archiveCpuData} text="CPU Usage" unit="%"/>
+                  <ParityRow pData={pArchive.archiveRamData[0].mean} gData={pArchive.archiveRamData[0].mean} chartData={pArchive24Hr.archiveRamData} text="Memory (RAM) Usage" unit="%"/>
+                  <ParityRow text="# of Peers" unit="Peers"/>
+                  <ParityRow  text="Chain data size"/>
+                  <ParityRow pData={pArchive.archiveNettxData[0].mean} gData={pArchive.archiveNettxData[0].mean}  text="Upstream" unit=" Kb/s"/>
+                  <ParityRow pData={pArchive.archiveNettrxData[0].mean} gData={pArchive.archiveNettrxData[0].mean} text="Downstream" unit=" Kb/s"/>
                 </div>
               </div>
               <span className="navs arrowUp" id="upArrow" onClick={scrollUp}>▲</span>
