@@ -38,8 +38,8 @@ function ParityCharts({ chartData }) {
                 [arrayTimes[1000], arrayValues[1000]],
                 [arrayTimes[1100], arrayValues[1100]],
                 [arrayTimes[1200], arrayValues[1200]],
-                [arrayTimes[1300], arrayValues[1300]]
-
+                [arrayTimes[1300], arrayValues[1300]],
+                [arrayTimes[1400], arrayValues[1400]]
               ]}
               options={{
                 legend: 'none',

@@ -7,7 +7,7 @@ export function scrollUp() {
   document.documentElement.scrollTop = 0;
 }
 export function scrollDown() {
-  return window.scrollBy(0, 750);
+  return window.scrollBy(0, 1000);
 }
 
 export function clickTooltip() {
@@ -17,7 +17,7 @@ export function clickTooltip() {
   }
 }
 export function scrollFunction() {
-  if (document.body.scrollTop > 1400 || document.documentElement.scrollTop > 1400) {
+  if (document.body.scrollTop > 2000 || document.documentElement.scrollTop > 2000) {
     document.getElementById('downArrow').style.display = 'none';
   } else {
     document.getElementById('downArrow').style.display = 'block';

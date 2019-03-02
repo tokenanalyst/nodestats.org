@@ -6,7 +6,7 @@
 }
 .page-divide {
   border-left: 6px solid black;
-  height: 2900px;
+  height: 3300px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
@@ -123,14 +123,21 @@ nav {
   margin-bottom: 10px;
   width: 50px;
 }
-// .company-name {
+// .content {
 //   position: sticky;
-//   top: 0;
-//   background-color: white;
+//   top: 30;
 //   width: 100%;
-//   z-index: 2;
-//   background: linear-gradient(white);
+//   z-index: 99;
 // }
+.name {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  background-color: white;
+  width: 100%;
+  height: 40px;
+}
 .company {
   margin-right: 8px;
 }
