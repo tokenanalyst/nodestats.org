@@ -13,7 +13,7 @@ function GethCharts({ chartData }) {
             console.log('chart data is', chartData, arrayValues, arrayTimes)
             for (let i = 0; i < chartData.length; i++) {
               arrayValues.push(chartData[i].value);
-              arrayTimes.push(chartData[i].time);
+              arrayTimes.push(chartData[i].time.slice(11));
             }
           })()}
           <div style={{ maxWidth: 1000 }}>
@@ -24,7 +24,7 @@ function GethCharts({ chartData }) {
               chartType="AreaChart"
               loader={<div>Loading Chart</div>}
               data={[
-                ['Data', 'Values'],
+                ['Time', 'Data'],
                 [arrayTimes[0], arrayValues[0]],
                 [arrayTimes[100] || [], arrayValues[100]],
                 [arrayTimes[200] || [], arrayValues[200]],
@@ -48,6 +48,7 @@ function GethCharts({ chartData }) {
                 chart: {
                 }
               }}
+
             />
           </div>
         </div>

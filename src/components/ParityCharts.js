@@ -13,7 +13,7 @@ function ParityCharts({ chartData }) {
             console.log('chart data is', chartData, arrayValues, arrayTimes)
             for (let i = 0; i < chartData.length; i++) {
               arrayValues.push(chartData[i].value);
-              arrayTimes.push(chartData[i].time);
+              arrayTimes.push(chartData[i].time.slice(11));
             }
           })()}
           <div style={{ maxWidth: 200 }}>

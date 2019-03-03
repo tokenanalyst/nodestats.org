@@ -436,18 +436,18 @@ class Main extends React.Component {
             <footer className="footer">
               <div className="content has-text-centered">
                 <div className="columns">
-                  <div className="column is-4"></div>
-                  <div className="column is-2">
-                    <figure className="image is-128x128 bitmex-logo">
-                      <img src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png" alt="Bitmex Logo"/>
-                    </figure>
+                  <div className="level is-mobile column is-4-desktop is-offset-4">
+                    <div className="level-left-mobile has-text-centered">
+                      <figure className="image is-128x128 bitmex-logo level-item">
+                        <img className="" src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png" alt="Bitmex Logo"/>
+                      </figure>
+                    </div>
+                    <div className="level-right-mobile has-text-centered">
+                      <figure className="image is-128x128 tokenanalyst-logo level-item">
+                        <img className="" src="/images/Screenshot 2019-03-01 at 16.54.06.png" alt="TokenAnalyst Logo"/>
+                      </figure>
+                    </div>
                   </div>
-                  <div className="column is-2">
-                    <figure className="image is-128x128 tokenanalyst-logo">
-                      <img src="/images/Screenshot 2019-03-01 at 16.54.06.png" alt="TokenAnalyst Logo"/>
-                    </figure>
-                  </div>
-                  <div className="column is-4"></div>
                 </div>
                 <p className="disclaimer">
                 This material should not be the basis for making investment
