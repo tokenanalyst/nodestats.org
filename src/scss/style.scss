@@ -6,7 +6,8 @@
 }
 .page-divide {
   border-left: 6px solid black;
-  height: 2200px;
+  height: 3300px;
+
   position: absolute;
   left: 50%;
   margin-left: -3px;
@@ -75,9 +76,7 @@
   border: 1px solid black;
   font-size: 17px;
 }
-.text:hover {
-  box-shadow: 5px 5px 5px #999999;
-}
+
 .fa-info-circle {
   text-align: right;
 }
@@ -90,7 +89,12 @@
   font-size: 15px;
 }
 .data:hover {
-  box-shadow: 5px 3px 2px #999999;
+}
+.bitmex-logo {
+  margin: auto;
+}
+.tokenanalyst-logo {
+
 }
 .mobile-data {
   display: none;
@@ -118,20 +122,31 @@ nav {
   margin-bottom: 10px;
   width: 50px;
 }
-// .company-name {
+// .content {
 //   position: sticky;
-//   top: 0;
-//   background-color: white;
+//   top: 30;
 //   width: 100%;
-//   z-index: 2;
-//   background: linear-gradient(white);
+//   z-index: 99;
 // }
+.name {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  background-color: white;
+  width: 100%;
+  height: 40px;
+}
 .company {
   margin-right: 8px;
 }
 .company-icon {
   font-size: 22px;
 }
+.box {
+  margin: auto;
+}
+
 .footer {
   margin-top: 80px;
 }
@@ -142,13 +157,8 @@ nav {
   padding: 0;
   height: 144px;
 }
-rect {
-  g {
-    height: 50px;
-  }
-}
 .chart:hover {
-  box-shadow: 5px 2px 2px #999999;
+
   // transform: scale(1.5);
   // z-index: 1;
 }

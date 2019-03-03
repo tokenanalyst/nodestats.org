@@ -43,7 +43,8 @@ class Main extends React.Component {
         var fastPeerData = pFastPeer.data || [];
         var fastNettxData = pFastNettx.data || [];
         var fastNettrxData = pFastNettrx.data || [];
-        var pFast1Hr = fastCpuData.concat(fastRamData).concat(fastDiskData).concat(fastPeerData).concat(fastNettxData).concat(fastNettrxData);
+        var pFast1Hr = {fastCpuData, fastRamData, fastDiskData, fastPeerData, fastNettxData, fastNettrxData};
+
         that.setState({ pFast1Hr: pFast1Hr })
       }))
       .catch(error => console.log(error));
@@ -62,7 +63,8 @@ class Main extends React.Component {
         var fastPeerData = gFastPeer.data || [];
         var fastNettxData = gFastNettx.data || [];
         var fastNettrxData = gFastNettrx.data || [];
-        var gFast1Hr = fastCpuData.concat(fastRamData).concat(fastDiskData).concat(fastPeerData).concat(fastNettxData).concat(fastNettrxData);
+        var gFast1Hr = {fastCpuData, fastRamData, fastDiskData, fastPeerData, fastNettxData, fastNettrxData};
+
         that.setState({ gFast1Hr: gFast1Hr })
       }))
       .catch(error => console.log(error));
@@ -81,7 +83,8 @@ class Main extends React.Component {
         var fullPeerData = pFullPeer.data || [];
         var fullNettxData = pFullNettx.data || [];
         var fullNettrxData = pFullNettrx.data || [];
-        var pFull1Hr = fullCpuData.concat(fullRamData).concat(fullDiskData).concat(fullPeerData).concat(fullNettxData).concat(fullNettrxData);
+        var pFull1Hr = {fullCpuData, fullRamData, fullDiskData, fullPeerData, fullNettxData, fullNettrxData};
+
         that.setState({ pFull1Hr: pFull1Hr })
       }))
       .catch(error => console.log(error));
@@ -100,7 +103,7 @@ class Main extends React.Component {
         var fullPeerData = gFullPeer.data || [];
         var fullNettxData = gFullNettx.data || [];
         var fullNettrxData = gFullNettrx.data || [];
-        var gFull1Hr = fullCpuData.concat(fullRamData).concat(fullDiskData).concat(fullPeerData).concat(fullNettxData).concat(fullNettrxData);
+        var gFull1Hr = {fullCpuData, fullRamData, fullDiskData, fullPeerData,fullNettxData, fullNettrxData};
         that.setState({ gFull1Hr: gFull1Hr })
       }))
       .catch(error => console.log(error));
@@ -195,7 +198,7 @@ class Main extends React.Component {
         var archivePeerData = pArchivePeer.data || [];
         var archiveNettxData = pArchiveNettx.data || [];
         var archiveNettrxData = pArchiveNettrx.data || [];
-        var pArchive1Hr = archiveCpuData.concat(archiveRamData).concat(archiveDiskData).concat(archivePeerData).concat(archiveNettxData).concat(archiveNettrxData);
+        var pArchive1Hr = {archiveCpuData, archiveRamData, archiveDiskData, archivePeerData, archiveNettxData, archiveNettrxData};
         that.setState({ pArchive1Hr: pArchive1Hr })
       }))
       .catch(error => console.log(error));
@@ -217,15 +220,20 @@ class Main extends React.Component {
         var parityArchive24Hr = {archiveCpuData ,archiveRamData, archiveDiskData, archivePeerData, archiveNettxData, archiveNettrxData};
         that.setState({ parityArchive24Hr: parityArchive24Hr })
       }))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error))
+      .then(window.onscroll = function() {
+        scrollFunction()
+        scrollFunction2()
+      })
   }
-  // axios.get(`http://lb-api-2c97d9e50f6a4e75.elb.eu-west-2.amazonaws.com${fast1Hr[0]}`)
-  //   .then(result => this.setState({ stats: result.data }))
-  //   .then(window.onscroll = function() {
-  //     scrollFunction()
-  //     scrollFunction2()
-  //   })
-  // }
+
+//   bytesToSize(bytes) {
+//     var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+//     var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+//     if (i === 0) return bytes + ' ' + sizes[i];
+//     return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+// };
+
 
 
   render() {
@@ -239,7 +247,6 @@ class Main extends React.Component {
     const gFull24Hr = this.state.gethFull24Hr;
     const pArchive = this.state.pArchive1Hr;
     const pArchive24Hr = this.state.parityArchive24Hr;
-
     return (
       <section>
         {pFast && gFast && pFast24Hr && gFast24Hr && gFull && gFull24Hr && pFull24Hr && pArchive && pArchive24Hr
@@ -250,7 +257,7 @@ class Main extends React.Component {
               <div className="columns column is-10 is-offset-1 is-mobile main-box">
                 <div className="column is-6">
                   <span className="content has-text-centered company-name">
-                    <h2 className=""><span className="company">Parity</span>
+                    <h2 className="name"><span className="company">Parity</span>
                       <span className="icon has-text-info company-icon tooltip" onClick={clickTooltip} id="tooltip">
                         <p className="tooltiptext">Tooltip text</p>
                         <i className="fas fa-info-circle">
@@ -273,16 +280,16 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <ParityRow text="Mins not at tip of the chain"/>
-                  <ParityRow pData={pFull[0].mean} gData={gFull[0].mean} chartData={pFull24Hr.fullCpuData} text="CPU Usage"/>
-                  <ParityRow pData={pFull[1].mean} gData={gFull[1].mean} chartData={pFull24Hr.fullRamData} text="Memory (RAM) Usage"/>
-                  <ParityRow pData={pFull[3].mean} gData={gFull[3].mean} chartData={pFull24Hr.fullPeerData} text="# of Peers"/>
-                  <ParityRow pData={pFull[2].mean} gData={gFull[2].mean} chartData={pFull24Hr.fullDiskData} text="Chain data size"/>
-                  <ParityRow pData={pFull[4].mean} gData={gFull[4].mean} chartData={pFull24Hr.fullNettxData} text="Upstream"/>
-                  <ParityRow pData={pFull[5].mean} gData={gFull[5].mean} chartData={pFull24Hr.fullNettrxData} text="Downstream"/>
+                  <ParityRow pData={pFull.fullCpuData[0].mean} gData={gFull.fullCpuData[0].mean} chartData={pFull24Hr.fullCpuData} text="CPU Usage" unit=" %"/>
+                  <ParityRow pData={pFull.fullRamData[0].mean/1024/1024} gData={gFull.fullRamData[0].mean/1024/1024} chartData={pFull24Hr.fullRamData} text="Memory (RAM) Usage" unit=" Mb"/>
+                  <ParityRow pData={pFull.fullPeerData[0].mean} gData={gFull.fullPeerData[0].mean} chartData={pFull24Hr.fullPeerData} text="# of Peers" unit=" Peers"/>
+                  <ParityRow pData={pFull.fullDiskData[0].mean/1024/1024/1024} gData={gFull.fullDiskData[0].mean/1024/1024/1024} chartData={pFull24Hr.fullDiskData} text="Chain data size" unit=" Gb"/>
+                  <ParityRow pData={pFull.fullNettxData[0].mean} gData={gFull.fullNettxData[0].mean} chartData={pFull24Hr.fullNettxData} text="Upstream" unit=" Kb/s"/>
+                  <ParityRow pData={pFull.fullNettrxData[0].mean} gData={gFull.fullNettrxData[0].mean} chartData={pFull24Hr.fullNettrxData} text="Downstream" unit=" Kb/s"/>
                 </div>
                 <div className="column is-6 geth">
                   <span className="content has-text-centered company-name">
-                    <h2 className=""><span className="company">Geth</span>
+                    <h2 className="name"><span className="company">Geth</span>
                       <span className="icon company-icon has-text-info tooltip" onClick={clickTooltip}>
                         <p className="tooltiptext">Tooltip text</p>
                         <i className="fas fa-info-circle">
@@ -305,12 +312,13 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <GethRow text="Mins not at tip of the chain"/>
-                  <GethRow pData={pFull[0].mean} gData={gFull[0].mean} chartData={gFull24Hr.fullCpuData} text="CPU Usage"/>
-                  <GethRow pData={pFull[1].mean} gData={gFull[1].mean} chartData={gFull24Hr.fullRamData} text="Memory (RAM) Usage"/>
-                  <GethRow pData={pFull[3].mean} gData={gFull[3].mean} chartData={gFull24Hr.fullPeerData} text="# of Peers"/>
-                  <GethRow pData={pFull[2].mean} gData={gFull[2].mean} chartData={gFull24Hr.fullDiskData} text="Chain data size"/>
-                  <GethRow pData={pFull[4].mean} gData={gFull[4].mean} chartData={gFull24Hr.fullNettxData} text="Upstream"/>
-                  <GethRow pData={pFull[5].mean} gData={gFull[5].mean} chartData={gFull24Hr.fullNettrxData} text="Downstream"/>
+                  <GethRow pData={pFull.fullCpuData[0].mean} gData={gFull.fullCpuData[0].mean} chartData={gFull24Hr.fullCpuData} text="CPU Usage" unit=" %"/>
+                  <GethRow pData={pFull.fullRamData[0].mean/1024/1024} gData={gFull.fullRamData[0].mean/1024/1024} chartData={gFull24Hr.fullRamData} text="Memory (RAM) Usage" unit=" Mb"/>
+                  <GethRow pData={pFull.fullPeerData[0].mean} gData={gFull.fullPeerData[0].mean} chartData={gFull24Hr.fullPeerData} text="# of Peers" unit=" Peers"/>
+                  <GethRow pData={pFull.fullDiskData[0].mean/1024/1024/1024} gData={gFull.fullDiskData[0].mean/1024/1024/1024} chartData={gFull24Hr.fullDiskData} text="Chain data size" unit=" Gb"/>
+                  <GethRow pData={pFull.fullNettxData[0].mean} gData={gFull.fullNettxData[0].mean} chartData={gFull24Hr.fullNettxData} text="Upstream" unit=" Kb/s"/>
+                  <GethRow pData={pFull.fullNettrxData[0].mean} gData={gFull.fullNettrxData[0].mean} chartData={gFull24Hr.fullNettrxData} text="Downstream" unit=" Kb/s"/>
+
                 </div>
               </div>
             </div>
@@ -318,6 +326,16 @@ class Main extends React.Component {
             <div className="columns">
               <div className="columns column is-10 is-offset-1 is-mobile">
                 <div className="column is-6">
+                  <span className="content has-text-centered company-name">
+                    <h2 className="name"><span className="company">Parity</span>
+                      <span className="icon has-text-info company-icon tooltip" onClick={clickTooltip} id="tooltip">
+                        <p className="tooltiptext">Tooltip text</p>
+                        <i className="fas fa-info-circle">
+                        </i>
+                      </span>
+                    </h2>
+                  </span>
+
                   <div className="content has-text-centered node-type">
                     <p id="fast">Fast Node</p>
                   </div>
@@ -333,14 +351,23 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <ParityRow text="Mins not at tip of the chain"/>
-                  <ParityRow pData={pFast[0].mean} gData={pFast[0].mean} chartData={pFast24Hr.fastCpuData} text="CPU Usage"/>
-                  <ParityRow pData={pFast[1].mean} gData={pFast[0].mean} chartData={pFast24Hr.fastRamData} text="Memory (RAM) Usage"/>
-                  <ParityRow pData={pFast[3].mean} gData={pFast[0].mean} chartData={pFast24Hr.fastPeerData} text="# of Peers"/>
-                  <ParityRow pData={pFast[2].mean} gData={pFast[0].mean} chartData={pFast24Hr.fastDiskData} text="Chain data size"/>
-                  <ParityRow pData={pFast[4].mean} gData={pFast[0].mean} chartData={pFast24Hr.fastNettxData} text="Upstream"/>
-                  <ParityRow pData={pFast[5].mean} gData={pFast[0].mean} chartData={pFast24Hr.fastNettrxData} text="Downstream"/>
+                  <ParityRow pData={pFast.fastCpuData[0].mean} gData={gFast.fastCpuData[0].mean} chartData={pFast24Hr.fastCpuData} text="CPU Usage" unit=" %"/>
+                  <ParityRow pData={pFast.fastRamData[0].mean/1024/1024} gData={gFast.fastRamData[0].mean/1024/1024} chartData={pFast24Hr.fastRamData} text="Memory (RAM) Usage" unit=" Mb"/>
+                  <ParityRow pData={pFast.fastPeerData[0].mean} chartData={pFast24Hr.fastPeerData} text="# of Peers" unit=" Peers"/>
+                  <ParityRow pData={pFast.fastDiskData[0].mean/1024/1024/1024} gData={gFast.fastDiskData[0].mean/1024/1024/1024} chartData={pFast24Hr.fastDiskData} text="Chain data size" unit=" Gb"/>
+                  <ParityRow pData={pFast.fastNettxData[0].mean} gData={gFast.fastNettxData[0].mean} chartData={pFast24Hr.fastNettxData} text="Upstream" unit=" Kb/s"/>
+                  <ParityRow pData={pFast.fastNettrxData[0].mean} gData={gFast.fastNettrxData[0].mean} chartData={pFast24Hr.fastNettrxData} text="Downstream" unit=" Kb/s"/>
                 </div>
                 <div className="column is-6">
+                  <span className="content has-text-centered company-name">
+                    <h2 className="name"><span className="company">Geth</span>
+                      <span className="icon company-icon has-text-info tooltip" onClick={clickTooltip}>
+                        <p className="tooltiptext">Tooltip text</p>
+                        <i className="fas fa-info-circle">
+                        </i>
+                      </span>
+                    </h2>
+                  </span>
                   <div className="content has-text-centered node-type not-used">
                     <p className="white">Fast Node</p>
                   </div>
@@ -356,18 +383,27 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <GethRow text="Mins not at tip of the chain"/>
-                  <GethRow pData={pFast[0].mean} gData={pFast[0].mean} chartData={gFast24Hr.fastCpuData} text="CPU Usage"/>
-                  <GethRow pData={pFast[1].mean} gData={pFast[0].mean} chartData={gFast24Hr.fastRamData} text="Memory (RAM) Usage"/>
-                  <GethRow pData={pFast[3].mean} gData={pFast[0].mean} chartData={gFast24Hr.fastPeerData} text="# of Peers"/>
-                  <GethRow pData={pFast[2].mean} gData={pFast[0].mean} chartData={gFast24Hr.fastDiskData} text="Chain data size"/>
-                  <GethRow pData={pFast[4].mean} gData={pFast[0].mean} chartData={gFast24Hr.fastNettxData} text="Upstream"/>
-                  <GethRow pData={pFast[5].mean} gData={pFast[0].mean} chartData={gFast24Hr.fastNettrxData} text="Downstream"/>
+                  <GethRow pData={pFast.fastCpuData[0].mean} gData={gFast.fastCpuData[0].mean} chartData={gFast24Hr.fastCpuData} text="CPU Usage" unit=" %"/>
+                  <GethRow pData={pFast.fastRamData[0].mean/1024/1024} gData={gFast.fastRamData[0].mean/1024/1024} chartData={gFast24Hr.fastRamData} text="Memory (RAM) Usage" unit=" Mb"/>
+                  <GethRow pData={pFast.fastPeerData[0].mean} chartData={gFast24Hr.fastPeerData} text="# of Peers" unit=" Peers"/>
+                  <GethRow pData={pFast.fastDiskData[0].mean/1024/1024/1024} gData={gFast.fastDiskData[0].mean/1024/1024/1024} chartData={gFast24Hr.fastDiskData} text="Chain data size" unit=" Gb"/>
+                  <GethRow pData={pFast.fastNettxData[0].mean} gData={gFast.fastNettxData[0].mean} chartData={gFast24Hr.fastNettxData} text="Upstream" unit=" Kb/s"/>
+                  <GethRow pData={pFast.fastNettrxData[0].mean} gData={gFast.fastNettrxData[0].mean} chartData={gFast24Hr.fastNettrxData} text="Downstream" unit=" Kb/s"/>
                 </div>
               </div>
             </div>
             <div className="columns">
               <div className="columns column is-10 is-offset-1 is-mobile">
                 <div className="column is-6">
+                  <span className="content has-text-centered company-name">
+                    <h2 className="name"><span className="company">Parity</span>
+                      <span className="icon has-text-info company-icon tooltip" onClick={clickTooltip} id="tooltip">
+                        <p className="tooltiptext">Tooltip text</p>
+                        <i className="fas fa-info-circle">
+                        </i>
+                      </span>
+                    </h2>
+                  </span>
                   <div className="content has-text-centered node-type">
                     <p id="archive">Archive Node</p>
                   </div>
@@ -383,12 +419,12 @@ class Main extends React.Component {
                     </div>
                   </div>
                   <ParityRow text="Mins not at tip of the chain"/>
-                  <ParityRow pData={pArchive[0].mean} chartData={pArchive24Hr.archiveCpuData} text="CPU Usage"/>
-                  <ParityRow chartData={pArchive24Hr.archiveRamData} text="Memory (RAM) Usage"/>
-                  <ParityRow text="# of Peers"/>
-                  <ParityRow  text="Chain data size"/>
-                  <ParityRow  text="Upstream"/>
-                  <ParityRow text="Downstream"/>
+                  <ParityRow pData={pArchive.archiveCpuData[0].mean} gData={pArchive.archiveCpuData[0].mean} chartData={pArchive24Hr.archiveCpuData} text="CPU Usage" unit="%"/>
+                  <ParityRow pData={pArchive.archiveRamData[0].mean/1024/1024} gData={pArchive.archiveRamData[0].mean/1024/1024} chartData={pArchive24Hr.archiveRamData} text="Memory (RAM) Usage" unit=" Mb"/>
+                  <ParityRow text="# of Peers" unit="Peers"/>
+                  <ParityRow  text="Chain data size" unit=" Gb"/>
+                  <ParityRow pData={pArchive.archiveNettxData[0].mean} gData={pArchive.archiveNettxData[0].mean} chartData={pArchive24Hr.archiveNettxData}  text="Upstream" unit=" Kb/s"/>
+                  <ParityRow pData={pArchive.archiveNettrxData[0].mean} gData={pArchive.archiveNettrxData[0].mean} chartData={pArchive24Hr.archiveNettrxData} text="Downstream" unit=" Kb/s"/>
                 </div>
               </div>
               <span className="navs arrowUp" id="upArrow" onClick={scrollUp}>▲</span>
@@ -402,21 +438,20 @@ class Main extends React.Component {
             </div>
             <footer className="footer">
               <div className="content has-text-centered">
-                <div className="columns has-text-centered">
-                  <div className="column">
-                    <figure className="image is-128x128">
-                      <img src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png" alt="Bitmex Logo"/>
-                    </figure>
-                  </div>
-                  <div>
-                    <figure className="image is-128x128">
-                      <img src="/images/Screenshot 2019-03-01 at 16.54.06.png" alt="TokenAnalyst Logo"/>
-                    </figure>
+                <div className="columns">
+                  <div className="level is-mobile column is-4-desktop is-offset-4">
+                    <div className="level-left-mobile has-text-centered">
+                      <figure className="image is-128x128 bitmex-logo level-item">
+                        <img className="" src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png" alt="Bitmex Logo"/>
+                      </figure>
+                    </div>
+                    <div className="level-right-mobile has-text-centered">
+                      <figure className="image is-128x128 tokenanalyst-logo level-item">
+                        <img className="" src="/images/Screenshot 2019-03-01 at 16.54.06.png" alt="TokenAnalyst Logo"/>
+                      </figure>
+                    </div>
                   </div>
                 </div>
-                <p>
-              Created by TokenAnalyst
-                </p>
                 <p className="disclaimer">
                 This material should not be the basis for making investment
                 decisions, nor be construed as a recommendation to engage in

@@ -1,7 +1,7 @@
 import React from 'react';
 import ParityCharts from './ParityCharts';
 
-function ParityRow({ text, pData, gData, chartData }) {
+function ParityRow({ text, pData, gData, chartData, unit }) {
   console.log('2nd', chartData)
   return (
     <section className="columns row" id="parityTest">
@@ -21,17 +21,18 @@ function ParityRow({ text, pData, gData, chartData }) {
       <div>
       </div>
       {(() => {
+        const x = parseFloat(Math.round(pData * 100) / 100).toFixed(2);
         if (pData < gData) {
           return <p className="column is-4-desktop data red" id="pData">
-            {pData}
+            {x}{unit}
           </p>
         } if (pData > gData) {
           return <p className="column is-4-desktop data green" id="pData">
-            {pData}
+            {x}{unit}
           </p>
         } if (pData === gData) {
           return <p className="column is-4-desktop data black" id="pData">
-            {pData}
+            {x}{unit}
           </p>
         }
       }

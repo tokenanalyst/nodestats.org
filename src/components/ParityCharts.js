@@ -13,7 +13,8 @@ function ParityCharts({ chartData }) {
             console.log('chart data is', chartData, arrayValues, arrayTimes)
             for (let i = 0; i < chartData.length; i++) {
               arrayValues.push(chartData[i].value);
-              arrayTimes.push(chartData[i].time);
+              arrayTimes.push(chartData[i].time.slice(11));
+
             }
           })()}
           <div style={{ maxWidth: 200 }}>
@@ -24,7 +25,8 @@ function ParityCharts({ chartData }) {
               chartType="AreaChart"
               loader={<div>Loading Chart</div>}
               data={[
-                ['Data', 'Values'],
+                ['Time', 'Values'],
+
                 [arrayTimes[0], arrayValues[0]],
                 [arrayTimes[100], arrayValues[50]],
                 [arrayTimes[200], arrayValues[200]],
@@ -38,7 +40,8 @@ function ParityCharts({ chartData }) {
                 [arrayTimes[1000], arrayValues[1000]],
                 [arrayTimes[1100], arrayValues[1100]],
                 [arrayTimes[1200], arrayValues[1200]],
-                [arrayTimes[1300], arrayValues[1300]]
+                [arrayTimes[1300], arrayValues[1300]],
+                [arrayTimes[1400], arrayValues[1400]]
 
               ]}
               options={{
