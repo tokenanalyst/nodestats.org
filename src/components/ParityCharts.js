@@ -14,6 +14,7 @@ function ParityCharts({ chartData }) {
             for (let i = 0; i < chartData.length; i++) {
               arrayValues.push(chartData[i].value);
               arrayTimes.push(chartData[i].time.slice(11));
+
             }
           })()}
           <div style={{ maxWidth: 200 }}>
@@ -25,6 +26,7 @@ function ParityCharts({ chartData }) {
               loader={<div>Loading Chart</div>}
               data={[
                 ['Time', 'Values'],
+
                 [arrayTimes[0], arrayValues[0]],
                 [arrayTimes[100], arrayValues[50]],
                 [arrayTimes[200], arrayValues[200]],
@@ -40,6 +42,7 @@ function ParityCharts({ chartData }) {
                 [arrayTimes[1200], arrayValues[1200]],
                 [arrayTimes[1300], arrayValues[1300]],
                 [arrayTimes[1400], arrayValues[1400]]
+
               ]}
               options={{
                 legend: 'none',

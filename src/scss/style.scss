@@ -7,6 +7,7 @@
 .page-divide {
   border-left: 6px solid black;
   height: 3300px;
+
   position: absolute;
   left: 50%;
   margin-left: -3px;
@@ -75,8 +76,7 @@
   border: 1px solid black;
   font-size: 17px;
 }
-.text:hover {
-}
+
 .fa-info-circle {
   text-align: right;
 }
@@ -89,12 +89,12 @@
   font-size: 15px;
 }
 .data:hover {
-
 }
 .bitmex-logo {
   margin: auto;
 }
 .tokenanalyst-logo {
+
 }
 .mobile-data {
   display: none;
@@ -146,6 +146,7 @@ nav {
 .box {
   margin: auto;
 }
+
 .footer {
   margin-top: 80px;
 }
@@ -157,6 +158,7 @@ nav {
   height: 144px;
 }
 .chart:hover {
+
   // transform: scale(1.5);
   // z-index: 1;
 }

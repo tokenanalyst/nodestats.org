@@ -8,6 +8,7 @@ export function scrollUp() {
 }
 export function scrollDown() {
   return window.scrollBy(0, 1000);
+
 }
 
 export function clickTooltip() {
@@ -18,6 +19,7 @@ export function clickTooltip() {
 }
 export function scrollFunction() {
   if (document.body.scrollTop > 2000 || document.documentElement.scrollTop > 2000) {
+
     document.getElementById('downArrow').style.display = 'none';
   } else {
     document.getElementById('downArrow').style.display = 'block';

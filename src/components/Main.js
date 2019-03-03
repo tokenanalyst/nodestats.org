@@ -44,6 +44,7 @@ class Main extends React.Component {
         var fastNettxData = pFastNettx.data || [];
         var fastNettrxData = pFastNettrx.data || [];
         var pFast1Hr = {fastCpuData, fastRamData, fastDiskData, fastPeerData, fastNettxData, fastNettrxData};
+
         that.setState({ pFast1Hr: pFast1Hr })
       }))
       .catch(error => console.log(error));
@@ -63,6 +64,7 @@ class Main extends React.Component {
         var fastNettxData = gFastNettx.data || [];
         var fastNettrxData = gFastNettrx.data || [];
         var gFast1Hr = {fastCpuData, fastRamData, fastDiskData, fastPeerData, fastNettxData, fastNettrxData};
+
         that.setState({ gFast1Hr: gFast1Hr })
       }))
       .catch(error => console.log(error));
@@ -82,6 +84,7 @@ class Main extends React.Component {
         var fullNettxData = pFullNettx.data || [];
         var fullNettrxData = pFullNettrx.data || [];
         var pFull1Hr = {fullCpuData, fullRamData, fullDiskData, fullPeerData, fullNettxData, fullNettrxData};
+
         that.setState({ pFull1Hr: pFull1Hr })
       }))
       .catch(error => console.log(error));
@@ -232,6 +235,7 @@ class Main extends React.Component {
 // };
 
 
+
   render() {
     const pFast = this.state.pFast1Hr;
     const pFull = this.state.pFull1Hr;
@@ -243,9 +247,6 @@ class Main extends React.Component {
     const gFull24Hr = this.state.gethFull24Hr;
     const pArchive = this.state.pArchive1Hr;
     const pArchive24Hr = this.state.parityArchive24Hr;
-
-    console.log('parchive is', gFast)
-
     return (
       <section>
         {pFast && gFast && pFast24Hr && gFast24Hr && gFull && gFull24Hr && pFull24Hr && pArchive && pArchive24Hr
@@ -317,6 +318,7 @@ class Main extends React.Component {
                   <GethRow pData={pFull.fullDiskData[0].mean/1024/1024/1024} gData={gFull.fullDiskData[0].mean/1024/1024/1024} chartData={gFull24Hr.fullDiskData} text="Chain data size" unit=" Gb"/>
                   <GethRow pData={pFull.fullNettxData[0].mean} gData={gFull.fullNettxData[0].mean} chartData={gFull24Hr.fullNettxData} text="Upstream" unit=" Kb/s"/>
                   <GethRow pData={pFull.fullNettrxData[0].mean} gData={gFull.fullNettrxData[0].mean} chartData={gFull24Hr.fullNettrxData} text="Downstream" unit=" Kb/s"/>
+
                 </div>
               </div>
             </div>
@@ -333,6 +335,7 @@ class Main extends React.Component {
                       </span>
                     </h2>
                   </span>
+
                   <div className="content has-text-centered node-type">
                     <p id="fast">Fast Node</p>
                   </div>
