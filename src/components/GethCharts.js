@@ -1,6 +1,7 @@
 import React from 'react'
 import Chart from 'react-google-charts'
 
+
 function GethCharts({ chartData, unit }) {
   const arrayValues = [];
   const arrayTimes = [];
@@ -10,6 +11,7 @@ function GethCharts({ chartData, unit }) {
         ?
         <div className="chart-box">
           {(() => {
+
             for (let i = 0; i < chartData.length; i++) {
               arrayValues.push(chartData[i].value);
               arrayTimes.push(chartData[i].time.slice(11, 19));
@@ -24,6 +26,7 @@ function GethCharts({ chartData, unit }) {
               loader={<div><i className="fa fa-spinner fa-spin" /></div>}
               data={[
                 ['Time', unit],
+
                 [arrayTimes[0], arrayValues[0]],
                 [arrayTimes[100] || [], arrayValues[100]],
                 [arrayTimes[200] || [], arrayValues[200]],
@@ -40,14 +43,11 @@ function GethCharts({ chartData, unit }) {
                 [arrayTimes[1300] || [], arrayValues[1300]],
                 [arrayTimes[1400] || [], arrayValues[1400]],
 
-
               ]}
               options={{
                 legend: 'none',
                 chart: {
                 }
-              }}
-
             />
           </div>
         </div>

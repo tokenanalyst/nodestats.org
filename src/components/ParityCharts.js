@@ -10,6 +10,7 @@ function ParityCharts({ chartData, unit }) {
         ?
         <div className="chart-box">
           {(() => {
+
             for (let i = 0; i < chartData.length; i++) {
               arrayValues.push(chartData[i].value);
               arrayTimes.push(chartData[i].time.slice(11, 19));

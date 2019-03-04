@@ -5,6 +5,7 @@ import GethRow from './GethRow';
 import Modal from './Modal';
 import {scrollDown, clickTooltip, scrollFunction, scrollFunction2, scrollUp} from '../lib/navigationFunctions';
 
+
 const baseUrl = 'https://cors-anywhere.herokuapp.com/https://nodestats.tokenanalyst.io'
 const pFast1Hr = ['/parity-fast-cpu-1h-avg', '/parity-fast-ram-1h-avg', '/parity-fast-disk-1h-avg', '/parity-fast-peers-1h-avg', '/parity-fast-nettx-1h-avg', '/parity-fast-netrx-1h-avg', '/parity-fast-sync-1h-avg'];
 const pFull1Hr = ['/parity-full-cpu-1h-avg', '/parity-full-ram-1h-avg', '/parity-full-disk-1h-avg', '/parity-full-peers-1h-avg', '/parity-full-nettx-1h-avg', '/parity-full-netrx-1h-avg', '/parity-full-sync-1h-afull'];
@@ -236,6 +237,17 @@ class Main extends React.Component {
     const pArchive = this.state.pArchive1Hr;
     const pArchive24Hr = this.state.parityArchive24Hr;
 
+  render() {
+    const pFast = this.state.pFast1Hr;
+    const pFull = this.state.pFull1Hr;
+    const gFast = this.state.gFast1Hr;
+    const gFull = this.state.gFull1Hr;
+    const pFast24Hr = this.state.parityFast24Hr;
+    const gFast24Hr = this.state.gethFast24Hr;
+    const pFull24Hr = this.state.parityFull24Hr
+    const gFull24Hr = this.state.gethFull24Hr;
+    const pArchive = this.state.pArchive1Hr;
+    const pArchive24Hr = this.state.parityArchive24Hr;
     return (
       <section className="main">
         {pFast && gFast && pFast24Hr && gFast24Hr && gFull && gFull24Hr && pFull24Hr && pArchive && pArchive24Hr
@@ -461,6 +473,7 @@ class Main extends React.Component {
           </div>
           :
           <p className="please-wait"></p>
+
         }
       </section>
     )
