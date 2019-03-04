@@ -10,23 +10,25 @@ export function scrollDown() {
   return window.scrollBy(0, 1000);
 }
 
-export function clickTooltip() {
-  const allTooltips = document.querySelectorAll('.tooltip');
-  for (let i = 0; i < allTooltips.length; i++) {
-    allTooltips[i].classList.toggle('tooltip-mobile');
-  }
-}
+// export function clickTooltip() {
+//   const allTooltips = document.querySelectorAll('.tooltip');
+//   for (let i = 0; i < allTooltips.length; i++) {
+//     allTooltips[i].classList.toggle('tooltip-mobile');
+//   }
+// }
 export function scrollFunction() {
+  const down = document.getElementById('downArrow');
   if (document.body.scrollTop > 2000 || document.documentElement.scrollTop > 2000) {
-    document.getElementById('downArrow').style.display = 'none';
+    down.style.display = 'none';
   } else {
-    document.getElementById('downArrow').style.display = 'block';
+    down.style.display = 'block';
   }
 }
 export function scrollFunction2() {
+  const up = document.getElementById('upArrow');
   if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
-    document.getElementById('upArrow').style.display = 'block';
+    up.style.display = 'block';
   } else {
-    document.getElementById('upArrow').style.display = 'none';
+    up.style.display = 'none';
   }
 }
