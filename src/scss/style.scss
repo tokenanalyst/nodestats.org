@@ -1,8 +1,6 @@
 .body, html {
   scroll-behavior: smooth;
-}
-.main-box {
-  margin-top: 50px;
+  min-height: 800px;
 }
 .page-divide {
   border-left: 6px solid #0080ff;
@@ -22,9 +20,12 @@
   padding-left: 10px;
   font-size: 20px;
 }
-
 .nodestats-logo {
-
+  padding: 0;
+}
+.logo {
+  height: 75px;
+  width: 250px;
 }
 .links {
   margin-right: 20px;
@@ -66,7 +67,7 @@
 }
 .graph {
   text-align: center;
-  border: 1px solid #0080ff;
+  // border: 1px solid #0080ff;
   transition: transform 1s;
   font-size: 20px;
   background-color: white;
@@ -77,28 +78,28 @@
 }
 .text {
   text-align: left;
-  border: 1px solid #0080ff;
+  // border: 1px solid #0080ff;
   font-size: 17px;
   height: 80px;
   background-color: white;
-  z-index: 1;
-}
-.text:hover {
-}
-.fa-info-circle {
+  z-index: 0;
+  font-weight: bold;
+  font-family: 'Fira Sans', sans-serif;
 }
 .icon {
   text-align: left;
 }
 .data {
   text-align: center;
-  border: 1px solid #0080ff;
-  font-size: 15px;
+  // border: 1px solid #0080ff;
+  font-size: 25px;
   height: 80px;
   background-color: white;
   z-index: -2;
+  font-family: 'Inconsolata', monospace;
 }
 .data:hover {
+
 }
 .bitmex-logo {
   margin: auto;
@@ -197,7 +198,7 @@ nav {
   padding: 5px 0;
   border-radius: 6px;
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   bottom: 125%;
   left: 50%;
   margin-left: -60px;
@@ -261,8 +262,21 @@ nav {
   right: 40px;
   color: #0080ff;
 }
-.fa-spinner {
+.chart-spinner {
   font-size: 40px;
+  background: -webkit-linear-gradient(#eee, #0080ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.main-spinner {
+  font-size: 200px;
+  position: absolute;
+  left: 45%;
+  top: 30%;
+  z-index: 0;
+  background: -webkit-linear-gradient(#eee, #0080ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .red {
   color: red;
@@ -273,24 +287,28 @@ nav {
 .black {
   color: black;
 }
+.columns.is-mobile > .column.is-6 {
+  padding: 0;
+  z-index: 2;
+}
 @keyframes bounce {
   0% {color: black; bottom: 20px; right: 40px;}
   25% {color: black; bottom: 25px; right: 40px;}
   50% {color: grey; bottom: 15px; right: 40px;}
   75% {color: grey; bottom: 20px; right: 40px;}
 }
-.scroll-box {
-  position: fixed;
-  z-index: 99;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  color: black;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 4px;
-  background-color: white;
-}
+// .scroll-box {
+//   position: fixed;
+//   z-index: 99;
+//   font-size: 18px;
+//   border: none;
+//   outline: none;
+//   color: black;
+//   cursor: pointer;
+//   padding: 15px;
+//   border-radius: 4px;
+//   background-color: white;
+// }
 .move-page-up:hover {
   background-color: #555;
 }
@@ -311,6 +329,9 @@ nav {
   }
   .text {
     font-size: 15px;
+    text-align: center;
+  }
+  .main-spinner {
   }
   .data {
     font-size: 15px;
@@ -318,10 +339,9 @@ nav {
   .table-header {
     font-size: 12px;
   }
-}
-@media (max-width: 822px) {
   body {
-    background-color: #99ccff;
+    background-color: #eeeeee;
+    z-index: -2;
   }
   .row {
     background-color: white;
@@ -467,36 +487,3 @@ nav {
     margin-right: 0;
   }
 }
-// For if we use the custom tooltip
-
-// div.google-visualization-tooltip {
-//   height: 50px;
-//   width: 120px;
-//   background-color: #999;
-//   color: #fff;
-//   text-align: center;
-//   padding: 5px 0;
-//   border-radius: 6px;
-//   position: absolute;
-//   z-index: 1;
-//   top: 0%;
-//   right: 0%;
-//   margin-left: -60px;
-// }
-//
-// div.google-visualization-tooltip::after {
-//   content: "";
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   margin-left: -5px;
-//   border-width: 5px;
-//   border-style: solid;
-//   border-color: #555 transparent transparent transparent;
-// }
-// div.google-visualization-tooltip-item span {
-//   padding: 0;
-// }
-// .google-visualization-tooltip {
-//   color: white;
-// }

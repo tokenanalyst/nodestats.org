@@ -23,7 +23,7 @@ function GethRow({ text, gData, pData, chartData, unit }) {
       }
       )()}
       <span className="column is-4-desktop text">
-        <div className="columns is-mobile is-vcentered ">
+        <div className="columns is-mobile">
           <p className="column is-9-desktop is-9">{text} <span className="mobile-table-header">(1hr)</span></p>
           <span className="icon has-text-info tooltip column is-3-desktop is-3">
             <p className="tooltiptext">Tooltip text</p>
