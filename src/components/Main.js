@@ -5,7 +5,7 @@ import GethRow from './GethRow';
 import Modal from './Modal';
 import {scrollDown, clickTooltip, scrollFunction, scrollFunction2, scrollUp} from '../lib/navigationFunctions';
 
-const baseUrl = 'https://nodestats.tokenanalyst.io'
+const baseUrl = 'https://cors-anywhere.herokuapp.com/https://nodestats.tokenanalyst.io'
 const pFast1Hr = ['/parity-fast-cpu-1h-avg', '/parity-fast-ram-1h-avg', '/parity-fast-disk-1h-avg', '/parity-fast-peers-1h-avg', '/parity-fast-nettx-1h-avg', '/parity-fast-netrx-1h-avg', '/parity-fast-sync-1h-avg'];
 const pFull1Hr = ['/parity-full-cpu-1h-avg', '/parity-full-ram-1h-avg', '/parity-full-disk-1h-avg', '/parity-full-peers-1h-avg', '/parity-full-nettx-1h-avg', '/parity-full-netrx-1h-avg', '/parity-full-sync-1h-afull'];
 const pFast24Hr = ['/parity-fast-cpu-24h', '/parity-fast-ram-24h', '/parity-fast-disk-24h', '/parity-fast-peers-24h', '/parity-fast-nettx-24h', '/parity-fast-netrx-24h', '/parity-fast-sync-24h'];
