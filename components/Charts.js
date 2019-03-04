@@ -26,6 +26,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var url = 'http://nodestats.tokenanalyst.io';
+
 var Charts = function (_React$Component) {
   _inherits(Charts, _React$Component);
 
@@ -34,7 +36,7 @@ var Charts = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Charts.__proto__ || Object.getPrototypeOf(Charts)).call(this, props));
 
-    _this.state = {};
+    _this.url = props.url;
     return _this;
   }
 
@@ -43,56 +45,60 @@ var Charts = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios2.default.get('/api/nodestats').then(function (result) {
-        return _this2.setState({ test: result.data });
+      _axios2.default.get(url + this.url).then(function (data) {
+        _this2.setState(data);
+        console.log(_this2.state.data);
       });
     }
   }, {
     key: 'render',
     value: function render() {
-      var test = this.state.test;
-      return _react2.default.createElement(
-        'section',
-        null,
-        test ? _react2.default.createElement(
-          'div',
-          { className: 'chart-box' },
+      if (this.state != null) {
+        var data = this.state.data;
+        var arrayValues = [];
+        var arrayTimes = [];
+        return _react2.default.createElement(
+          'section',
+          null,
           _react2.default.createElement(
             'div',
-            { style: { maxWidth: 900 } },
-            _react2.default.createElement(_reactGoogleCharts2.default, {
-              width: 80,
-              height: 50,
-              chartType: 'ColumnChart',
-              loader: _react2.default.createElement(
-                'div',
-                null,
-                'Loading Chart'
-              ),
-              data: [['Test', 'Geth', 'Parity'], ['test 1, 1', 20, 88], ['test 2, 2', 45, 133]],
-              options: {
-                title: 'Test Chart',
-
-                // tooltip: {isHtml: true},
-                legend: 'none',
-                chartArea: { width: '200%', height: '100%' },
-                hAxis: {
-                  title: 'h axis',
-                  minValue: 0
-                },
-                vAxis: {
-                  title: 'v axis'
+            { className: 'chart-box' },
+            function () {
+              for (var i = 0; i < data.length; i++) {
+                arrayValues.push(data[i].value);
+                arrayTimes.push(data[i].time.slice(11, 19));
+              }
+            }(),
+            _react2.default.createElement(
+              'div',
+              { style: { maxWidth: 1000 } },
+              _react2.default.createElement(_reactGoogleCharts2.default, {
+                className: 'charts',
+                width: 180,
+                height: 80,
+                chartType: 'AreaChart',
+                loader: _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement('i', { className: 'fa fa-spinner fa-spin chart-spinner' })
+                ),
+                data: [['Time', 'Placeholder'], [arrayTimes[0], arrayValues[0]], [arrayTimes[100] || [], arrayValues[100]], [arrayTimes[200] || [], arrayValues[200]], [arrayTimes[300] || [], arrayValues[300]], [arrayTimes[400] || [], arrayValues[400]], [arrayTimes[500] || [], arrayValues[500]], [arrayTimes[600] || [], arrayValues[600]], [arrayTimes[700] || [], arrayValues[700]], [arrayTimes[800] || [], arrayValues[800]], [arrayTimes[900] || [], arrayValues[900]], [arrayTimes[1000] || [], arrayValues[1000]], [arrayTimes[1100] || [], arrayValues[1100]], [arrayTimes[1200] || [], arrayValues[1200]], [arrayTimes[1300] || [], arrayValues[1300]], [arrayTimes[1400] || [], arrayValues[1400]]],
+                options: {
+                  legend: 'none',
+                  chart: {}
                 }
-              },
-              legendToggle: true
-            })
+
+              })
+            )
           )
-        ) : _react2.default.createElement(
+        );
+      } else {
+        return _react2.default.createElement(
           'p',
           null,
-          'Please Wait...'
-        )
-      );
+          _react2.default.createElement('i', { className: 'fa fa-spinner fa-spin chart-spinner' })
+        );
+      }
     }
   }]);
 

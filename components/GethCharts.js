@@ -15,7 +15,8 @@ var _reactGoogleCharts2 = _interopRequireDefault(_reactGoogleCharts);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function GethCharts(_ref) {
-  var chartData = _ref.chartData;
+  var chartData = _ref.chartData,
+      unit = _ref.unit;
 
   var arrayValues = [];
   var arrayTimes = [];
@@ -26,10 +27,9 @@ function GethCharts(_ref) {
       'div',
       { className: 'chart-box' },
       function () {
-        console.log('chart data is', chartData, arrayValues, arrayTimes);
         for (var i = 0; i < chartData.length; i++) {
           arrayValues.push(chartData[i].value);
-          arrayTimes.push(chartData[i].time);
+          arrayTimes.push(chartData[i].time.slice(11, 19));
         }
       }(),
       _react2.default.createElement(
@@ -38,24 +38,25 @@ function GethCharts(_ref) {
         _react2.default.createElement(_reactGoogleCharts2.default, {
           className: 'charts',
           width: 180,
-          height: 100,
+          height: 80,
           chartType: 'AreaChart',
           loader: _react2.default.createElement(
             'div',
             null,
-            'Loading Chart'
+            _react2.default.createElement('i', { className: 'fa fa-spinner fa-spin chart-spinner' })
           ),
-          data: [['Data', 'Values'], [arrayTimes[0], arrayValues[0]], [arrayTimes[1] || [], arrayValues[10]], [arrayTimes[20] || [], arrayValues[20]], [arrayTimes[30] || [], arrayValues[30]], [arrayTimes[40] || [], arrayValues[40]], [arrayTimes[50] || [], arrayValues[50]], [arrayTimes[60] || [], arrayValues[60]], [arrayTimes[70] || [], arrayValues[70]], [arrayTimes[80] || [], arrayValues[80]], [arrayTimes[90] || [], arrayValues[90]], [arrayTimes[100] || [], arrayValues[100]], [arrayTimes[110] || [], arrayValues[110]], [arrayTimes[120] || [], arrayValues[120]]],
+          data: [['Time', unit], [arrayTimes[0], arrayValues[0]], [arrayTimes[100] || [], arrayValues[100]], [arrayTimes[200] || [], arrayValues[200]], [arrayTimes[300] || [], arrayValues[300]], [arrayTimes[400] || [], arrayValues[400]], [arrayTimes[500] || [], arrayValues[500]], [arrayTimes[600] || [], arrayValues[600]], [arrayTimes[700] || [], arrayValues[700]], [arrayTimes[800] || [], arrayValues[800]], [arrayTimes[900] || [], arrayValues[900]], [arrayTimes[1000] || [], arrayValues[1000]], [arrayTimes[1100] || [], arrayValues[1100]], [arrayTimes[1200] || [], arrayValues[1200]], [arrayTimes[1300] || [], arrayValues[1300]], [arrayTimes[1400] || [], arrayValues[1400]]],
           options: {
             legend: 'none',
             chart: {}
           }
+
         })
       )
     ) : _react2.default.createElement(
       'p',
       null,
-      'Please Wait....'
+      _react2.default.createElement('i', { className: 'fa fa-spinner fa-spin chart-spinner' })
     )
   );
 }

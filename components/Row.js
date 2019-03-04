@@ -10,9 +10,17 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Charts = require('./Charts');
+
+var _Charts2 = _interopRequireDefault(_Charts);
+
 var _Modal = require('./Modal');
 
 var _Modal2 = _interopRequireDefault(_Modal);
+
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22,92 +30,89 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Header = function (_React$Component) {
-  _inherits(Header, _React$Component);
+var url = 'http://nodestats.tokenanalyst.io';
 
-  function Header(props) {
-    _classCallCheck(this, Header);
+var Row = function (_React$Component) {
+  _inherits(Row, _React$Component);
 
-    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+  function Row(props) {
+    _classCallCheck(this, Row);
 
-    _this.state = {};
+    var _this = _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).call(this, props));
+
+    _this.text = props.text;
+    _this.unit = props.unit;
+    _this.metricurl = props.metricurl;
+    _this.charturl = props.charturl;
     return _this;
   }
 
-  _createClass(Header, [{
-    key: 'openBurger',
-    value: function openBurger() {
-      var burger = document.getElementById('menu');
-      var burgerButton = document.getElementById('burgerButton');
-      burger.classList.toggle('is-active');
-      burgerButton.classList.toggle('is-active');
-    }
-  }, {
-    key: 'openModal',
-    value: function openModal() {
-      var modal = document.getElementById('modal');
-      modal.classList.toggle('is-active');
+  _createClass(Row, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      console.log(this.state);
+      _axios2.default.get(url + this.metricurl).then(function (data) {
+        _this2.setState(data);
+        console.log(_this2.state);
+      });
     }
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'nav',
-        { className: 'navbar', role: 'navigation', 'aria-label': 'main navigation' },
+        'section',
+        { className: 'columns is-vcentered row', id: 'gethTest' },
+        this.state == null ? _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement('i', { className: 'fa fa-spinner fa-spin chart-spinner' })
+        ) : _react2.default.createElement(
+          'p',
+          null,
+          this.state.data[0].mean
+        ),
         _react2.default.createElement(
-          'div',
-          { className: 'navbar-brand' },
-          _react2.default.createElement('img', { className: 'logo', src: '/images/Screenshot 2019-03-03 at 11.42.30.png' }),
+          'span',
+          { className: 'column is-4-desktop text' },
           _react2.default.createElement(
-            'a',
-            { role: 'button', className: 'navbar-burger burger', 'aria-label': 'menu', 'aria-expanded': 'false', id: 'burgerButton', onClick: this.openBurger, target: 'menu' },
-            _react2.default.createElement('span', { 'aria-hidden': 'true' }),
-            _react2.default.createElement('span', { 'aria-hidden': 'true' }),
-            _react2.default.createElement('span', { 'aria-hidden': 'true' })
+            'div',
+            { className: 'columns is-mobile' },
+            _react2.default.createElement(
+              'p',
+              { className: 'column is-9-desktop is-9' },
+              this.text,
+              ' ',
+              _react2.default.createElement(
+                'span',
+                { className: 'mobile-table-header' },
+                '(1hr)'
+              )
+            ),
+            _react2.default.createElement(
+              'span',
+              { className: 'icon has-text-info tooltip column is-3-desktop is-3' },
+              _react2.default.createElement(
+                'p',
+                { className: 'tooltiptext' },
+                'Tooltip text'
+              ),
+              _react2.default.createElement('i', { className: 'fas fa-info-circle' })
+            )
           )
         ),
         _react2.default.createElement(
           'div',
-          { id: 'menu', className: 'navbar-menu' },
-          _react2.default.createElement(
-            'div',
-            { className: 'navbar-end' },
-            _react2.default.createElement(
-              'div',
-              { className: 'navbar-item links' },
-              _react2.default.createElement(
-                'a',
-                { href: '#', className: 'Bitmex-link' },
-                'Bitmex'
-              ),
-              _react2.default.createElement(
-                'span',
-                { className: 'line' },
-                '|'
-              ),
-              _react2.default.createElement(
-                'a',
-                { href: '#', className: 'TokenAnalyst-link' },
-                'TokenAnalyst'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'is-vcentered button-box is-centered-mobile' },
-              _react2.default.createElement(
-                'button',
-                { className: 'button navbar-item', onClick: this.openModal },
-                'About/info'
-              )
-            )
-          )
+          { className: 'column is-4 graph chart' },
+          _react2.default.createElement(_Charts2.default, { url: this.charturl })
         ),
         _react2.default.createElement(_Modal2.default, null)
       );
     }
   }]);
 
-  return Header;
+  return Row;
 }(_react2.default.Component);
 
-exports.default = Header;
+exports.default = Row;

@@ -1,18 +1,32 @@
 import React from 'react'
 import Chart from 'react-google-charts'
+import axios from 'axios';
 
-function GethCharts({ chartData, unit }) {
-  const arrayValues = [];
-  const arrayTimes = [];
+var url = 'http://nodestats.tokenanalyst.io'
+
+class Charts extends React.Component {
+  constructor(props){
+    super(props)
+    this.url = props.url
+}
+componentDidMount(){
+    axios.get(url+this.url).then(data => {
+        this.setState(data)
+        console.log(this.state.data)
+})
+}
+render(){
+    if (this.state !=null){
+    var data = this.state.data
+    var arrayValues = []
+    var arrayTimes = []
   return (
     <section>
-      {chartData
-        ?
         <div className="chart-box">
           {(() => {
-            for (let i = 0; i < chartData.length; i++) {
-              arrayValues.push(chartData[i].value);
-              arrayTimes.push(chartData[i].time.slice(11, 19));
+            for (let i = 0; i < data.length; i++) {
+              arrayValues.push(data[i].value);
+              arrayTimes.push(data[i].time.slice(11, 19));
             }
           })()}
           <div style={{ maxWidth: 1000 }}>
@@ -23,7 +37,7 @@ function GethCharts({ chartData, unit }) {
               chartType="AreaChart"
               loader={<div><i className="fa fa-spinner fa-spin chart-spinner" /></div>}
               data={[
-                ['Time', unit],
+                ['Time', 'Placeholder'],
                 [arrayTimes[0], arrayValues[0]],
                 [arrayTimes[100] || [], arrayValues[100]],
                 [arrayTimes[200] || [], arrayValues[200]],
@@ -39,8 +53,6 @@ function GethCharts({ chartData, unit }) {
                 [arrayTimes[1200] || [], arrayValues[1200]],
                 [arrayTimes[1300] || [], arrayValues[1300]],
                 [arrayTimes[1400] || [], arrayValues[1400]]
-
-
               ]}
               options={{
                 legend: 'none',
@@ -51,10 +63,14 @@ function GethCharts({ chartData, unit }) {
             />
           </div>
         </div>
-        :
-        <p><i className="fa fa-spinner fa-spin chart-spinner" /></p>
-      }
     </section>
   );
 }
-export default GethCharts;
+else {
+    return (
+    <p><i className="fa fa-spinner fa-spin chart-spinner" /></p>
+    )
+}
+}
+}
+export default Charts;
