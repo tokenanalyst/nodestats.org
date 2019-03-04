@@ -13,7 +13,7 @@ export function scrollDown() {
 export function clickTooltip() {
   const allTooltips = document.querySelectorAll('.tooltip');
   for (let i = 0; i < allTooltips.length; i++) {
-    return allTooltips[i].classList.toggle('tooltip-mobile');
+    allTooltips[i].classList.toggle('tooltip-mobile');
   }
 }
 export function scrollFunction() {

@@ -23,7 +23,7 @@ class Header extends React.Component {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <div className="navbar-item is-centered">
-            <h1 className="title">Nodestats.org</h1>
+            <img className="nodestats-logo image" src="/images/Screenshot 2019-03-03 at 11.42.30.png"/>
           </div>
           <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" id="burgerButton" onClick={this.openBurger} target="menu">
             <span aria-hidden="true"></span>
