@@ -4,7 +4,7 @@ import Modal from './Modal';
 
 function GethRow({ text, gData, pData, chartData, unit }) {
   return (
-    <section className="columns row" id="gethTest">
+    <section className="columns is-vcentered row" id="gethTest">
       {(() => {
         const x = parseFloat(Math.round(gData * 100) / 100).toFixed(2);
         if (pData < gData) {
@@ -23,11 +23,11 @@ function GethRow({ text, gData, pData, chartData, unit }) {
       }
       )()}
       <span className="column is-4-desktop text">
-        <div className="columns is-mobile">
-          <p className="column is-10-desktop is-10">{text} <span className="mobile-table-header">(1hr)</span></p>
-          <span className="icon has-text-info tooltip column is-2-desktop is-2">
+        <div className="columns is-mobile is-vcentered ">
+          <p className="column is-9-desktop is-9">{text} <span className="mobile-table-header">(1hr)</span></p>
+          <span className="icon has-text-info tooltip column is-3-desktop is-3">
             <p className="tooltiptext">Tooltip text</p>
-            <i className="fas fa-info-circle ">
+            <i className="fas fa-info-circle">
             </i>
           </span>
         </div>
@@ -50,7 +50,7 @@ function GethRow({ text, gData, pData, chartData, unit }) {
       }
       )()}
       <div className="column is-4 graph chart">
-        <GethCharts chartData={chartData} className=""/>
+        <GethCharts chartData={chartData} unit={unit} className=""/>
       </div>
       <Modal />
     </section>

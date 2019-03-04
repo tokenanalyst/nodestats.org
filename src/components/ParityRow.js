@@ -2,16 +2,15 @@ import React from 'react';
 import ParityCharts from './ParityCharts';
 
 function ParityRow({ text, pData, gData, chartData, unit }) {
-  console.log('2nd', chartData)
   return (
-    <section className="columns row" id="parityTest">
+    <section className="columns row is-vcentered" id="parityTest">
       <div className="column is-4 graph chart">
-        <ParityCharts chartData={chartData} className=""/>
+        <ParityCharts chartData={chartData} unit={unit} className=""/>
       </div>
       <span className="column is-4-desktop text">
-        <div className="columns is-mobile">
-          <p className="column is-10-desktop is-10">{ text } <span className="mobile-table-header">(1hr)</span></p>
-          <span className="icon has-text-info tooltip column is-4-desktop is-2">
+        <div className="columns is-mobile is-vcentered">
+          <p className="column is-9-desktop is-9">{ text } <span className="mobile-table-header">(1hr)</span></p>
+          <span className="icon has-text-info tooltip column is-3-desktop is-3">
             <p className="tooltiptext">Tooltip text</p>
             <i className="fas fa-info-circle">
             </i>
@@ -34,7 +33,7 @@ function ParityRow({ text, pData, gData, chartData, unit }) {
           return <p className="column is-4-desktop data black" id="pData">
             {x}{unit}
           </p>
-        }
+        } 
       }
       )()}
     </section>

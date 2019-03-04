@@ -1,7 +1,7 @@
 import React from 'react'
 import Chart from 'react-google-charts'
 
-function ParityCharts({ chartData }) {
+function ParityCharts({ chartData, unit }) {
   const arrayValues = [];
   const arrayTimes = [];
   return (
@@ -10,23 +10,21 @@ function ParityCharts({ chartData }) {
         ?
         <div className="chart-box">
           {(() => {
-            console.log('chart data is', chartData, arrayValues, arrayTimes)
+
             for (let i = 0; i < chartData.length; i++) {
               arrayValues.push(chartData[i].value);
-              arrayTimes.push(chartData[i].time.slice(11));
-
+              arrayTimes.push(chartData[i].time.slice(11, 19));
             }
           })()}
           <div style={{ maxWidth: 200 }}>
             <Chart
               className="charts"
-              width={150}
-              height={100}
+              width={180}
+              height={80}
               chartType="AreaChart"
-              loader={<div>Loading Chart</div>}
+              loader={<div><i className="fa fa-spinner fa-spin" /></div>}
               data={[
-                ['Time', 'Values'],
-
+                ['Time', unit],
                 [arrayTimes[0], arrayValues[0]],
                 [arrayTimes[100], arrayValues[50]],
                 [arrayTimes[200], arrayValues[200]],
@@ -42,7 +40,6 @@ function ParityCharts({ chartData }) {
                 [arrayTimes[1200], arrayValues[1200]],
                 [arrayTimes[1300], arrayValues[1300]],
                 [arrayTimes[1400], arrayValues[1400]]
-
               ]}
               options={{
                 legend: 'none',
@@ -53,7 +50,7 @@ function ParityCharts({ chartData }) {
           </div>
         </div>
         :
-        <p>Please Wait....</p>
+        <div><i className="fa fa-spinner fa-spin" /></div>
       }
     </section>
   );

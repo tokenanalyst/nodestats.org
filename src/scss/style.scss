@@ -5,9 +5,8 @@
   margin-top: 50px;
 }
 .page-divide {
-  border-left: 6px solid black;
-  height: 3300px;
-
+  border-left: 6px solid #0080ff;
+  height: 3100px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
@@ -22,6 +21,10 @@
 .TokenAnalyst-link {
   padding-left: 10px;
   font-size: 20px;
+}
+
+.nodestats-logo {
+
 }
 .links {
   margin-right: 20px;
@@ -39,7 +42,7 @@
 }
 .node-type {
   font-size: 28px;
-  background-color: black;
+  background-color: #0080ff;
   color: white;
 }
 
@@ -63,30 +66,37 @@
 }
 .graph {
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid #0080ff;
   transition: transform 1s;
   font-size: 20px;
   background-color: white;
+  min-height: 80px;
 }
 .center {
   position: relative;
 }
 .text {
   text-align: left;
-  border: 1px solid black;
+  border: 1px solid #0080ff;
   font-size: 17px;
+  height: 80px;
+  background-color: white;
+  z-index: 1;
 }
-
+.text:hover {
+}
 .fa-info-circle {
-  text-align: right;
 }
 .icon {
   text-align: left;
 }
 .data {
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid #0080ff;
   font-size: 15px;
+  height: 80px;
+  background-color: white;
+  z-index: -2;
 }
 .data:hover {
 }
@@ -94,13 +104,22 @@
   margin: auto;
 }
 .tokenanalyst-logo {
-
+  margin: auto;
+}
+.please-wait {
+  opacity: 1;
+  margin-top: 200px;
+  width: 90%;
+  height: 400px;
+  background-image: url('/images/Screenshot 2019-03-03 at 11.42.30.png');
+  background-size: cover;
+  background-position: center;
 }
 .mobile-data {
   display: none;
 }
 nav {
-  border-bottom: 6px solid black;
+  border-bottom: 6px solid #0080ff;
   margin-bottom: 50px;
   z-index: 0;
 }
@@ -110,11 +129,13 @@ nav {
   top: 0;
 }
 .footer {
-  border-top: 6px solid black;
+  border-top: 6px solid #0080ff;
   z-index: 2;
 }
 .button {
   font-size: 20px;
+  color: white;
+  background-color: #0080ff;
 }
 .button-box {
   margin-top: 10px;
@@ -146,7 +167,6 @@ nav {
 .box {
   margin: auto;
 }
-
 .footer {
   margin-top: 80px;
 }
@@ -158,7 +178,6 @@ nav {
   height: 144px;
 }
 .chart:hover {
-
   // transform: scale(1.5);
   // z-index: 1;
 }
@@ -208,19 +227,19 @@ nav {
   bottom: 0;
   left: 0;
   display: none;
-  background-color: #eeeeee;
+  background-color: rgba(0, 128, 255, 0.7);
   width: 100%;
   font-size: 18px;
   border: none;
   outline: none;
-  color: black;
   cursor: pointer;
   padding: 15px;
-  border-radius: 4px;
   height: 50px;
+  z-index: 99;
 }
 .navs {
   position: absolute;
+  color: white;
 }
 .disclaimer {
   font-size: 10px;
@@ -232,6 +251,7 @@ nav {
   font-size: 40px;
   bottom: 20px;
   right: 40px;
+  color: #0080ff;
 }
 .arrowUp {
   cursor: pointer;
@@ -239,6 +259,10 @@ nav {
   font-size: 40px;
   bottom: 60px;
   right: 40px;
+  color: #0080ff;
+}
+.fa-spinner {
+  font-size: 40px;
 }
 .red {
   color: red;
@@ -288,7 +312,6 @@ nav {
   .text {
     font-size: 15px;
   }
-  margin-bottom: 20px;
   .data {
     font-size: 15px;
   }
@@ -298,7 +321,7 @@ nav {
 }
 @media (max-width: 822px) {
   body {
-    background-color: #eeeeff;
+    background-color: #99ccff;
   }
   .row {
     background-color: white;
@@ -306,11 +329,16 @@ nav {
   .desktop-data {
     display: none;
   }
+  .please-wait {
+    margin-top: 50px;
+    height: 200px;
+  }
   .mobile-data {
     display: block;
   }
   .data {
     margin-bottom: 30px;
+    height: 55px;
   }
   .table-header {
     display: none;
@@ -370,14 +398,16 @@ nav {
     bottom: 10;
     position: absolute;
     text-align: left;
-    color: black;
+    color: white;
+    font-weight: bold;
   }
   .fast {
     left: 47.5%;
     bottom: 10;
     position: absolute;
     text-align: center;
-    color: black;
+    color: white;
+    font-weight: bold;
   }
   .archive {
     margin-right: 20px;
@@ -385,7 +415,8 @@ nav {
     bottom: 30;
     position: absolute;
     text-align: right;
-    color: black;
+    color: white;
+    font-weight: bold;
   }
   .mobile-bottom-navs {
     position: fixed;
@@ -422,6 +453,18 @@ nav {
     bottom: 10;
     position: absolute;
     text-align: center;
+  }
+  .please-wait {
+    margin-top: 200px;
+    width: 90%;
+    height: 250px;
+    transform: rotate(90deg);
+  }
+}
+@media (max-width: 380px) {
+  .content figure {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 // For if we use the custom tooltip
