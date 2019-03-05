@@ -12,6 +12,7 @@ class Row extends React.Component {
     this.text = props.text;
     this.metricurl = props.metricurl;
     this.charturl = props.charturl;
+    this.conflicturl = props.conflicturl;
   }
 
   percentsync(syncdata) {
@@ -36,7 +37,7 @@ class Row extends React.Component {
 
     }
     for (var j = 0; j < gethcurrent.length; j++) {
-      keygeth = gethcurrent[j].blockNumber;
+      var keygeth = gethcurrent[j].blockNumber;
       if (keygeth in blockhashmap) {
         blockhashmap[keygeth].push(gethcurrent[j].blockHash);
       }
@@ -55,24 +56,36 @@ class Row extends React.Component {
   transform(value) {
     switch (this.datatype) {
       case "sync%":
-        return this.percentsync(value)
+        return this.percentsync(value.metric).toFixed(2) + "%";
       case "cpu":
-        return value[0].mean.toFixed(2) + " %";
+        return value.metric[0].mean.toFixed(2) + " %";
       case "ram":
       case "disk":
-        return (value[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB";
+        return (value.metric[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB";
       case "peers":
-        return Math.floor(value[0].mean);
+        return Math.floor(value.metric[0].mean);
       case "nettx":
       case "netrx":
-        return value[0].mean.toFixed(2) + " KiB/s";
+        return value.metric[0].mean.toFixed(2) + " KiB/s";
+      case "conflict%":
+        console.log(value.metric)
+        // return this.conflict(value.data,value.conflictdata).toFixed(2) + "%"
     }
   }
 
-  componentDidMount() {
-    axios.get(url + this.metricurl).then(data => {
-      this.setState(data);
-    });
+  async componentDidMount() {
+    const metricsrequest = await axios.get(url + this.metricurl)
+    const conflictrquest = await axios.get(url + this.conflucturl)
+    this.setState({
+      metric : metricsrequest.data,
+      conflict : conflictrquest.data
+    })
+    // axios.get(url + this.metricurl).then(data => {
+    //   this.setState(data);
+    // });
+    // axios.get(url + this.conflicturl).then(conflictdata => {
+    //   this.setState(conflictdata);
+    // });
   }
 
   mean() {
@@ -83,7 +96,7 @@ class Row extends React.Component {
             <i className="fa fa-spinner fa-spin chart-spinner" />
           </p>
         ) : (
-          <p className="data">{this.transform(this.state.data)}</p>
+          <p className="data">{this.transform(this.state)}</p>
         )}
       </span>
     );

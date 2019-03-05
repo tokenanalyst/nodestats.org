@@ -93,6 +93,12 @@ class Main extends React.Component {
                   charturl="/parity-full-netrx-24h"
                   datatype="netrx"
                 />
+                <Row
+                  metricurl="/parity-full-current-24h"
+                  conflicturl="/geth-full-current-24h"
+                  text="% of time in conflict"
+                  datatype="conflict%"
+                />
               </div>
               <div className="column is-6 geth">
                 <span className="content has-text-centered company-name">
@@ -125,6 +131,7 @@ class Main extends React.Component {
                   metricurl="/geth-full-sync-24h"
                   charturl="/geth-full-sync-24h"
                   text="% of time in sync"
+                  reverseOrder="true"
                   datatype="sync%"
                 />
                 <Row
@@ -168,6 +175,13 @@ class Main extends React.Component {
                   charturl="/geth-full-netrx-24h"
                   reverseOrder="true"
                   datatype="netrx"
+                />
+                <Row
+                  metricurl="/geth-full-current-24h"
+                  conflicturl="/parity-full-current-24h"
+                  text="% of time in conflict"
+                  reverseOrder="true"
+                  datatype="conflict%"
                 />
               </div>
             </div>
@@ -245,6 +259,12 @@ class Main extends React.Component {
                   charturl="/parity-fast-netrx-24h"
                   datatype="netrx"
                 />
+                <Row
+                  metricurl="/parity-fast-current-24h"
+                  conflicturl="/geth-fast-current-24h"
+                  text="% of time in conflict"
+                  datatype="conflict%"
+                />
               </div>
               <div className="column is-6">
                 <span className="content has-text-centered company-name">
@@ -277,6 +297,7 @@ class Main extends React.Component {
                   metricurl="/geth-fast-sync-24h"
                   charturl="/geth-fast-sync-24h"
                   text="% of time in sync"
+                  reverseOrder="true"
                   datatype="sync%"
                 />
                 <Row
@@ -320,6 +341,13 @@ class Main extends React.Component {
                   charturl="/geth-fast-netrx-24h"
                   reverseOrder="true"
                   datatype="netrx"
+                />
+                <Row
+                  metricurl="/geth-fast-current-24h"
+                  conflicturl="/parity-fast-current-24h"
+                  text="% of time in conflict"
+                  reverseOrder="true"
+                  datatype="conflict%"
                 />
               </div>
             </div>

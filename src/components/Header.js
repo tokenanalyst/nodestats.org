@@ -45,7 +45,7 @@ class Header extends React.Component {
           <div className="navbar-end">
             <div className="navbar-item links">
               <a href="#" className="Bitmex-link">
-                Bitmex
+                BitMEX
               </a>
               <span className="line">|</span>
               <a href="#" className="TokenAnalyst-link">
