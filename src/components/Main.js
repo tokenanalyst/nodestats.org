@@ -22,7 +22,7 @@ class Main extends React.Component {
         <div>
           <div className="columns">
             <div className="page-divide" />
-            <div className="columns column is-10 is-offset-1 is-mobile">
+            <div  className="panel columns column is-10 is-offset-1 is-mobile">
               <div className="column is-6">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
@@ -164,7 +164,7 @@ class Main extends React.Component {
           </div>
           <br />
           <div className="columns">
-            <div className="columns column is-10 is-offset-1 is-mobile">
+            <div className="panel columns column is-10 is-offset-1 is-mobile">
               <div className="column is-6">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
@@ -303,7 +303,7 @@ class Main extends React.Component {
             </div>
           </div>
           <div className="columns">
-            <div className="columns column is-10 is-offset-1 is-mobile">
+            <div className="panel columns column is-10 is-offset-1 is-mobile">
               <div className="column is-6">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">

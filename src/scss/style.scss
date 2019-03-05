@@ -2,6 +2,9 @@
 
 $mainfont: 'Nunito', sans-serif;
 $metricfont: 'Nunito', sans-serif;
+$nodeTypeBarBackground:  #0080ff;
+$bodyBackground: #eee;
+$panelBackground: white;
 
 $modularscale: (
   base: 0.35em,
@@ -14,6 +17,14 @@ $modularscale: (
   min-height: 800px;
   font-weight: 600;
   font-family: $mainfont;
+  background-color: $bodyBackground;
+}
+
+.panel {
+  background-color: $panelBackground;
+  padding: 1.5em;
+  border-radius: 5px;
+  //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 h3 {
@@ -22,14 +33,14 @@ h3 {
 }
 
 .page-divide {
-  border-left: 1px solid #ccc;
+  border-left: 1px solid #999;
   height: 3100px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
   top: 0;
   bottom: 0;
-  z-index: -1;
+  //z-index: -1;
 }
 
 .Bitmex-link {
@@ -62,7 +73,7 @@ h3 {
   text-align: center;
 }
 .node-type {
-  background-color: #0080ff;
+  background-color: $nodeTypeBarBackground;
   color: white;
   font-size: ms(4);
 }
