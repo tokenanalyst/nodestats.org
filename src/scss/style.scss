@@ -1,9 +1,23 @@
+@import '~modularscale-sass/stylesheets/modularscale';
+
+$modularscale: (
+  base: 0.35em,
+  ratio: $fifth 
+);
+
 .body, html {
   scroll-behavior: smooth;
+  font-size: 1em;
   min-height: 800px;
 }
+
+h3 {
+  font-size: ms(3);
+  font-weight: 500;
+}
+
 .page-divide {
-  border-left: 6px solid #0080ff;
+  border-left: 1px solid #ccc;
   height: 3100px;
   position: absolute;
   left: 50%;
@@ -12,13 +26,14 @@
   bottom: 0;
   z-index: -1;
 }
+
 .Bitmex-link {
   padding-right: 10px;
-  font-size: 20px;
+
 }
 .TokenAnalyst-link {
   padding-left: 10px;
-  font-size: 20px;
+
 }
 .nodestats-logo {
   padding: 0;
@@ -42,17 +57,11 @@
   text-align: center;
 }
 .node-type {
-  font-size: 28px;
   background-color: #0080ff;
   color: white;
+  font-size: ms(4);
 }
 
-.not-used {
-  color: white;
-}
-.table-box {
-  font-size: 20px;
-}
 .table-header {
   text-align: center;
   transition: transform 1s;
@@ -67,9 +76,6 @@
 }
 .graph {
   text-align: center;
-  // border: 1px solid #0080ff;
-  transition: transform 1s;
-  font-size: 20px;
   background-color: white;
   min-height: 80px;
 }
@@ -78,29 +84,23 @@
 }
 .text {
   text-align: left;
-  // border: 1px solid #0080ff;
-  font-size: 17px;
   height: 80px;
   background-color: white;
   z-index: 0;
-  font-weight: bold;
+  font-weight: 500;
   font-family: 'Fira Sans', sans-serif;
+  font-size: ms(3)
 }
 .icon {
   text-align: left;
 }
 .data {
   text-align: center;
-  // border: 1px solid #0080ff;
-  font-size: 25px;
-  height: 80px;
-  background-color: white;
-  z-index: -2;
+  font-size: ms(3);
   font-family: 'Inconsolata', monospace;
+  font-weight: 700;
 }
-.data:hover {
 
-}
 .bitmex-logo {
   margin: auto;
 }
@@ -120,21 +120,24 @@
   display: none;
 }
 nav {
-  border-bottom: 6px solid #0080ff;
+  border-bottom: 1px solid #ccc;
   margin-bottom: 50px;
   z-index: 0;
 }
+.navbar-item {
+  font-size: ms(3);
+}
+
 .navbar-burger {
   position: absolute;
   right: 0;
   top: 0;
 }
 .footer {
-  border-top: 6px solid #0080ff;
+  border-top: 2px solid #0080ff;
   z-index: 2;
 }
 .button {
-  font-size: 20px;
   color: white;
   background-color: #0080ff;
 }
@@ -161,6 +164,7 @@ nav {
 }
 .company {
   margin-right: 8px;
+  font-size: ms(3)
 }
 .company-icon {
   font-size: 22px;
@@ -194,6 +198,7 @@ nav {
   width: 120px;
   background-color: #555;
   color: #fff;
+  font-size: ms(2);
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
@@ -230,7 +235,6 @@ nav {
   display: none;
   background-color: rgba(0, 128, 255, 0.7);
   width: 100%;
-  font-size: 18px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -243,13 +247,13 @@ nav {
   color: white;
 }
 .disclaimer {
-  font-size: 10px;
+  
   text-align: center;
 }
 .arrowDown {
   cursor: pointer;
   position: fixed;
-  font-size: 40px;
+  font-size: ms(4);
   bottom: 20px;
   right: 40px;
   color: #0080ff;
@@ -257,7 +261,7 @@ nav {
 .arrowUp {
   cursor: pointer;
   position: fixed;
-  font-size: 40px;
+  font-size: ms(4);
   bottom: 60px;
   right: 40px;
   color: #0080ff;
@@ -315,6 +319,10 @@ nav {
 .move-page-down:hover {
   background-color: #555;
 }
+
+
+// --- Media queries ----
+
 @media (min-width: 750px) {
   html {
     width: 100%;
@@ -367,6 +375,7 @@ nav {
     display: inline-block;
   }
 }
+
 @media (max-width: 775px) {
   .graph {
     display: none;
@@ -378,10 +387,10 @@ nav {
   width: 100%;
 }
   .node-type {
-    font-size: 20px;
+   font-size: ms(4);
   }
   .text {
-    font-size: 15px;
+ 
     padding-left: 20px;
     padding-right: 20px;
   }

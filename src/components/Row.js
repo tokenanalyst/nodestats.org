@@ -83,7 +83,8 @@ class Row extends React.Component {
             <i className="fa fa-spinner fa-spin chart-spinner" />
           </p>
         ) : (
-          <p>{this.transform(this.state.data)}</p>
+          <p class="data">{this.transform(this.state.data)}</p>
+
         )}
       </span>
     );
