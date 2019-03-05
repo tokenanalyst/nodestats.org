@@ -51,7 +51,13 @@ class Main extends React.Component {
                     <h3>1hr avg</h3>
                   </div>
                 </div>
-                <Row text="Mins not at tip of the chain" />
+                <Row
+                  metricurl="/parity-full-sync-24h"
+                  charturl="/parity-full-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
+
                 <Row
                   metricurl="/parity-full-cpu-1h-avg"
                   charturl="/parity-full-cpu-24h"
@@ -116,7 +122,12 @@ class Main extends React.Component {
                     <h3>24hr avg</h3>
                   </div>
                 </div>
-                <Row text="Mins not at tip of the chain" />
+                <Row
+                  metricurl="/geth-full-sync-24h"
+                  charturl="/geth-full-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
                 <Row
                   metricurl="/geth-full-cpu-1h-avg"
                   charturl="/geth-full-cpu-24h"
@@ -194,6 +205,12 @@ class Main extends React.Component {
                   </div>
                 </div>
                 <Row
+                  metricurl="/parity-fast-sync-24h"
+                  charturl="/parity-fast-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
+                <Row
                   metricurl="/parity-fast-cpu-1h-avg"
                   charturl="/parity-fast-cpu-24h"
                   text="CPU Usage"
@@ -257,6 +274,12 @@ class Main extends React.Component {
                     <h3>24hr avg</h3>
                   </div>
                 </div>
+                <Row
+                  metricurl="/geth-fast-sync-24h"
+                  charturl="/geth-fast-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
                 <Row
                   metricurl="/geth-fast-cpu-1h-avg"
                   charturl="/geth-fast-cpu-24h"
@@ -332,6 +355,12 @@ class Main extends React.Component {
                     <h3>1hr avg</h3>
                   </div>
                 </div>
+                <Row
+                  metricurl="/parity-archive-sync-24h"
+                  charturl="/parity-archive-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
                 <Row
                   metricurl="/parity-archive-cpu-1h-avg"
                   charturl="/parity-archive-cpu-24h"
