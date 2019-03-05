@@ -40,14 +40,14 @@ class Main extends React.Component {
                 <div className="content has-text-centered node-type">
                   <p>Full Node</p>
                 </div>
-                <div className="columns is-mobile">
-                  <div className="column is-one-quarter is-one-quarter-desktop table-header">
+                <div className="columns is-mobile has-text-centered">
+                  <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
                 </div>
@@ -111,13 +111,13 @@ class Main extends React.Component {
                   <p id="full">Full Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter-desktop table-header">
+                  <div className="column is-one-third-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
                 </div>
@@ -133,6 +133,7 @@ class Main extends React.Component {
                   text="CPU Usage"
                   reverseOrder="true"
                   datatype="cpu"
+                  className="geth-row"
                 />
                 <Row
                   text="Memory (RAM) Usage"
@@ -140,6 +141,7 @@ class Main extends React.Component {
                   charturl="/geth-full-ram-24h"
                   reverseOrder="true"
                   datatype="ram"
+                  className="geth-row"
                 />
                 <Row
                   text="# of Peers"
@@ -147,6 +149,7 @@ class Main extends React.Component {
                   charturl="/geth-full-peers-24h"
                   reverseOrder="true"
                   datatype="peers"
+                  className="geth-row"
                 />
                 <Row
                   text="Chain data size"
@@ -154,6 +157,7 @@ class Main extends React.Component {
                   charturl="/geth-full-disk-24h"
                   reverseOrder="true"
                   datatype="disk"
+                  className="geth-row"
                 />
                 <Row
                   text="Upstream"
@@ -161,6 +165,7 @@ class Main extends React.Component {
                   charturl="/geth-full-nettx-24h"
                   reverseOrder="true"
                   datatype="nettx"
+                  className="geth-row"
                 />
                 <Row
                   text="Downstream"
@@ -168,6 +173,7 @@ class Main extends React.Component {
                   charturl="/geth-full-netrx-24h"
                   reverseOrder="true"
                   datatype="netrx"
+                  className="geth-row"
                 />
               </div>
             </div>
@@ -193,13 +199,13 @@ class Main extends React.Component {
                   <p id="fast">Fast Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter is-one-quarter-desktop table-header">
+                  <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
                 </div>
@@ -263,13 +269,13 @@ class Main extends React.Component {
                   <p className="white">Fast Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter-desktop table-header">
+                  <div className="column is-one-third-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
                 </div>
@@ -344,13 +350,13 @@ class Main extends React.Component {
                   <p id="archive">Archive Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter is-one-quarter-desktop table-header">
+                  <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
                 </div>

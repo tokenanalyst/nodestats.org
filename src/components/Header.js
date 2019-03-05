@@ -20,7 +20,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-vcentered" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <img
             className="logo"
