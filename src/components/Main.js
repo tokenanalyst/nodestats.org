@@ -57,7 +57,6 @@ class Main extends React.Component {
                   text="% of time in sync"
                   datatype="sync%"
                 />
-
                 <Row
                   metricurl="/parity-full-cpu-1h-avg"
                   charturl="/parity-full-cpu-24h"
