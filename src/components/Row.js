@@ -1,6 +1,5 @@
 import React from "react";
 import Charts from "./Charts";
-import Modal from "./Modal";
 import axios from "axios";
 
 var url = "http://nodestats.tokenanalyst.io";
@@ -34,6 +33,7 @@ class Row extends React.Component {
     for (var i = 0; i < paritycurrent.length; i++) {
       var keyparity = paritycurrent[i].blockNumber;
       blockhashmap[keyparity] = [paritycurrent[i].blockHash];
+
     }
     for (var j = 0; j < gethcurrent.length; j++) {
       keygeth = gethcurrent[j].blockNumber;
@@ -83,53 +83,69 @@ class Row extends React.Component {
             <i className="fa fa-spinner fa-spin chart-spinner" />
           </p>
         ) : (
-          <p class="data">{this.transform(this.state.data)}</p>
+          <p className="data">{this.transform(this.state.data)}</p>
         )}
       </span>
     );
   }
 
   description() {
-    return (
-      <span className="column is-4-desktop text">
-        <div className="columns is-mobile">
-          <p className="column is-9-desktop is-9">
-            {this.text} <span className="mobile-table-header">(1hr)</span>
-          </p>
-          <span className="icon has-text-info tooltip column is-3-desktop is-3">
-            <p className="tooltiptext">Tooltip text</p>
-            <i className="fas fa-info-circle" />
-          </span>
-        </div>
+    return(
+      <span className="columns is-mobile is-multiline">
+        <p className="column is-9-desktop">
+          {this.text} <span className="mobile-table-header">(1hr)</span>
+        </p>
+        <span className="icon has-text-info tooltip column is-3-desktop is-3">
+          <p className="tooltiptext">{'hello'}</p>
+          <i className="fas fa-info-circle" />
+        </span>
       </span>
-    );
+    )
   }
 
   chart() {
-    return (
-      <div className="column is-4 graph chart">
-        <Charts url={this.charturl} />
-      </div>
-    );
+    return(<div className="column is-5 graph chart">
+      <Charts url={this.charturl} />
+    </div>)
   }
 
   render() {
     if (this.reverseOrder) {
       return (
-        <section className="columns is-vcentered row">
-          {this.mean()}
-          {this.description()}
-          {this.chart()}
-          <Modal />
-        </section>
-      );
+        <div>
+          <section className="columns is-vcentered desktop-only">
+            <div className="column is-4 data">
+              {this.mean()}
+            </div>
+            <div className="column is-4 text">
+              {this.description()}
+            </div>
+            <div className="column is-4">
+              {this.chart()}
+            </div>
+          </section>
+          <div className="mobile-row mobile-only is-vcentered">
+            <div className="column text">
+              {this.description()}
+            </div>
+            <div className="column data">
+              {this.mean()}
+            </div>
+          </div>
+        </div>
+      )
     } else {
       return (
-        <section className="columns is-vcentered row">
-          {this.chart()}
-          {this.description()}
-          {this.mean()}
-          <Modal />
+        <section className="columns mobile-row is-vcentered">
+          <div className="column is-4 chart">
+            {this.chart()}
+          </div>
+          <div className="column is-4 text">
+            {this.description()}
+          </div>
+          <div className="column is-4 data">
+            {this.mean()}
+          </div>
         </section>
       );
     }

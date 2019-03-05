@@ -40,14 +40,14 @@ class Main extends React.Component {
                 <div className="content has-text-centered node-type">
                   <p>Full Node</p>
                 </div>
-                <div className="columns is-mobile">
-                  <div className="column is-one-quarter is-one-quarter-desktop table-header">
+                <div className="columns is-mobile has-text-centered">
+                  <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
                 </div>
@@ -111,13 +111,13 @@ class Main extends React.Component {
                   <p id="full">Full Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter-desktop table-header">
+                  <div className="column is-one-third-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
                 </div>
@@ -193,13 +193,13 @@ class Main extends React.Component {
                   <p id="fast">Fast Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter is-one-quarter-desktop table-header">
+                  <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
                 </div>
@@ -263,13 +263,13 @@ class Main extends React.Component {
                   <p className="white">Fast Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter-desktop table-header">
+                  <div className="column is-one-third-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
                 </div>
@@ -344,13 +344,13 @@ class Main extends React.Component {
                   <p id="archive">Archive Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter is-one-quarter-desktop table-header">
+                  <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
                 </div>
