@@ -40,18 +40,23 @@ class Main extends React.Component {
                 <div className="content has-text-centered node-type">
                   <p>Full Node</p>
                 </div>
-                <div className="columns is-mobile">
-                  <div className="column is-one-quarter is-one-quarter-desktop table-header">
+                <div className="columns is-mobile has-text-centered">
+                  <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
                 </div>
-                <Row text="Mins not at tip of the chain" />
+                <Row
+                  metricurl="/parity-full-sync-24h"
+                  charturl="/parity-full-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
                 <Row
                   metricurl="/parity-full-cpu-1h-avg"
                   charturl="/parity-full-cpu-24h"
@@ -106,17 +111,22 @@ class Main extends React.Component {
                   <p id="full">Full Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter-desktop table-header">
+                  <div className="column is-one-third-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
                 </div>
-                <Row text="Mins not at tip of the chain" />
+                <Row
+                  metricurl="/geth-full-sync-24h"
+                  charturl="/geth-full-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
                 <Row
                   metricurl="/geth-full-cpu-1h-avg"
                   charturl="/geth-full-cpu-24h"
@@ -183,16 +193,22 @@ class Main extends React.Component {
                   <p id="fast">Fast Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter is-one-quarter-desktop table-header">
+                  <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
                 </div>
+                <Row
+                  metricurl="/parity-fast-sync-24h"
+                  charturl="/parity-fast-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
                 <Row
                   metricurl="/parity-fast-cpu-1h-avg"
                   charturl="/parity-fast-cpu-24h"
@@ -247,16 +263,22 @@ class Main extends React.Component {
                   <p className="white">Fast Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter-desktop table-header">
+                  <div className="column is-one-third-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
                 </div>
+                <Row
+                  metricurl="/geth-fast-sync-24h"
+                  charturl="/geth-fast-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
                 <Row
                   metricurl="/geth-fast-cpu-1h-avg"
                   charturl="/geth-fast-cpu-24h"
@@ -322,16 +344,22 @@ class Main extends React.Component {
                   <p id="archive">Archive Node</p>
                 </div>
                 <div className="columns is-mobile">
-                  <div className="column is-one-quarter is-one-quarter-desktop table-header">
+                  <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
                   </div>
-                  <div className="column is-one-half table-header">
+                  <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
-                  <div className="column is-one-quarter table-header">
+                  <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
                   </div>
                 </div>
+                <Row
+                  metricurl="/parity-archive-sync-24h"
+                  charturl="/parity-archive-sync-24h"
+                  text="% of time in sync"
+                  datatype="sync%"
+                />
                 <Row
                   metricurl="/parity-archive-cpu-1h-avg"
                   charturl="/parity-archive-cpu-24h"

@@ -5,10 +5,11 @@ $metricfont: 'Nunito', sans-serif;
 $nodeTypeBarBackground:  #0080ff;
 $bodyBackground: #eee;
 $panelBackground: white;
+$greyAcent: #ccc;
 
 $modularscale: (
   base: 0.35em,
-  ratio: $fifth 
+  ratio: $fifth
 );
 
 .body, html {
@@ -29,18 +30,17 @@ $modularscale: (
 
 h3 {
   font-size: ms(3);
-
 }
 
 .page-divide {
-  border-left: 1px solid #999;
+  border-left: 1px solid $greyAcent;
   height: 3100px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
   top: 0;
   bottom: 0;
-  //z-index: -1;
+  z-index: 11;
 }
 
 .Bitmex-link {
@@ -62,7 +62,7 @@ h3 {
   margin-right: 20px;
 }
 .navbar-end {
-  margin-right: 60px;
+  margin-right: 17%;
 }
 .subtitle {
   padding-right: 100px;
@@ -86,6 +86,9 @@ h3 {
 .mobile-table-header {
   display: none;
 }
+.mobile-only {
+  display: none;
+}
 .box {
   width: 100%;
 }
@@ -102,7 +105,6 @@ h3 {
   height: 80px;
   background-color: white;
   z-index: 0;
-
   font-size: ms(3)
 }
 .icon {
@@ -130,11 +132,8 @@ h3 {
   background-size: cover;
   background-position: center;
 }
-.mobile-data {
-  display: none;
-}
 nav {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $greyAcent;
   margin-bottom: 50px;
   z-index: 0;
 }
@@ -148,7 +147,7 @@ nav {
   top: 0;
 }
 .footer {
-  border-top: 2px solid #0080ff;
+  border-top: 1px solid $greyAcent;
   z-index: 2;
 }
 .button {
@@ -206,6 +205,7 @@ nav {
 .tooltip {
   position: relative;
   display: inline-block;
+  z-index: 99;
 }
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -217,7 +217,7 @@ nav {
   padding: 5px 0;
   border-radius: 6px;
   position: absolute;
-  z-index: 0;
+  z-index: 99;
   bottom: 125%;
   left: 50%;
   margin-left: -60px;
@@ -232,6 +232,7 @@ nav {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
+  z-index: 99;
   border-color: #555 transparent transparent transparent;
 }
 .tooltip:hover .tooltiptext {
@@ -261,7 +262,7 @@ nav {
   color: white;
 }
 .disclaimer {
-  
+
   text-align: center;
 }
 .arrowDown {
@@ -309,6 +310,12 @@ nav {
   padding: 0;
   z-index: 2;
 }
+.navbar-brand {
+  margin-left: 10%;
+}
+// .navbar-end {
+//   margin-right: 120px;
+// }
 @keyframes bounce {
   0% {color: black; bottom: 20px; right: 40px;}
   25% {color: black; bottom: 25px; right: 40px;}
@@ -343,23 +350,37 @@ nav {
   }
 }
 @media (max-width: 1024px) {
-  .chart {
-    height: 100px;
+  .mobile-only {
+    display: block;
   }
-  .data {
-    font-size: 10px;
+  .mobile-row {
+  background-color: white;
+  margin: 0;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .chart {
+    display: none;
   }
   .text {
-    font-size: 15px;
-    text-align: center;
+    min-height: 50px;
+    background-color: white;
+    z-index: 0;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-bottom: 10px;
   }
   .main-spinner {
   }
   .data {
     font-size: 15px;
+    height: 40px;
+    margin: 10px 0 20px 0;
   }
   .table-header {
     font-size: 12px;
+    text-align: center;
   }
   body {
     background-color: #eeeeee;
@@ -378,10 +399,6 @@ nav {
   .mobile-data {
     display: block;
   }
-  .data {
-    margin-bottom: 30px;
-    height: 55px;
-  }
   .table-header {
     display: none;
   }
@@ -391,20 +408,14 @@ nav {
 }
 
 @media (max-width: 775px) {
-  .graph {
-    display: none;
-  }
   .is-one-quarter-desktop {
     display: none;
   }
-  nav {
-  width: 100%;
-}
   .node-type {
    font-size: ms(4);
   }
   .text {
- 
+
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -416,6 +427,7 @@ nav {
   }
   .page-divide {
     height: 2000px;
+    display: none;
   }
   // .Bitmex-link {
   //   padding: 20px;
@@ -467,9 +479,6 @@ nav {
   }
 }
 @media (max-width: 600px) {
-  .graph {
-    display: none;
-  }
   nav {
   width: 100%;
 }
