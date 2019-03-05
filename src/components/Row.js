@@ -11,7 +11,6 @@ class Row extends React.Component {
     this.datatype = props.datatype;
     this.reverseOrder = props.reverseOrder;
     this.text = props.text;
-    this.unit = props.unit;
     this.metricurl = props.metricurl;
     this.charturl = props.charturl;
   }
@@ -27,7 +26,7 @@ class Row extends React.Component {
       return((value/1024/1024/1024).toFixed(2) + " GiB")
     }
     if(this.datatype == "peers") {
-      return(value.toFixed(2) + " #")
+      return(Math.floor(value))
     }
     if(this.datatype == "nettx") {
       return(value.toFixed(2) + " KiB/s")
