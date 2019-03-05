@@ -28,29 +28,35 @@ class Row extends React.Component {
   }
 
   conflict(paritycurrent, gethcurrent) {
-    var blockhashmap = {};
-    var notinsynccounter = 0;
-    var comparetotal = 0;
-    for (var i = 0; i < paritycurrent.length; i++) {
-      var keyparity = paritycurrent[i].blockNumber;
-      blockhashmap[keyparity] = [paritycurrent[i].blockHash];
-
-    }
-    for (var j = 0; j < gethcurrent.length; j++) {
-      var keygeth = gethcurrent[j].blockNumber;
-      if (keygeth in blockhashmap) {
-        blockhashmap[keygeth].push(gethcurrent[j].blockHash);
+    if (
+      typeof paritycurrent != "undefined" &&
+      typeof gethcurrent != "undefined"
+    ) {
+      var blockhashmap = {};
+      var notinsynccounter = 0;
+      var comparetotal = 0;
+      for (var i = 0; i < paritycurrent.length; i++) {
+        var keyparity = paritycurrent[i].blockNumber;
+        blockhashmap[keyparity] = [paritycurrent[i].blockHash];
       }
-    }
-    Object.keys(blockhashmap).forEach(function(key) {
-      if (blockhashmap[key].length > 1) {
-        comparetotal++;
-        if (blockhashmap[key][0] != blockhashmap[key][1]) {
-          notinsynccounter++;
+      for (var j = 0; j < gethcurrent.length; j++) {
+        var keygeth = gethcurrent[j].blockNumber;
+        if (keygeth in blockhashmap) {
+          blockhashmap[keygeth].push(gethcurrent[j].blockHash);
         }
       }
-    });
-    return 100 * (notinsynccounter / comparetotal);
+      Object.keys(blockhashmap).forEach(function(key) {
+        if (blockhashmap[key].length > 1) {
+          comparetotal++;
+          if (blockhashmap[key][0] != blockhashmap[key][1]) {
+            notinsynccounter++;
+          }
+        }
+      });
+      return 100 * (notinsynccounter / comparetotal);
+    } else {
+      return 0;
+    }
   }
 
   transform(value) {
@@ -68,18 +74,17 @@ class Row extends React.Component {
       case "netrx":
         return value.metric[0].mean.toFixed(2) + " KiB/s";
       case "conflict%":
-        console.log(value.metric)
-        // return this.conflict(value.data,value.conflictdata).toFixed(2) + "%"
+        return this.conflict(value.metric, value.conflict);
     }
   }
 
-  async componentDidMount() {
-    const metricsrequest = await axios.get(url + this.metricurl)
-    const conflictrquest = await axios.get(url + this.conflucturl)
-    this.setState({
-      metric : metricsrequest.data,
-      conflict : conflictrquest.data
-    })
+  componentDidMount() {
+    axios.get(url + this.metricurl).then(data => {
+      this.setState({ metric: data.data });
+    });
+    axios.get(url + this.conflicturl).then(data => {
+      this.setState({ conflict: data.data });
+    });
     // axios.get(url + this.metricurl).then(data => {
     //   this.setState(data);
     // });
@@ -103,23 +108,25 @@ class Row extends React.Component {
   }
 
   description() {
-    return(
+    return (
       <span className="columns is-mobile is-multiline">
         <p className="column is-9-desktop">
           {this.text} <span className="mobile-table-header">(1hr)</span>
         </p>
         <span className="icon has-text-info tooltip column is-3-desktop is-3">
-          <p className="tooltiptext">{'hello'}</p>
+          <p className="tooltiptext">{"hello"}</p>
           <i className="fas fa-info-circle" />
         </span>
       </span>
-    )
+    );
   }
 
   chart() {
-    return(<div className="column is-5 graph chart">
-      <Charts url={this.charturl} />
-    </div>)
+    return (
+      <div className="column is-5 graph chart">
+        <Charts url={this.charturl} />
+      </div>
+    );
   }
 
   render() {
@@ -127,38 +134,22 @@ class Row extends React.Component {
       return (
         <div>
           <section className="columns is-vcentered desktop-only">
-            <div className="column is-4 data">
-              {this.mean()}
-            </div>
-            <div className="column is-4 text">
-              {this.description()}
-            </div>
-            <div className="column is-4">
-              {this.chart()}
-            </div>
+            <div className="column is-4 data">{this.mean()}</div>
+            <div className="column is-4 text">{this.description()}</div>
+            <div className="column is-4">{this.chart()}</div>
           </section>
           <div className="mobile-row mobile-only is-vcentered">
-            <div className="column text">
-              {this.description()}
-            </div>
-            <div className="column data">
-              {this.mean()}
-            </div>
+            <div className="column text">{this.description()}</div>
+            <div className="column data">{this.mean()}</div>
           </div>
         </div>
-      )
+      );
     } else {
       return (
         <section className="columns mobile-row is-vcentered">
-          <div className="column is-4 chart">
-            {this.chart()}
-          </div>
-          <div className="column is-4 text">
-            {this.description()}
-          </div>
-          <div className="column is-4 data">
-            {this.mean()}
-          </div>
+          <div className="column is-4 chart">{this.chart()}</div>
+          <div className="column is-4 text">{this.description()}</div>
+          <div className="column is-4 data">{this.mean()}</div>
         </section>
       );
     }
