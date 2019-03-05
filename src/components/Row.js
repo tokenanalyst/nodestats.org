@@ -84,7 +84,6 @@ class Row extends React.Component {
           </p>
         ) : (
           <p class="data">{this.transform(this.state.data)}</p>
-
         )}
       </span>
     );
