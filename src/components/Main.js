@@ -133,7 +133,6 @@ class Main extends React.Component {
                   text="CPU Usage"
                   reverseOrder="true"
                   datatype="cpu"
-                  className="geth-row"
                 />
                 <Row
                   text="Memory (RAM) Usage"
@@ -141,7 +140,6 @@ class Main extends React.Component {
                   charturl="/geth-full-ram-24h"
                   reverseOrder="true"
                   datatype="ram"
-                  className="geth-row"
                 />
                 <Row
                   text="# of Peers"
@@ -149,7 +147,6 @@ class Main extends React.Component {
                   charturl="/geth-full-peers-24h"
                   reverseOrder="true"
                   datatype="peers"
-                  className="geth-row"
                 />
                 <Row
                   text="Chain data size"
@@ -157,7 +154,6 @@ class Main extends React.Component {
                   charturl="/geth-full-disk-24h"
                   reverseOrder="true"
                   datatype="disk"
-                  className="geth-row"
                 />
                 <Row
                   text="Upstream"
@@ -165,7 +161,6 @@ class Main extends React.Component {
                   charturl="/geth-full-nettx-24h"
                   reverseOrder="true"
                   datatype="nettx"
-                  className="geth-row"
                 />
                 <Row
                   text="Downstream"
@@ -173,7 +168,6 @@ class Main extends React.Component {
                   charturl="/geth-full-netrx-24h"
                   reverseOrder="true"
                   datatype="netrx"
-                  className="geth-row"
                 />
               </div>
             </div>
