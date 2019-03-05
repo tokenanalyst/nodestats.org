@@ -19,9 +19,9 @@ class Row extends React.Component {
     var totalcounter = 0;
     var synccounter = 0;
     syncdata.forEach(function(obj) {
-      ++totalcounter;
+      totalcounter++;
       if (obj["value"] == true) {
-        ++synccounter;
+        synccounter++;
       }
     });
     return 100 * (synccounter / totalcounter);
