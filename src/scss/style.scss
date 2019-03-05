@@ -1,5 +1,8 @@
 @import '~modularscale-sass/stylesheets/modularscale';
 
+$mainfont: 'Nunito', sans-serif;
+$metricfont: 'Nunito', sans-serif;
+
 $modularscale: (
   base: 0.35em,
   ratio: $fifth 
@@ -9,11 +12,13 @@ $modularscale: (
   scroll-behavior: smooth;
   font-size: 1em;
   min-height: 800px;
+  font-weight: 600;
+  font-family: $mainfont;
 }
 
 h3 {
   font-size: ms(3);
-  font-weight: 500;
+
 }
 
 .page-divide {
@@ -65,7 +70,6 @@ h3 {
 .table-header {
   text-align: center;
   transition: transform 1s;
-  font-size: 15px;
   color: #999999;
 }
 .mobile-table-header {
@@ -87,8 +91,7 @@ h3 {
   height: 80px;
   background-color: white;
   z-index: 0;
-  font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
+
   font-size: ms(3)
 }
 .icon {
@@ -97,8 +100,8 @@ h3 {
 .data {
   text-align: center;
   font-size: ms(3);
-  font-family: 'Inconsolata', monospace;
-  font-weight: 700;
+  font-family: $metricfont;
+  font-weight: 800;
 }
 
 .bitmex-logo {
@@ -167,7 +170,7 @@ nav {
   font-size: ms(3)
 }
 .company-icon {
-  font-size: 22px;
+  font-size: ms(3);
 }
 .box {
   margin: auto;
@@ -459,9 +462,6 @@ nav {
   nav {
   width: 100%;
 }
-  .node-type {
-    font-size: 20px;
-  }
   .button {
     width: 140px;
   }
@@ -471,12 +471,7 @@ nav {
   .page-divide {
     height: 2100px;
   }
-  .data {
-    font-size: 17px;
-  }
-  .text {
-    font-size: 15px;
-  }
+
   .fast {
     left: 45%;
     bottom: 10;
