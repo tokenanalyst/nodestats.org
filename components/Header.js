@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Modal = require('./Modal');
+var _Modal = require("./Modal");
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -35,69 +35,80 @@ var Header = function (_React$Component) {
   }
 
   _createClass(Header, [{
-    key: 'openBurger',
+    key: "openBurger",
     value: function openBurger() {
-      var burger = document.getElementById('menu');
-      var burgerButton = document.getElementById('burgerButton');
-      burger.classList.toggle('is-active');
-      burgerButton.classList.toggle('is-active');
+      var burger = document.getElementById("menu");
+      var burgerButton = document.getElementById("burgerButton");
+      burger.classList.toggle("is-active");
+      burgerButton.classList.toggle("is-active");
     }
   }, {
-    key: 'openModal',
+    key: "openModal",
     value: function openModal() {
-      var modal = document.getElementById('modal');
-      modal.classList.toggle('is-active');
+      var modal = document.getElementById("modal");
+      modal.classList.toggle("is-active");
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'nav',
-        { className: 'navbar', role: 'navigation', 'aria-label': 'main navigation' },
+        "nav",
+        { className: "navbar", role: "navigation", "aria-label": "main navigation" },
         _react2.default.createElement(
-          'div',
-          { className: 'navbar-brand' },
-          _react2.default.createElement('img', { className: 'logo', src: '/images/Screenshot 2019-03-03 at 11.42.30.png' }),
+          "div",
+          { className: "navbar-brand" },
+          _react2.default.createElement("img", {
+            className: "logo",
+            src: "/images/Screenshot 2019-03-03 at 11.42.30.png"
+          }),
           _react2.default.createElement(
-            'a',
-            { role: 'button', className: 'navbar-burger burger', 'aria-label': 'menu', 'aria-expanded': 'false', id: 'burgerButton', onClick: this.openBurger, target: 'menu' },
-            _react2.default.createElement('span', { 'aria-hidden': 'true' }),
-            _react2.default.createElement('span', { 'aria-hidden': 'true' }),
-            _react2.default.createElement('span', { 'aria-hidden': 'true' })
+            "a",
+            {
+              role: "button",
+              className: "navbar-burger burger",
+              "aria-label": "menu",
+              "aria-expanded": "false",
+              id: "burgerButton",
+              onClick: this.openBurger,
+              target: "menu"
+            },
+            _react2.default.createElement("span", { "aria-hidden": "true" }),
+            _react2.default.createElement("span", { "aria-hidden": "true" }),
+            _react2.default.createElement("span", { "aria-hidden": "true" })
           )
         ),
         _react2.default.createElement(
-          'div',
-          { id: 'menu', className: 'navbar-menu' },
+          "div",
+          { id: "menu", className: "navbar-menu" },
           _react2.default.createElement(
-            'div',
-            { className: 'navbar-end' },
+            "div",
+            { className: "navbar-end" },
             _react2.default.createElement(
-              'div',
-              { className: 'navbar-item links' },
+              "div",
+              { className: "navbar-item links" },
               _react2.default.createElement(
-                'a',
-                { href: '#', className: 'Bitmex-link' },
-                'Bitmex'
+                "a",
+                { href: "#", className: "Bitmex-link" },
+                "Bitmex"
               ),
               _react2.default.createElement(
-                'span',
-                { className: 'line' },
-                '|'
+                "span",
+                { className: "line" },
+                "|"
               ),
               _react2.default.createElement(
-                'a',
-                { href: '#', className: 'TokenAnalyst-link' },
-                'TokenAnalyst'
+                "a",
+                { href: "#", className: "TokenAnalyst-link" },
+                "TokenAnalyst"
               )
             ),
             _react2.default.createElement(
-              'div',
-              { className: 'is-vcentered button-box is-centered-mobile' },
+              "div",
+              { className: "is-vcentered button-box is-centered-mobile" },
               _react2.default.createElement(
-                'button',
-                { className: 'button navbar-item', onClick: this.openModal },
-                'About/info'
+                "button",
+                { className: "button navbar-item", onClick: this.openModal },
+                "About/info"
               )
             )
           )

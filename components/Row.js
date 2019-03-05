@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,19 +6,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Charts = require('./Charts');
+var _Charts = require("./Charts");
 
 var _Charts2 = _interopRequireDefault(_Charts);
 
-var _Modal = require('./Modal');
+var _Modal = require("./Modal");
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
-var _axios = require('axios');
+var _axios = require("axios");
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -30,7 +30,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var url = 'http://nodestats.tokenanalyst.io';
+var url = "http://nodestats.tokenanalyst.io";
 
 var Row = function (_React$Component) {
   _inherits(Row, _React$Component);
@@ -40,6 +40,8 @@ var Row = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).call(this, props));
 
+    _this.datatype = props.datatype;
+    _this.reverseOrder = props.reverseOrder;
     _this.text = props.text;
     _this.unit = props.unit;
     _this.metricurl = props.metricurl;
@@ -48,67 +50,117 @@ var Row = function (_React$Component) {
   }
 
   _createClass(Row, [{
-    key: 'componentDidMount',
+    key: "transform",
+    value: function transform(value) {
+      if (this.datatype == "cpu") {
+        return value.toFixed(2) + " %";
+      }
+      if (this.datatype == "ram") {
+        return (value / 1024 / 1024 / 1024).toFixed(2) + " GiB";
+      }
+      if (this.datatype == "disk") {
+        return (value / 1024 / 1024 / 1024).toFixed(2) + " GiB";
+      }
+      if (this.datatype == "peers") {
+        return value.toFixed(2) + " #";
+      }
+      if (this.datatype == "nettx") {
+        return value.toFixed(2) + " KiB/s";
+      }
+      if (this.datatype == "netrx") {
+        return value.toFixed(2) + " KiB/s";
+      }
+    }
+  }, {
+    key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      console.log(this.state);
       _axios2.default.get(url + this.metricurl).then(function (data) {
         _this2.setState(data);
-        console.log(_this2.state);
       });
     }
   }, {
-    key: 'render',
-    value: function render() {
+    key: "mean",
+    value: function mean() {
       return _react2.default.createElement(
-        'section',
-        { className: 'columns is-vcentered row', id: 'gethTest' },
+        "span",
+        null,
         this.state == null ? _react2.default.createElement(
-          'p',
+          "p",
           null,
-          _react2.default.createElement('i', { className: 'fa fa-spinner fa-spin chart-spinner' })
+          _react2.default.createElement("i", { className: "fa fa-spinner fa-spin chart-spinner" })
         ) : _react2.default.createElement(
-          'p',
+          "p",
           null,
-          this.state.data[0].mean
-        ),
-        _react2.default.createElement(
-          'span',
-          { className: 'column is-4-desktop text' },
-          _react2.default.createElement(
-            'div',
-            { className: 'columns is-mobile' },
-            _react2.default.createElement(
-              'p',
-              { className: 'column is-9-desktop is-9' },
-              this.text,
-              ' ',
-              _react2.default.createElement(
-                'span',
-                { className: 'mobile-table-header' },
-                '(1hr)'
-              )
-            ),
-            _react2.default.createElement(
-              'span',
-              { className: 'icon has-text-info tooltip column is-3-desktop is-3' },
-              _react2.default.createElement(
-                'p',
-                { className: 'tooltiptext' },
-                'Tooltip text'
-              ),
-              _react2.default.createElement('i', { className: 'fas fa-info-circle' })
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'column is-4 graph chart' },
-          _react2.default.createElement(_Charts2.default, { url: this.charturl })
-        ),
-        _react2.default.createElement(_Modal2.default, null)
+          this.transform(this.state.data[0].mean)
+        )
       );
+    }
+  }, {
+    key: "description",
+    value: function description() {
+      return _react2.default.createElement(
+        "span",
+        { className: "column is-4-desktop text" },
+        _react2.default.createElement(
+          "div",
+          { className: "columns is-mobile" },
+          _react2.default.createElement(
+            "p",
+            { className: "column is-9-desktop is-9" },
+            this.text,
+            " ",
+            _react2.default.createElement(
+              "span",
+              { className: "mobile-table-header" },
+              "(1hr)"
+            )
+          ),
+          _react2.default.createElement(
+            "span",
+            { className: "icon has-text-info tooltip column is-3-desktop is-3" },
+            _react2.default.createElement(
+              "p",
+              { className: "tooltiptext" },
+              "Tooltip text"
+            ),
+            _react2.default.createElement("i", { className: "fas fa-info-circle" })
+          )
+        )
+      );
+    }
+  }, {
+    key: "chart",
+    value: function chart() {
+      return _react2.default.createElement(
+        "div",
+        { className: "column is-4 graph chart" },
+        _react2.default.createElement(_Charts2.default, { url: this.charturl })
+      );
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.reverseOrder) {
+        return _react2.default.createElement(
+          "section",
+          { className: "columns is-vcentered row" },
+          this.mean(),
+          this.description(),
+          this.chart(),
+          _react2.default.createElement(_Modal2.default, null)
+        );
+      } else {
+        return _react2.default.createElement(
+          "section",
+          { className: "columns is-vcentered row" },
+          this.chart(),
+          this.description(),
+          this.mean(),
+          _react2.default.createElement(_Modal2.default, null)
+        );
+      }
     }
   }]);
 
