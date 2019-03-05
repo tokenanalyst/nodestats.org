@@ -50,7 +50,7 @@ class Row extends React.Component {
             <i className="fa fa-spinner fa-spin chart-spinner" />
           </p>
         ) : (
-          <p>{this.transform(this.state.data[0].mean)}</p>
+          <p class="data">{this.transform(this.state.data[0].mean)}</p>
         )}
       </span>
     )
