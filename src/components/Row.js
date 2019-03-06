@@ -151,7 +151,7 @@ class Row extends React.Component {
 
           <p className="tooltiptext">{this.tooltip()}</p>
 
-          <i className="fas fa-info-circle" />
+          <i className="fas fa-question-circle" />
         </span>
       </span>
     );

@@ -55,7 +55,7 @@ class Header extends React.Component {
             </div>
             <div className="button-box is-centered-mobile">
               <button className="button navbar-item" onClick={this.openModal}>
-                About/info
+                About
               </button>
             </div>
           </div>
