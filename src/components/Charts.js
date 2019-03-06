@@ -10,8 +10,17 @@ class Charts extends React.Component {
   constructor(props) {
     super(props);
     this.url = props.url;
+    this.datatype = props.datatype
   }
+  // syncdataparse(syncdata){
+
+  // }
   componentDidMount() {
+    if (this.datatype=='sync%'){
+      axios.get(url + this.url).then(data => {
+        this.setState(data); console.log(data);
+      });
+    }
     axios.get(url + this.url).then(data => {
       this.setState(data);
       localStorage.setItem(this.url, JSON.stringify(data)); // caching for fallback
@@ -71,7 +80,7 @@ class Charts extends React.Component {
                 ]}
                 options={{
                   tooltip: {
-                    trigger: "none"
+                    trigger: 'none' 
                   },
                   lineWidth: 3,
                   legend: "none",

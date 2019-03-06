@@ -75,6 +75,13 @@ h3 {
 #infoModal {
   font-size: 30px;
 }
+.google-visualization-tooltip {
+  background-color: black !important;
+}
+
+.google-visualization-tooltip span {
+  color: rgb(254, 254, 254) !important;
+} 
 .title-box {
   margin: auto;
   padding-left: 180px;

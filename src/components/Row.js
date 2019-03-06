@@ -159,7 +159,7 @@ class Row extends React.Component {
   chart() {
     return (
       <div className="column is-5 graph chart">
-        <Charts url={this.charturl} />
+        <Charts url={this.charturl} datatype={this.datatype} />
       </div>
     );
   }
