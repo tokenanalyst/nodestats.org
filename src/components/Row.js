@@ -73,8 +73,8 @@ class Row extends React.Component {
       case "nettx":
       case "netrx":
         return value.metric[0].mean.toFixed(2) + " KiB/s";
-      case "conflict%":
-        return this.conflict(value.metric, value.conflict);
+      // case "conflict%":
+      //   return this.conflict(value.metric, value.conflict);
     }
   }
 
@@ -85,12 +85,6 @@ class Row extends React.Component {
     axios.get(url + this.conflicturl).then(data => {
       this.setState({ conflict: data.data });
     });
-    // axios.get(url + this.metricurl).then(data => {
-    //   this.setState(data);
-    // });
-    // axios.get(url + this.conflicturl).then(conflictdata => {
-    //   this.setState(conflictdata);
-    // });
   }
 
   mean() {
