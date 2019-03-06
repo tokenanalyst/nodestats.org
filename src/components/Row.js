@@ -12,6 +12,7 @@ class Row extends React.Component {
     this.text = props.text;
     this.metricurl = props.metricurl;
     this.charturl = props.charturl;
+    this.conflicturl = props.conflicturl;
   }
 
   percentsync(syncdata) {
@@ -27,45 +28,58 @@ class Row extends React.Component {
   }
 
   conflict(paritycurrent, gethcurrent) {
+    // if (
+    //   typeof paritycurrent != "undefined" &&
+    //   typeof gethcurrent != "undefined"
+    // ) {
     var blockhashmap = {};
     var notinsynccounter = 0;
     var comparetotal = 0;
     for (var i = 0; i < paritycurrent.length; i++) {
       var keyparity = paritycurrent[i].blockNumber;
       blockhashmap[keyparity] = [paritycurrent[i].blockHash];
-
     }
     for (var j = 0; j < gethcurrent.length; j++) {
-      keygeth = gethcurrent[j].blockNumber;
+      var keygeth = gethcurrent[j].blockNumber;
       if (keygeth in blockhashmap) {
         blockhashmap[keygeth].push(gethcurrent[j].blockHash);
       }
     }
     Object.keys(blockhashmap).forEach(function(key) {
       if (blockhashmap[key].length > 1) {
-        comparetotal++;
-        if (blockhashmap[key][0] != blockhashmap[key][1]) {
-          notinsynccounter++;
-        }
+         comparetotal++;
       }
-    });
-    return 100 * (notinsynccounter / comparetotal);
+      if (blockhashmap[key][0] != blockhashmap[key][1]) {
+         notinsynccounter++;
+        }
+      });
+    if (comparetotal == 0){
+      return 100
+    }
+    else {
+    return 100*(notinsynccounter/comparetotal);
+    }
   }
 
   transform(value) {
     switch (this.datatype) {
       case "sync%":
-        return this.percentsync(value)
+        return this.percentsync(value.metric.data).toFixed(2) + "%";
       case "cpu":
-        return value[0].mean.toFixed(2) + " %";
+        return value.metric.data[0].mean.toFixed(2) + " %";
       case "ram":
       case "disk":
-        return (value[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB";
+        return (
+          (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB"
+        );
       case "peers":
-        return Math.floor(value[0].mean);
+        return Math.floor(value.metric.data[0].mean);
       case "nettx":
       case "netrx":
-        return value[0].mean.toFixed(2) + " KiB/s";
+        return value.metric.data[0].mean.toFixed(2) + " KiB/s";
+      case "conflict%":
+        //  console.log(value.metric.data)
+        return this.conflict(value.metric.data, value.conflict.data);
     }
   }
 
@@ -80,9 +94,22 @@ class Row extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(url + this.metricurl).then(data => {
-      this.setState(data);
-    });
+    if (this.conflicturl) {
+      axios
+        .all([
+          axios.get(url + this.metricurl),
+          axios.get(url + this.conflicturl)
+        ])
+        .then(
+          axios.spread((metricres, conflictres) => {
+            this.setState({ metric: metricres, conflict: conflictres });
+          })
+        );
+    } else {
+      axios.get(url + this.metricurl).then(data => {
+        this.setState({ metric: data });
+      });
+    }
   }
 
   mean() {
@@ -93,30 +120,34 @@ class Row extends React.Component {
             <i className="fa fa-spinner fa-spin spinner" />
           </p>
         ) : (
-          <p className="data">{this.transform(this.state.data)}</p>
+          <p className="data">{this.transform(this.state)}</p>
         )}
       </span>
     );
   }
 
   description() {
-    return(
+    return (
       <span className="columns is-mobile is-multiline">
         <p className="column is-9-desktop">
           {this.text} <span className="mobile-table-header">(1hr)</span>
         </p>
         <span className="icon has-text-info tooltip column is-3-desktop is-3">
+
           <p className="tooltiptext">{this.tooltip()}</p>
+
           <i className="fas fa-info-circle" />
         </span>
       </span>
-    )
+    );
   }
 
   chart() {
-    return(<div className="column is-5 graph chart">
-      <Charts url={this.charturl} />
-    </div>)
+    return (
+      <div className="column is-5 graph chart">
+        <Charts url={this.charturl} />
+      </div>
+    );
   }
 
   render() {
@@ -124,38 +155,22 @@ class Row extends React.Component {
       return (
         <div>
           <section className="columns is-vcentered desktop-only">
-            <div className="column is-4 data">
-              {this.mean()}
-            </div>
-            <div className="column is-4 text">
-              {this.description()}
-            </div>
-            <div className="column is-4">
-              {this.chart()}
-            </div>
+            <div className="column is-4 data">{this.mean()}</div>
+            <div className="column is-4 text">{this.description()}</div>
+            <div className="column is-4">{this.chart()}</div>
           </section>
           <div className="mobile-row mobile-only is-vcentered">
-            <div className="column text">
-              {this.description()}
-            </div>
-            <div className="column data">
-              {this.mean()}
-            </div>
+            <div className="column text">{this.description()}</div>
+            <div className="column data">{this.mean()}</div>
           </div>
         </div>
-      )
+      );
     } else {
       return (
         <section className="columns mobile-row is-vcentered">
-          <div className="column is-4 chart">
-            {this.chart()}
-          </div>
-          <div className="column is-4 text">
-            {this.description()}
-          </div>
-          <div className="column is-4 data">
-            {this.mean()}
-          </div>
+          <div className="column is-4 chart">{this.chart()}</div>
+          <div className="column is-4 text">{this.description()}</div>
+          <div className="column is-4 data">{this.mean()}</div>
         </section>
       );
     }

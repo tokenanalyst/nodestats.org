@@ -1,5 +1,7 @@
 import React from "react";
+import nodestatslogo from '../images/nodestatslogo.png'
 import {InfoModal} from "./Modal";
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -24,7 +26,7 @@ class Header extends React.Component {
         <div className="navbar-brand">
           <img
             className="logo"
-            src="/images/Screenshot 2019-03-03 at 11.42.30.png"
+            src={nodestatslogo}
           />
           <a
             role="button"
@@ -44,7 +46,7 @@ class Header extends React.Component {
           <div className="navbar-end">
             <div className="navbar-item links">
               <a href="#" className="Bitmex-link">
-                Bitmex
+                BitMEX
               </a>
               <span className="line">|</span>
               <a href="#" className="TokenAnalyst-link">

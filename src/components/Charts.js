@@ -39,8 +39,9 @@ class Charts extends React.Component {
                     <i className="fa fa-spinner fa-spin chart-spinner" />
                   </div>
                 }
+                
                 data={[
-                  ["Time", "Placeholder"],
+                  ["Time", "Value"],
                   [arrayTimes[0], arrayValues[0]],
                   [arrayTimes[100] || [], arrayValues[100]],
                   [arrayTimes[200] || [], arrayValues[200]],
@@ -58,8 +59,22 @@ class Charts extends React.Component {
                   [arrayTimes[1400] || [], arrayValues[1400]]
                 ]}
                 options={{
+                  'tooltip' : {
+                    trigger: 'none'
+                  },
+                  lineWidth: 3,
                   legend: "none",
-                  chart: {}
+                  chart: {},
+                  vAxis: {
+                    gridlines: {
+                        color: 'transparent',
+                        
+                    },
+                    textPosition: 'none' 
+                },
+                hAxis: { textPosition: 'none' },
+                curveType: 'function',
+                colors:['#0080ff']
                 }}
               />
             </div>
