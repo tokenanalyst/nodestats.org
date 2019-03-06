@@ -1,5 +1,5 @@
 import React from "react";
-
+import talogo from '../images/talogo.png'
 import Row from "./Row";
 import Modal from "./Modal";
 import {
@@ -468,7 +468,7 @@ class Main extends React.Component {
                     <figure className="image is-156x156 tokenanalyst-logo level-item">
                       <img
                         className=""
-                        src="/images/Screenshot 2019-03-04 at 16.27.22.png"
+                        src={talogo}
                         alt="TokenAnalyst Logo"
                       />
                     </figure>

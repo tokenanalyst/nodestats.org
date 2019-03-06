@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "./Modal";
+import nodestatslogo from '../images/nodestatslogo.png'
 
 class Header extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Header extends React.Component {
         <div className="navbar-brand">
           <img
             className="logo"
-            src="/images/Screenshot 2019-03-03 at 11.42.30.png"
+            src={nodestatslogo}
           />
 
           <a
