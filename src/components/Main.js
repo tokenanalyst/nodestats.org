@@ -120,13 +120,13 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/parity-full-nettx-1h-avg"
                   charturl="/parity-full-nettx-24h"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/parity-full-netrx-1h-avg"
                   charturl="/parity-full-netrx-24h"
                   datatype="netrx"
@@ -204,14 +204,14 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/geth-full-nettx-1h-avg"
                   charturl="/geth-full-nettx-24h"
                   reverseOrder="true"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/geth-full-netrx-1h-avg"
                   charturl="/geth-full-netrx-24h"
                   reverseOrder="true"
@@ -289,13 +289,13 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/parity-fast-nettx-1h-avg"
                   charturl="/parity-fast-nettx-24h"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/parity-fast-netrx-1h-avg"
                   charturl="/parity-fast-netrx-24h"
                   datatype="netrx"
@@ -371,14 +371,14 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/geth-fast-nettx-1h-avg"
                   charturl="/geth-fast-nettx-24h"
                   reverseOrder="true"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/geth-fast-netrx-1h-avg"
                   charturl="/geth-fast-netrx-24h"
                   reverseOrder="true"
@@ -456,13 +456,13 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/parity-archive-nettx-1h-avg"
                   charturl="/parity-archive-nettx-24h"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/parity-archive-netrx-1h-avg"
                   charturl="/parity-archive-netrx-24h"
                   datatype="netrx"

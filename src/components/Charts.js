@@ -105,7 +105,7 @@ class Charts extends React.Component {
                     textPosition: "none"
                   },
                   curveType: "function",
-                  colors: ["#0080ff"]
+                  colors: ["#3070ff"]
                 }}
               />
             </div>
@@ -114,7 +114,7 @@ class Charts extends React.Component {
       );
     } else {
       return (
-        <p>
+        <p className="spinner-box">
           <i className="fa fa-spinner fa-spin chart-spinner" />
         </p>
       );

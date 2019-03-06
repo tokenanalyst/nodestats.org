@@ -1,14 +1,15 @@
-@import '~modularscale-sass/stylesheets/modularscale';
+@import "~modularscale-sass/stylesheets/modularscale";
 
-$mainfont: 'Nunito', sans-serif;
-$metricfont: 'Nunito', sans-serif;
+$mainfont: "Nunito", sans-serif;
+$metricfont: "Nunito", sans-serif;
 
 $modularscale: (
   base: 0.35em,
   ratio: $fifth
 );
 
-.body, html {
+.body,
+html {
   scroll-behavior: smooth;
   font-size: 1em;
   min-height: 800px;
@@ -28,15 +29,14 @@ h3 {
   margin-left: -3px;
   top: 0;
   bottom: 0;
+  z-index: 1;
 }
 
 .Bitmex-link {
   padding-right: 10px;
-
 }
 .TokenAnalyst-link {
   padding-left: 10px;
-
 }
 .nodestats-logo {
   padding: 0;
@@ -61,11 +61,16 @@ h3 {
 .modal-card {
   color: black;
   font-size: 20px;
+  text-align: left;
+}
+.modal-inner-card {
+  padding: 20px;
 }
 .flags {
   background-color: #eeeeee;
-  font-family: 'B612 Mono', monospace;
-  font-size: 18px;
+  font-family: "B612 Mono", monospace;
+  font-size: 14px;
+  padding: 20px;
 }
 .mobile-list {
   font-size: 12px;
@@ -75,13 +80,6 @@ h3 {
 #infoModal {
   font-size: 30px;
 }
-.google-visualization-tooltip {
-  background-color: black !important;
-}
-
-.google-visualization-tooltip span {
-  color: rgb(254, 254, 254) !important;
-} 
 .title-box {
   margin: auto;
   padding-left: 180px;
@@ -89,7 +87,7 @@ h3 {
 }
 .node-type {
   position: relative;
-  background-color: #0080ff;
+  background-color: #3070ff;
   color: white;
   font-size: ms(4);
 }
@@ -120,7 +118,7 @@ h3 {
   text-align: left;
   height: 80px;
   background-color: white;
-  font-size: ms(3)
+  font-size: ms(3);
 }
 .icon {
   text-align: left;
@@ -142,7 +140,7 @@ h3 {
   margin-top: 200px;
   width: 90%;
   height: 400px;
-  background-image: url('/images/Screenshot 2019-03-03 at 11.42.30.png');
+  background-image: url("/images/Screenshot 2019-03-03 at 11.42.30.png");
   background-size: cover;
   background-position: center;
 }
@@ -160,7 +158,10 @@ nav {
   top: 0;
 }
 .footer {
-  border-top: 2px solid #0080ff;
+  border-top: 2px solid #999999;
+  position: relative;
+  z-index: 2;
+  background-color: white;
 }
 
 .button-box {
@@ -197,7 +198,7 @@ nav {
 }
 
 .icon:hover {
- cursor: pointer;
+  cursor: pointer;
 }
 .tooltip {
   position: relative;
@@ -224,7 +225,7 @@ nav {
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 23%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -234,6 +235,9 @@ nav {
   position: absolute;
   visibility: visible;
   opacity: 1;
+}
+.small-tooltips {
+  color: #3070ff;
 }
 .mobile-bottom-navs {
   position: fixed;
@@ -254,7 +258,6 @@ nav {
   color: white;
 }
 .disclaimer {
-
   text-align: center;
 }
 .arrowDown {
@@ -263,7 +266,7 @@ nav {
   font-size: ms(4);
   bottom: 20px;
   right: 40px;
-  color: #0080ff;
+  color: #3070ff;
 }
 .arrowUp {
   cursor: pointer;
@@ -271,17 +274,19 @@ nav {
   font-size: ms(4);
   bottom: 60px;
   right: 40px;
-  color: #0080ff;
+  color: #3070ff;
 }
 .chart-spinner {
-  font-size: 30px;
-  background: -webkit-linear-gradient(#eee, #0080ff);
+  font-size: 40px;
+  background: -webkit-linear-gradient(#eee, #3070ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: auto;
+
 }
 .spinner {
   font-size: 40px;
-  background: -webkit-linear-gradient(#eee, #0080ff);
+  background: -webkit-linear-gradient(#eee, #3070ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -290,7 +295,7 @@ nav {
   position: absolute;
   left: 45%;
   top: 30%;
-  background: -webkit-linear-gradient(#eee, #0080ff);
+  background: -webkit-linear-gradient(#eee, #3070ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -310,10 +315,26 @@ nav {
   margin-left: 10%;
 }
 @keyframes bounce {
-  0% {color: black; bottom: 20px; right: 40px;}
-  25% {color: black; bottom: 25px; right: 40px;}
-  50% {color: grey; bottom: 15px; right: 40px;}
-  75% {color: grey; bottom: 20px; right: 40px;}
+  0% {
+    color: black;
+    bottom: 20px;
+    right: 40px;
+  }
+  25% {
+    color: black;
+    bottom: 25px;
+    right: 40px;
+  }
+  50% {
+    color: grey;
+    bottom: 15px;
+    right: 40px;
+  }
+  75% {
+    color: grey;
+    bottom: 20px;
+    right: 40px;
+  }
 }
 .move-page-up:hover {
   background-color: #555;
@@ -334,8 +355,8 @@ nav {
     display: block;
   }
   .mobile-row {
-  background-color: white;
-  margin: 0;
+    background-color: white;
+    margin: 0;
   }
   .desktop-only {
     display: none;
@@ -353,7 +374,7 @@ nav {
   }
   .spinner {
     font-size: 30px;
-    background: -webkit-linear-gradient(#eee, #0080ff);
+    background: -webkit-linear-gradient(#eee, #3070ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -378,7 +399,7 @@ nav {
     display: block;
   }
   body {
-    background-color: #eeeeee;
+    background-color: #f7f7f7;
     z-index: -2;
   }
   .tooltip .tooltiptext {
@@ -411,7 +432,8 @@ nav {
   .mobile-table-header {
     display: inline-block;
   }
-  .has-text-info {
+  .small-tooltips {
+    display: none;
     display: none;
   }
 }
@@ -421,8 +443,7 @@ nav {
     display: none;
   }
   .node-type {
-   font-size: ms(4);
-
+    font-size: ms(4);
   }
   .text {
     padding-left: 20px;
@@ -434,7 +455,8 @@ nav {
   .button-box {
     margin-left: 12%;
   }
-  .arrowDown, .arrowUp {
+  .arrowDown,
+  .arrowUp {
     visibility: hidden;
   }
   .page-divide {
@@ -447,7 +469,6 @@ nav {
     bottom: 0;
     left: 0;
   }
-
 }
 @media (max-width: 740px) {
   .page-divide {
@@ -486,16 +507,21 @@ nav {
 }
 @media (max-width: 600px) {
   nav {
-  width: 100%;
-}
+    width: 100%;
+  }
   .button {
     width: 140px;
   }
-
 }
 @media (max-width: 430px) {
   .page-divide {
     height: 2100px;
+  }
+  .node-type {
+    i {
+      font-size: 20px;
+    }
+    font-size: 25px;
   }
 
   .fast {
