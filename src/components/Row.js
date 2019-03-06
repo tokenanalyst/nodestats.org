@@ -64,28 +64,31 @@ class Row extends React.Component {
       case "sync%":
         return this.percentsync(value.metric).toFixed(2) + "%";
       case "cpu":
-        return value.metric[0].mean.toFixed(2) + " %";
+        return value.metric.data[0].mean.toFixed(2) + " %";
       case "ram":
       case "disk":
-        return (value.metric[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB";
+        return (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB";
       case "peers":
-        return Math.floor(value.metric[0].mean);
+        return Math.floor(value.metric.data[0].mean);
       case "nettx":
       case "netrx":
-        return value.metric[0].mean.toFixed(2) + " KiB/s";
-      // case "conflict%":
-      //   return this.conflict(value.metric, value.conflict);
+        console.log(value.metric.data)[0];
+        return value.metric.data[0].mean.toFixed(2) + " KiB/s";
+      case "conflict%":
+        console.log(value.metric.data)
+      // return this.conflict(value.metric, value.conflict);
     }
   }
 
   componentDidMount() {
-    axios.get(url + this.metricurl).then(data => {
-      this.setState({ metric: data.data });
-    });
-    axios.get(url + this.conflicturl).then(data => {
-      this.setState({ conflict: data.data });
-    });
-  }
+    axios.all([
+      axios.get(url + this.metricurl),
+      axios.get(url + this.conflicturl)
+    ])
+    .then(axios.spread((metricres, conflictres) => {
+      this.setState({metric: metricres, conflict: conflictres})
+    })
+    )};
 
   mean() {
     return (
