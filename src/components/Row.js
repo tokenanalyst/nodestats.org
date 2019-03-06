@@ -120,6 +120,7 @@ class Row extends React.Component {
           this.setState({ metric: cachedMetric});
         } else {
           console.log("No cache and no API")
+          Sentry.captureException(new Error("No Cache and no API, Fatal error"));
         }
       });
     }
