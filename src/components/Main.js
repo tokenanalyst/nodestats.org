@@ -8,8 +8,12 @@ import {
   scrollFunction2,
   scrollUp
 } from "../lib/navigationFunctions";
+<<<<<<< HEAD
 import {ParityFullModal, GethFullModal, ParityFastModal, GethFastModal, ParityArchiveModal} from "./Modal";
 
+=======
+import ReactGA from 'react-ga';
+>>>>>>> master
 
 class Main extends React.Component {
   constructor(props) {
@@ -17,6 +21,7 @@ class Main extends React.Component {
     this.state = {};
   }
 
+<<<<<<< HEAD
   fullParityModal() {
     const parityFullModal = document.getElementById("parityFullModal");
     parityFullModal.classList.toggle("is-active");
@@ -36,6 +41,11 @@ class Main extends React.Component {
   archiveParityModal() {
     const parityArchiveModal = document.getElementById("parityArchiveModal");
     parityArchiveModal.classList.toggle("is-active");
+=======
+  componentDidMount() {
+    ReactGA.initialize('UA-113322596-5');
+    ReactGA.pageview(window.location.pathname + window.location.search); 
+>>>>>>> master
   }
 
   render() {
