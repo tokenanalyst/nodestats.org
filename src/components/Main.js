@@ -1,7 +1,6 @@
 import React from "react";
 
 import Row from "./Row";
-import Modal from "./Modal";
 import {
   scrollDown,
   clickTooltip,
@@ -9,11 +8,34 @@ import {
   scrollFunction2,
   scrollUp
 } from "../lib/navigationFunctions";
+import {ParityFullModal, GethFullModal, ParityFastModal, GethFastModal, ParityArchiveModal} from "./Modal";
+
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  fullParityModal() {
+    const parityFullModal = document.getElementById("parityFullModal");
+    parityFullModal.classList.toggle("is-active");
+  }
+  fullGethModal() {
+    const gethFullModal = document.getElementById("gethFullModal");
+    gethFullModal.classList.toggle("is-active");
+  }
+  fastParityModal() {
+    const parityFastModal = document.getElementById("parityFastModal");
+    parityFastModal.classList.toggle("is-active");
+  }
+  fastGethModal() {
+    const gethFastModal = document.getElementById("gethFastModal");
+    gethFastModal.classList.toggle("is-active");
+  }
+  archiveParityModal() {
+    const parityArchiveModal = document.getElementById("parityArchiveModal");
+    parityArchiveModal.classList.toggle("is-active");
   }
 
   render() {
@@ -23,22 +45,25 @@ class Main extends React.Component {
           <div className="columns">
             <div className="page-divide" />
             <div className="columns column is-10 is-offset-1 is-mobile">
-              <div className="column is-6">
+              <div className="column is-6 half">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Parity</span>
-                    <span
-                      className="icon has-text-info company-icon tooltip"
-                      onClick={clickTooltip}
-                      id="tooltip"
-                    >
-                      <p className="tooltiptext">Tooltip text</p>
-                      <i className="fas fa-info-circle" />
-                    </span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
-                  <p>Full Node</p>
+                  <span>Full Node</span>
+                  <span
+                    className="company-icon icon tooltip"
+                    onClick={this.fullParityModal}
+                    id="tooltip"
+                  >
+                    <span className=""
+                    >
+                      <ParityFullModal />
+                    </span>
+                    <i className="fas fa-info-circle" />
+                  </span>
                 </div>
                 <div className="columns is-mobile has-text-centered">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
@@ -94,21 +119,24 @@ class Main extends React.Component {
                   datatype="netrx"
                 />
               </div>
-              <div className="column is-6 geth">
+              <div className="column is-6 half">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Geth</span>
-                    <span
-                      className="icon company-icon has-text-info tooltip"
-                      onClick={clickTooltip}
-                    >
-                      <p className="tooltiptext">Tooltip text</p>
-                      <i className="fas fa-info-circle" />
-                    </span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type not-used">
-                  <p id="full">Full Node</p>
+                  <span id="full">Full Node</span>
+                  <span
+                    className="icon company-icon tooltip"
+                    onClick={this.fullGethModal}
+                  >
+                    <span>
+                      <GethFullModal />
+                    </span>
+                    
+                    <i className="fas fa-info-circle" />
+                  </span>
                 </div>
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
@@ -185,18 +213,18 @@ class Main extends React.Component {
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Parity</span>
-                    <span
-                      className="icon has-text-info company-icon tooltip"
-                      onClick={clickTooltip}
-                      id="tooltip"
-                    >
-                      <p className="tooltiptext">Tooltip text</p>
-                      <i className="fas fa-info-circle" />
-                    </span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
-                  <p id="fast">Fast Node</p>
+                  <span id="fast">Fast Node</span>
+                  <span
+                    className="company-icon tooltip"
+                    onClick={this.fastParityModal}
+                  >
+                    <ParityFastModal />
+                    <div className=""></div>
+                    <i className="fas fa-info-circle node-circle" />
+                  </span>
                 </div>
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
@@ -256,17 +284,18 @@ class Main extends React.Component {
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Geth</span>
-                    <span
-                      className="icon company-icon has-text-info tooltip"
-                      onClick={clickTooltip}
-                    >
-                      <p className="tooltiptext">Tooltip text</p>
-                      <i className="fas fa-info-circle" />
-                    </span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type not-used">
-                  <p className="white">Fast Node</p>
+                  <span className="white">Fast Node</span>
+                  <span
+                    className="company-icon tooltip"
+                    onClick={this.fastGethModal}
+                  >
+                    <GethFastModal />
+
+                    <i className="fas fa-info-circle" />
+                  </span>
                 </div>
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
@@ -336,18 +365,19 @@ class Main extends React.Component {
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Parity</span>
-                    <span
-                      className="icon has-text-info company-icon tooltip"
-                      onClick={clickTooltip}
-                      id="tooltip"
-                    >
-                      <p className="tooltiptext">Tooltip text</p>
-                      <i className="fas fa-info-circle" />
-                    </span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
-                  <p id="archive">Archive Node</p>
+                  <span id="archive">Archive Node</span>
+                  <span
+                    className="company-icon tooltip"
+                    onClick={this.archiveParityModal}
+                    id="tooltip"
+                  >
+                    <ParityArchiveModal />
+
+                    <i className="fas fa-info-circle" />
+                  </span>
                 </div>
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
@@ -421,7 +451,7 @@ class Main extends React.Component {
                 Full
               </a>
             </div>
-            <Modal />
+
           </div>
           <footer className="footer">
             <div className="content has-text-centered">
