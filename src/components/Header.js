@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "./Modal";
+import {InfoModal} from "./Modal";
 
 class Header extends React.Component {
   constructor(props) {
@@ -14,8 +14,8 @@ class Header extends React.Component {
     burgerButton.classList.toggle("is-active");
   }
   openModal() {
-    const modal = document.getElementById("modal");
-    modal.classList.toggle("is-active");
+    const infoModal = document.getElementById("infoModal");
+    infoModal.classList.toggle("is-active");
   }
 
   render() {
@@ -26,7 +26,6 @@ class Header extends React.Component {
             className="logo"
             src="/images/Screenshot 2019-03-03 at 11.42.30.png"
           />
-
           <a
             role="button"
             className="navbar-burger burger"
@@ -52,14 +51,14 @@ class Header extends React.Component {
                 TokenAnalyst
               </a>
             </div>
-            <div className="is-vcentered button-box is-centered-mobile">
+            <div className="button-box is-centered-mobile">
               <button className="button navbar-item" onClick={this.openModal}>
                 About/info
               </button>
             </div>
           </div>
         </div>
-        <Modal />
+        <InfoModal/>
       </nav>
     );
   }
