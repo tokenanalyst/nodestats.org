@@ -1,29 +1,194 @@
 import React from 'react';
 
-function closeModal() {
-  const modal = document.getElementById('modal');
-  modal.classList.toggle('is-active');
+const mobileTooltips = <ul className="mobile-list">
+  <li><span className="list-header">% of time in sync:</span> The % of time in the past hour that the node has downloaded and verified all the block data for what its peers are informing it is the current highest chain tip</li>
+  <li>CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 @ 2.30GHz machine with two cores</li>
+  <li>Memory Usage: The memory usage for the node client process on a dedicated machine with 14GB of total memory available</li>
+  <li>Upstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs</li>
+  <li>Downstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs</li>
+  <li>Peer count: The number of peers currently connected to the node</li>
+  <li>Chain Data Size: The disk space taken up by the node client - including all of the chain</li>
+</ul>
+
+function closeInfoModal() {
+  const infoModal = document.getElementById('infoModal');
+  infoModal.classList.toggle('is-active');
+}
+function closeParityFullModal() {
+  const parityFullModal = document.getElementById('parityFullModal');
+  parityFullModal.classList.toggle('is-active');
+}
+function closeGethFullModal() {
+  const gethFullModal = document.getElementById('gethFullModal');
+  gethFullModal.classList.toggle('is-active');
+}
+function closeParityFastModal() {
+  const parityFastModal = document.getElementById('parityFastModal');
+  parityFastModal.classList.toggle('is-active');
+}
+function closeGethFastModal() {
+  const gethFastModal = document.getElementById('gethFastModal');
+  gethFastModal.classList.toggle('is-active');
+}
+function closeParityArchiveModal() {
+  const parityArchiveModal = document.getElementById('parityArchiveModal');
+  parityArchiveModal.classList.toggle('is-active');
 }
 
-function Modal() {
+export function InfoModal() {
   return (
-    <div className="modal" id="modal">
+    <div className="modal" id="infoModal">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">Modal title</p>
-          <button className="delete" aria-label="close" onClick={closeModal}></button>
+          <div className="modal-card-title">About this site</div>
         </header>
         <section className="modal-card-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <span>
+            This material is produced by querying various Ethereum nodes every 5 seconds, storing the results. Various rolling averages of these results are displayed on the website
+          </span>
         </section>
         <footer className="modal-card-foot">
-
+          <button className="button" onClick={closeInfoModal}>Close</button>
         </footer>
       </div>
-      <button className="modal-close is-large" aria-label="close" id="closeModal" onClick={closeModal}></button>
+    </div>
+  )
+}
+
+export function ParityFullModal() {
+  return (
+    <div className="modal" id="parityFullModal">
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <div className="modal-card-title">Parity Full Node</div>
+
+        </header>
+        <section className="modal-card-body">
+          <h3>Version:</h3>
+          <p>Version Parity-Ethereum/v2.2.11-stable-8e31051-20190220/x86_64-linuxgnu-rustc1.32.0</p>
+          <p className="flags">
+              /usr/bin/parity --ws-interface=0.0.0.0 --jsonrpc-interface=0.0.0.0 --
+            base-path='/var/ethereum' --mode=active --ws-origins='*' --
+            logging=info --db-path=/var/ethereum --tracing=off --cache-size=10024
+            --min-peers=512 --no-warp --log-file='/var/log/parity.log' 2>&1
+          </p>
+          {mobileTooltips}
+        </section>
+        <footer className="modal-card-foot">
+          <button className="button">Close</button>
+        </footer>
+      </div>
+
     </div>
   );
 }
+export function GethFullModal() {
+  return (
+    <div className="modal" id="gethFullModal">
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <div className="modal-card-title">Geth Full Node</div>
 
-export default Modal;
+        </header>
+        <section className="modal-card-body">
+          <h3>Version:</h3>
+          <p>1.8.23-stable-c9427004</p>
+          <p className="flags">
+          /usr/bin/geth --wsaddr 0.0.0.0 --rpcaddr 0.0.0.0 --datadir
+          /var/ethereum --wsorigins='*' --metrics --verbosity 3 --rpc --ws --
+          syncmode 'full' > /var/log/geth.log 2>&1
+          </p>
+          {mobileTooltips}
+        </section>
+        <footer className="modal-card-foot">
+          <button className="button">Close</button>
+        </footer>
+      </div>
+
+    </div>
+  );
+}
+export function ParityFastModal() {
+  return (
+    <div className="modal" id="parityFastModal">
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <div className="modal-card-title">Parity Fast Node</div>
+
+        </header>
+        <section className="modal-card-body">
+          <h3>Version:</h3>
+          <p>Version Parity-Ethereum/v2.2.11-stable-8e31051-20190220/x86_64-linux-gnu/rustc1.32.0</p>
+          <p className="flags">
+          /usr/bin/parity --ws-interface=0.0.0.0 --jsonrpc-interface=0.0.0.0 --
+          pruning=fast --base-path='/var/ethereum' --mode=active --ws-
+          origins='*' --logging=info --db-path=/var/ethereum --tracing=off --
+          cache-size=10024 --min-peers=512 --log-file='/var/log/parity.log'
+          </p>
+          {mobileTooltips}
+        </section>
+        <footer className="modal-card-foot">
+          <button className="button">Close</button>
+        </footer>
+      </div>
+
+    </div>
+  );
+}
+export function GethFastModal() {
+  return (
+    <div className="modal" id="gethFastModal">
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <div className="modal-card-title">Geth Fast Node</div>
+
+        </header>
+        <section className="modal-card-body">
+          <h3>Version:</h3>
+          <p>1.8.23-stable-c9427004</p>
+          <p className="flags">
+          /usr/bin/geth --wsaddr 0.0.0.0 --rpcaddr 0.0.0.0 --datadir
+          /var/ethereum --wsorigins='*' --metrics --verbosity 3 --rpc --ws --
+          syncmode 'fast' > /var/log/geth.log 2>&1
+          </p>
+          {mobileTooltips}
+        </section>
+        <footer className="modal-card-foot">
+          <button className="button">Close</button>
+        </footer>
+      </div>
+
+    </div>
+  );
+}
+export function ParityArchiveModal() {
+  return (
+    <div className="modal" id="parityArchiveModal">
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <div className="modal-card-title">Parity Archive Node</div>
+
+        </header>
+        <section className="modal-card-body">
+          <h3>Version:</h3>
+          <p>Version Parity-Ethereum/v2.3.4-beta-0e95db1-20190220/x86_64-linux-gnu/rustc1.32.0</p>
+          <p className="flags">
+          /usr/bin/parity --cache-size=100000 --db-compaction=ssd --ws-
+          interface=0.0.0.0 --jsonrpc-interface=0.0.0.0 --pruning=archive --
+          </p>
+          {mobileTooltips}
+        </section>
+        <footer className="modal-card-foot">
+          <button className="button">Close</button>
+        </footer>
+      </div>
+
+    </div>
+  );
+}

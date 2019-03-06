@@ -83,6 +83,16 @@ class Row extends React.Component {
     }
   }
 
+  tooltip() {
+    if (this.datatype === 'sync%') return '% of time in sync: The % of time in the past hour that the node has downloaded and verified all the block data for what its peers are informing it is the current highest chain tip'
+    if (this.datatype === 'cpu') return 'CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 @ 2.30GHz machine with two cores';
+    if (this.datatype === 'ram') return  'Memory Usage: The memory usage for the node client process on a dedicated machine with 14GB of total memory available'
+    if (this.datatype === 'nettx') return 'Upstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
+    if (this.datatype === 'netrx') return 'Downstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
+    if (this.datatype === 'peers') return 'Peer count: The number of peers currently connected to the node'
+    if (this.datatype === 'disk') return 'Chain Data Size: The disk space taken up by the node client - including all of the chain '
+  }
+
   componentDidMount() {
     if (this.conflicturl) {
       axios
@@ -107,7 +117,7 @@ class Row extends React.Component {
       <span>
         {this.state == null ? (
           <p>
-            <i className="fa fa-spinner fa-spin chart-spinner" />
+            <i className="fa fa-spinner fa-spin spinner" />
           </p>
         ) : (
           <p className="data">{this.transform(this.state)}</p>
@@ -123,7 +133,9 @@ class Row extends React.Component {
           {this.text} <span className="mobile-table-header">(1hr)</span>
         </p>
         <span className="icon has-text-info tooltip column is-3-desktop is-3">
-          <p className="tooltiptext">{"hello"}</p>
+
+          <p className="tooltiptext">{this.tooltip()}</p>
+
           <i className="fas fa-info-circle" />
         </span>
       </span>

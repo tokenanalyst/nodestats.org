@@ -28,7 +28,6 @@ h3 {
   margin-left: -3px;
   top: 0;
   bottom: 0;
-  z-index: 11;
 }
 
 .Bitmex-link {
@@ -55,12 +54,34 @@ h3 {
 .subtitle {
   padding-right: 100px;
 }
+.half {
+  position: relative;
+  z-index: auto;
+}
+.modal-card {
+  color: black;
+  font-size: 20px;
+}
+.flags {
+  background-color: #eeeeee;
+  font-family: 'B612 Mono', monospace;
+  font-size: 18px;
+}
+.mobile-list {
+  font-size: 12px;
+  display: none;
+  text-align: left;
+}
+#infoModal {
+  font-size: 30px;
+}
 .title-box {
   margin: auto;
   padding-left: 180px;
   text-align: center;
 }
 .node-type {
+  position: relative;
   background-color: #0080ff;
   color: white;
   font-size: ms(4);
@@ -92,7 +113,6 @@ h3 {
   text-align: left;
   height: 80px;
   background-color: white;
-  z-index: 0;
   font-size: ms(3)
 }
 .icon {
@@ -104,7 +124,6 @@ h3 {
   font-family: $metricfont;
   font-weight: 800;
 }
-
 .bitmex-logo {
   margin: auto;
 }
@@ -123,7 +142,6 @@ h3 {
 nav {
   border-bottom: 1px solid #ccc;
   margin-bottom: 50px;
-  z-index: 0;
 }
 .navbar-item {
   font-size: ms(3);
@@ -136,39 +154,31 @@ nav {
 }
 .footer {
   border-top: 2px solid #0080ff;
-  z-index: 2;
 }
 .button {
   color: white;
   background-color: #0080ff;
 }
 .button-box {
-  margin-top: 10px;
-  margin-right: 20px;
-  margin-bottom: 10px;
+  margin: auto 20px;
   width: 50px;
 }
-// .content {
-//   position: sticky;
-//   top: 30;
-//   width: 100%;
-//   z-index: 99;
-// }
 .name {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 3;
   background-color: white;
   width: 100%;
   height: 40px;
 }
 .company {
   margin-right: 8px;
-  font-size: ms(3)
+  font-size: ms(3);
+  z-index: 2;
 }
 .company-icon {
   font-size: ms(3);
+  padding-left: 10px;
 }
 .box {
   margin: auto;
@@ -176,28 +186,22 @@ nav {
 .footer {
   margin-top: 80px;
 }
-.chart {
-}
 .charts {
   margin-left: 0;
   padding: 0;
   height: 144px;
 }
-.chart:hover {
-  // transform: scale(1.5);
-  // z-index: 1;
-}
+
 .icon:hover {
  cursor: pointer;
 }
 .tooltip {
   position: relative;
   display: inline-block;
-  z-index: 99;
 }
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
+  width: 230px;
   background-color: #555;
   color: #fff;
   font-size: ms(2);
@@ -205,12 +209,12 @@ nav {
   padding: 5px 0;
   border-radius: 6px;
   position: absolute;
-  z-index: 99;
   bottom: 125%;
   left: 50%;
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
+  padding: 20px;
 }
 .tooltip .tooltiptext::after {
   content: "";
@@ -220,14 +224,10 @@ nav {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  z-index: 99;
   border-color: #555 transparent transparent transparent;
 }
 .tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-.tooltip-mobile .tooltiptext {
+  position: absolute;
   visibility: visible;
   opacity: 1;
 }
@@ -243,7 +243,7 @@ nav {
   cursor: pointer;
   padding: 15px;
   height: 50px;
-  z-index: 99;
+  z-index: 1;
 }
 .navs {
   position: absolute;
@@ -270,6 +270,12 @@ nav {
   color: #0080ff;
 }
 .chart-spinner {
+  font-size: 30px;
+  background: -webkit-linear-gradient(#eee, #0080ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.spinner {
   font-size: 40px;
   background: -webkit-linear-gradient(#eee, #0080ff);
   -webkit-background-clip: text;
@@ -280,7 +286,6 @@ nav {
   position: absolute;
   left: 45%;
   top: 30%;
-  z-index: 0;
   background: -webkit-linear-gradient(#eee, #0080ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -296,39 +301,22 @@ nav {
 }
 .columns.is-mobile > .column.is-6 {
   padding: 0;
-  z-index: 2;
 }
 .navbar-brand {
   margin-left: 10%;
 }
-// .navbar-end {
-//   margin-right: 120px;
-// }
 @keyframes bounce {
   0% {color: black; bottom: 20px; right: 40px;}
   25% {color: black; bottom: 25px; right: 40px;}
   50% {color: grey; bottom: 15px; right: 40px;}
   75% {color: grey; bottom: 20px; right: 40px;}
 }
-// .scroll-box {
-//   position: fixed;
-//   z-index: 99;
-//   font-size: 18px;
-//   border: none;
-//   outline: none;
-//   color: black;
-//   cursor: pointer;
-//   padding: 15px;
-//   border-radius: 4px;
-//   background-color: white;
-// }
 .move-page-up:hover {
   background-color: #555;
 }
 .move-page-down:hover {
   background-color: #555;
 }
-
 
 // --- Media queries ----
 
@@ -359,20 +347,46 @@ nav {
     padding-left: 20px;
     padding-bottom: 10px;
   }
-  .main-spinner {
+  .spinner {
+    font-size: 30px;
+    background: -webkit-linear-gradient(#eee, #0080ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .data {
     font-size: 15px;
     height: 40px;
     margin: 10px 0 20px 0;
+    padding: 0 0 15px 0;
   }
   .table-header {
     font-size: 12px;
     text-align: center;
   }
+  .modal-card {
+    width: 70%;
+    font-size: 17px;
+  }
+  .flags {
+    font-size: 12px;
+  }
+  .mobile-list {
+    display: block;
+  }
   body {
     background-color: #eeeeee;
     z-index: -2;
+  }
+  .tooltip .tooltiptext {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+    z-index: 99;
   }
   .row {
     background-color: white;
@@ -393,6 +407,9 @@ nav {
   .mobile-table-header {
     display: inline-block;
   }
+  .has-text-info {
+    display: none;
+  }
 }
 
 @media (max-width: 775px) {
@@ -401,14 +418,17 @@ nav {
   }
   .node-type {
    font-size: ms(4);
+
   }
   .text {
-
     padding-left: 20px;
     padding-right: 20px;
   }
+  .links {
+    margin-left: 10%;
+  }
   .button-box {
-    margin: 10px;
+    margin-left: 12%;
   }
   .arrowDown, .arrowUp {
     visibility: hidden;
@@ -417,12 +437,6 @@ nav {
     height: 2000px;
     display: none;
   }
-  // .Bitmex-link {
-  //   padding: 20px;
-  // }
-  // .TokenAnalyst-link {
-  //   padding: 10px;
-  // }
   .scroll-box {
     width: 110%;
     position: fixed;
