@@ -9,11 +9,17 @@ import {
   scrollFunction2,
   scrollUp
 } from "../lib/navigationFunctions";
+import ReactGA from 'react-ga';
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    ReactGA.initialize('UA-113322596-5');
+    ReactGA.pageview(window.location.pathname + window.location.search); 
   }
 
   render() {
