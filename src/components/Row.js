@@ -54,7 +54,7 @@ class Row extends React.Component {
         }
       });
     if (comparetotal == 0){
-      return 100
+      return 0
     }
     else {
     return 100*(notinsynccounter/comparetotal);
@@ -79,7 +79,7 @@ class Row extends React.Component {
         return value.metric.data[0].mean.toFixed(2) + " KiB/s";
       case "conflict%":
         //  console.log(value.metric.data)
-        return this.conflict(value.metric.data, value.conflict.data);
+        return this.conflict(value.metric.data, value.conflict.data) + "%";
     }
   }
 
