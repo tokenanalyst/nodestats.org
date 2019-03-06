@@ -18,7 +18,7 @@ class Charts extends React.Component {
   componentDidMount() {
     if (this.datatype=='sync%'){
       axios.get(url + this.url).then(data => {
-        this.setState(data); console.log(data);
+        this.setState(data); console.log(data)
       });
     }
     axios.get(url + this.url).then(data => {
@@ -45,7 +45,14 @@ class Charts extends React.Component {
           <div className="chart-box">
             {(() => {
               for (let i = 0; i < data.length; i++) {
-                arrayValues.push(data[i].value);
+                if (data[i].value == true){
+                    var value = 1
+                }
+                else if (data[i].value == false){
+                    var value = 0
+                }
+                else var value = data[i].value
+                arrayValues.push(value);
                 arrayTimes.push(data[i].time.slice(11, 19));
               }
             })()}
