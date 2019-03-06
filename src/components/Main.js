@@ -8,12 +8,15 @@ import {
   scrollFunction2,
   scrollUp
 } from "../lib/navigationFunctions";
-<<<<<<< HEAD
-import {ParityFullModal, GethFullModal, ParityFastModal, GethFastModal, ParityArchiveModal} from "./Modal";
 
-=======
 import ReactGA from 'react-ga';
->>>>>>> master
+import {
+  ParityFullModal,
+  GethFullModal,
+  ParityFastModal,
+  GethFastModal,
+  ParityArchiveModal
+} from "./Modal";
 
 class Main extends React.Component {
   constructor(props) {
@@ -21,7 +24,11 @@ class Main extends React.Component {
     this.state = {};
   }
 
-<<<<<<< HEAD
+
+  componentDidMount() {
+    ReactGA.initialize('UA-113322596-5');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
   fullParityModal() {
     const parityFullModal = document.getElementById("parityFullModal");
     parityFullModal.classList.toggle("is-active");
@@ -41,11 +48,7 @@ class Main extends React.Component {
   archiveParityModal() {
     const parityArchiveModal = document.getElementById("parityArchiveModal");
     parityArchiveModal.classList.toggle("is-active");
-=======
-  componentDidMount() {
-    ReactGA.initialize('UA-113322596-5');
-    ReactGA.pageview(window.location.pathname + window.location.search); 
->>>>>>> master
+
   }
 
   render() {
@@ -144,7 +147,7 @@ class Main extends React.Component {
                     <span>
                       <GethFullModal />
                     </span>
-                    
+
                     <i className="fas fa-info-circle" />
                   </span>
                 </div>
@@ -171,7 +174,6 @@ class Main extends React.Component {
                   text="CPU Usage"
                   reverseOrder="true"
                   datatype="cpu"
-                  className="geth-row"
                 />
                 <Row
                   text="Memory (RAM) Usage"
@@ -179,7 +181,6 @@ class Main extends React.Component {
                   charturl="/geth-full-ram-24h"
                   reverseOrder="true"
                   datatype="ram"
-                  className="geth-row"
                 />
                 <Row
                   text="# of Peers"
@@ -187,7 +188,6 @@ class Main extends React.Component {
                   charturl="/geth-full-peers-24h"
                   reverseOrder="true"
                   datatype="peers"
-                  className="geth-row"
                 />
                 <Row
                   text="Chain data size"
@@ -195,7 +195,6 @@ class Main extends React.Component {
                   charturl="/geth-full-disk-24h"
                   reverseOrder="true"
                   datatype="disk"
-                  className="geth-row"
                 />
                 <Row
                   text="Upstream"
@@ -203,7 +202,6 @@ class Main extends React.Component {
                   charturl="/geth-full-nettx-24h"
                   reverseOrder="true"
                   datatype="nettx"
-                  className="geth-row"
                 />
                 <Row
                   text="Downstream"
@@ -211,7 +209,6 @@ class Main extends React.Component {
                   charturl="/geth-full-netrx-24h"
                   reverseOrder="true"
                   datatype="netrx"
-                  className="geth-row"
                 />
               </div>
             </div>
