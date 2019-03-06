@@ -28,67 +28,79 @@ class Row extends React.Component {
   }
 
   conflict(paritycurrent, gethcurrent) {
-    if (
-      typeof paritycurrent != "undefined" &&
-      typeof gethcurrent != "undefined"
-    ) {
-      var blockhashmap = {};
-      var notinsynccounter = 0;
-      var comparetotal = 0;
-      for (var i = 0; i < paritycurrent.length; i++) {
-        var keyparity = paritycurrent[i].blockNumber;
-        blockhashmap[keyparity] = [paritycurrent[i].blockHash];
+    // if (
+    //   typeof paritycurrent != "undefined" &&
+    //   typeof gethcurrent != "undefined"
+    // ) {
+    var blockhashmap = {};
+    var notinsynccounter = 0;
+    var comparetotal = 0;
+    for (var i = 0; i < paritycurrent.length; i++) {
+      var keyparity = paritycurrent[i].blockNumber;
+      blockhashmap[keyparity] = [paritycurrent[i].blockHash];
+    }
+    for (var j = 0; j < gethcurrent.length; j++) {
+      var keygeth = gethcurrent[j].blockNumber;
+      if (keygeth in blockhashmap) {
+        blockhashmap[keygeth].push(gethcurrent[j].blockHash);
       }
-      for (var j = 0; j < gethcurrent.length; j++) {
-        var keygeth = gethcurrent[j].blockNumber;
-        if (keygeth in blockhashmap) {
-          blockhashmap[keygeth].push(gethcurrent[j].blockHash);
-        }
+    }
+    Object.keys(blockhashmap).forEach(function(key) {
+      if (blockhashmap[key].length > 1) {
+         comparetotal++;
       }
-      Object.keys(blockhashmap).forEach(function(key) {
-        if (blockhashmap[key].length > 1) {
-          comparetotal++;
-          if (blockhashmap[key][0] != blockhashmap[key][1]) {
-            notinsynccounter++;
-          }
+      if (blockhashmap[key][0] != blockhashmap[key][1]) {
+         notinsynccounter++;
         }
       });
-      return 100 * (notinsynccounter / comparetotal);
-    } else {
-      return 0;
+    if (comparetotal == 0){
+      return 100
+    }
+    else {
+    return 100*(notinsynccounter/comparetotal);
     }
   }
 
   transform(value) {
     switch (this.datatype) {
       case "sync%":
-        return this.percentsync(value.metric).toFixed(2) + "%";
+        return this.percentsync(value.metric.data).toFixed(2) + "%";
       case "cpu":
         return value.metric.data[0].mean.toFixed(2) + " %";
       case "ram":
       case "disk":
-        return (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB";
+        return (
+          (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB"
+        );
       case "peers":
         return Math.floor(value.metric.data[0].mean);
       case "nettx":
       case "netrx":
-        console.log(value.metric.data)[0];
         return value.metric.data[0].mean.toFixed(2) + " KiB/s";
       case "conflict%":
-        console.log(value.metric.data)
-      // return this.conflict(value.metric, value.conflict);
+        //  console.log(value.metric.data)
+        return this.conflict(value.metric.data, value.conflict.data);
     }
   }
 
   componentDidMount() {
-    axios.all([
-      axios.get(url + this.metricurl),
-      axios.get(url + this.conflicturl)
-    ])
-    .then(axios.spread((metricres, conflictres) => {
-      this.setState({metric: metricres, conflict: conflictres})
-    })
-    )};
+    if (this.conflicturl) {
+      axios
+        .all([
+          axios.get(url + this.metricurl),
+          axios.get(url + this.conflicturl)
+        ])
+        .then(
+          axios.spread((metricres, conflictres) => {
+            this.setState({ metric: metricres, conflict: conflictres });
+          })
+        );
+    } else {
+      axios.get(url + this.metricurl).then(data => {
+        this.setState({ metric: data });
+      });
+    }
+  }
 
   mean() {
     return (
