@@ -23,7 +23,7 @@ h3 {
 
 .page-divide {
   border-left: 1px solid #ccc;
-  height: 3100px;
+  height: 3800px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
@@ -65,6 +65,9 @@ h3 {
 }
 .modal-inner-card {
   padding: 20px;
+}
+.pointer{
+  cursor: pointer;
 }
 .flags {
   background-color: #eeeeee;

@@ -134,6 +134,7 @@ class Main extends React.Component {
                 <Row
                   metricurl="/parity-full-current-24h"
                   conflicturl="/geth-full-current-24h"
+                  charturl="/parity-full-current-24h"
                   text="% of time in conflict"
                   datatype="conflict%"
                 />
@@ -150,7 +151,7 @@ class Main extends React.Component {
                     className="icon company-icon tooltip"
                     onClick={this.fullGethModal}
                   >
-                    <span>
+                    <span className='pointer'>
                       <GethFullModal />
                     </span>
 
@@ -220,6 +221,7 @@ class Main extends React.Component {
                 <Row
                   metricurl="/geth-full-current-24h"
                   conflicturl="/parity-full-current-24h"
+                  charturl="/geth-full-current-24h"
                   text="% of time in conflict"
                   reverseOrder="true"
                   datatype="conflict%"
@@ -303,6 +305,7 @@ class Main extends React.Component {
                 <Row
                   metricurl="/parity-fast-current-24h"
                   conflicturl="/geth-fast-current-24h"
+                  charturl="/parity-fast-current-24h"
                   text="% of time in conflict"
                   datatype="conflict%"
                 />
@@ -387,6 +390,7 @@ class Main extends React.Component {
                 <Row
                   metricurl="/geth-fast-current-24h"
                   conflicturl="/parity-fast-current-24h"
+                  charturl="/geth-fast-current-24h"
                   text="% of time in conflict"
                   reverseOrder="true"
                   datatype="conflict%"

@@ -16,11 +16,11 @@ class Charts extends React.Component {
 
   // }
   componentDidMount() {
-    if (this.datatype=='sync%'){
+    if (this.datatype == "conflict%"){
       axios.get(url + this.url).then(data => {
-        this.setState(data); console.log(data)
-      });
-    }
+      console.log(data)
+    })
+  }
     axios.get(url + this.url).then(data => {
       this.setState(data);
       localStorage.setItem(this.url, JSON.stringify(data)); // caching for fallback
@@ -50,6 +50,9 @@ class Charts extends React.Component {
                 }
                 else if (data[i].value == false){
                     var value = 0
+                }
+                else if (data[i].blockNumber || data[i].blockHash){
+                  value = 0 //placehold for conflict sync chart
                 }
                 else var value = data[i].value
                 arrayValues.push(value);
@@ -86,9 +89,6 @@ class Charts extends React.Component {
                   [arrayTimes[1400] || [], arrayValues[1400]]
                 ]}
                 options={{
-                  tooltip: {
-                    trigger: 'none' 
-                  },
                   lineWidth: 3,
                   legend: "none",
                   chart: {},
