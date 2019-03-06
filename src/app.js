@@ -6,7 +6,16 @@ import Header from './components/Header';
 import 'bulma';
 import './scss/style.scss';
 
+import * as Sentry from '@sentry/browser';
+
 class App extends React.Component {
+
+  constructor() {
+    super();
+    Sentry.init({
+      dsn: "https://83b23428cd2348f8833977688d1bbd6a@sentry.io/1409225"
+    });
+  }
 
   render() {
     return (

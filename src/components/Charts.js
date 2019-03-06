@@ -2,6 +2,8 @@ import React from "react";
 import Chart from "react-google-charts";
 import axios from "axios";
 
+import * as Sentry from '@sentry/browser';
+
 var url = "http://nodestats.tokenanalyst.io";
 
 class Charts extends React.Component {
@@ -12,6 +14,16 @@ class Charts extends React.Component {
   componentDidMount() {
     axios.get(url + this.url).then(data => {
       this.setState(data);
+      localStorage.setItem(this.url, JSON.stringify(data)); // caching for fallback
+    }).catch(err => {
+      const cachedMetric = JSON.parse(localStorage.getItem(this.url));
+      if(cachedMetric != null) {
+        this.setState(cachedMetric);
+        Sentry.captureException(new Error("Loaded from cache instead of API, API not reachable; Fallback used."));
+      } else {
+        console.log("No cache and no API")
+        Sentry.captureException(new Error("No Cache and no API, Fatal error"));
+      }
     });
   }
   render() {

@@ -2,6 +2,8 @@ import React from "react";
 import Charts from "./Charts";
 import axios from "axios";
 
+import * as Sentry from '@sentry/browser';
+
 var url = "http://nodestats.tokenanalyst.io";
 
 class Row extends React.Component {
@@ -28,10 +30,6 @@ class Row extends React.Component {
   }
 
   conflict(paritycurrent, gethcurrent) {
-    // if (
-    //   typeof paritycurrent != "undefined" &&
-    //   typeof gethcurrent != "undefined"
-    // ) {
     var blockhashmap = {};
     var notinsynccounter = 0;
     var comparetotal = 0;
@@ -57,7 +55,7 @@ class Row extends React.Component {
       return 0
     }
     else {
-    return 100*(notinsynccounter/comparetotal);
+      return 100*(notinsynccounter/comparetotal);
     }
   }
 
@@ -95,19 +93,35 @@ class Row extends React.Component {
 
   componentDidMount() {
     if (this.conflicturl) {
-      axios
-        .all([
-          axios.get(url + this.metricurl),
-          axios.get(url + this.conflicturl)
-        ])
-        .then(
-          axios.spread((metricres, conflictres) => {
-            this.setState({ metric: metricres, conflict: conflictres });
-          })
-        );
+      Promise.all([axios.get(url + this.metricurl), axios.get(url + this.conflicturl)])
+        .then(function([metricres, conflictres])  {
+          this.setState({ metric: metricres, conflict: conflictres });
+          localStorage.setItem(this.metricurl, JSON.stringify(metricres)); // caching for fallback
+          localStorage.setItem(this.conflicturl, JSON.stringify(conflictres)); // caching for fallback
+        })
+        .catch(err => {
+          const cachedMetric = JSON.parse(localStorage.getItem(this.metricurl))
+          const cachedConflict = JSON.parse(localStorage.getItem(this.conflicturl))
+          if(cachedMetric != null && cachedConflict != null) {
+            this.setState({ metric: cachedMetric, conflict: cachedConflict});
+            Sentry.captureException(new Error("Loaded from cache instead of API, API not reachable; Fallback used."));
+          } else {
+            Sentry.captureException(new Error("No Cache and no API, Fatal error"));
+          }
+        })
     } else {
       axios.get(url + this.metricurl).then(data => {
         this.setState({ metric: data });
+        localStorage.setItem(this.metricurl, JSON.stringify(data)); // caching for fallback
+      })
+      .catch(err => {
+        const cachedMetric = JSON.parse(localStorage.getItem(this.metricurl))
+        if(cachedMetric != null) {
+          this.setState({ metric: cachedMetric});
+        } else {
+          console.log("No cache and no API")
+          Sentry.captureException(new Error("No Cache and no API, Fatal error"));
+        }
       });
     }
   }
