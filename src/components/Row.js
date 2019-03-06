@@ -76,7 +76,6 @@ class Row extends React.Component {
       case "netrx":
         return value.metric.data[0].mean.toFixed(2) + " KiB/s";
       case "conflict%":
-        //  console.log(value.metric.data)
         return this.conflict(value.metric.data, value.conflict.data);
     }
   }
@@ -93,12 +92,13 @@ class Row extends React.Component {
 
   componentDidMount() {
     if (this.conflicturl) {
-      Promise.all([axios.get(url + this.metricurl), axios.get(url + this.conflicturl)])
-        .then(function([metricres, conflictres])  {
+      axios.all([axios.get(url + this.metricurl), axios.get(url + this.conflicturl)])
+        .then(axios.spread((metricres, conflictres)  => {
           this.setState({ metric: metricres, conflict: conflictres });
           localStorage.setItem(this.metricurl, JSON.stringify(metricres)); // caching for fallback
           localStorage.setItem(this.conflicturl, JSON.stringify(conflictres)); // caching for fallback
         })
+      )
         .catch(err => {
           const cachedMetric = JSON.parse(localStorage.getItem(this.metricurl))
           const cachedConflict = JSON.parse(localStorage.getItem(this.conflicturl))
