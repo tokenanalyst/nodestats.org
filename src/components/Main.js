@@ -75,7 +75,7 @@ class Main extends React.Component {
                     >
                       <ParityFullModal />
                     </span>
-                    <i className="fas fa-info-circle" />
+                    <i className="fas fa-question-circle" />
                   </span>
                 </div>
                 <div className="columns is-mobile has-text-centered">
@@ -154,7 +154,7 @@ class Main extends React.Component {
                       <GethFullModal />
                     </span>
 
-                    <i className="fas fa-info-circle" />
+                    <i className="fas fa-question-circle" />
                   </span>
                 </div>
                 <div className="columns is-mobile">
@@ -244,7 +244,7 @@ class Main extends React.Component {
                   >
                     <ParityFastModal />
                     <div className=""></div>
-                    <i className="fas fa-info-circle node-circle" />
+                    <i className="fas fa-question-circle node-circle" />
                   </span>
                 </div>
                 <div className="columns is-mobile">
@@ -321,7 +321,7 @@ class Main extends React.Component {
                   >
                     <GethFastModal />
 
-                    <i className="fas fa-info-circle" />
+                    <i className="fas fa-question-circle" />
                   </span>
                 </div>
                 <div className="columns is-mobile">
@@ -411,7 +411,7 @@ class Main extends React.Component {
                   >
                     <ParityArchiveModal />
 
-                    <i className="fas fa-info-circle" />
+                    <i className="fas fa-question-circle" />
                   </span>
                 </div>
                 <div className="columns is-mobile">
