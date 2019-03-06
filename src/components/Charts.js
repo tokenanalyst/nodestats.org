@@ -16,11 +16,6 @@ class Charts extends React.Component {
 
   // }
   componentDidMount() {
-    if (this.datatype == "conflict%"){
-      axios.get(url + this.url).then(data => {
-      console.log(data)
-    })
-  }
     axios.get(url + this.url).then(data => {
       this.setState(data);
       localStorage.setItem(this.url, JSON.stringify(data)); // caching for fallback

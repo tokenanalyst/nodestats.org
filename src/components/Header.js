@@ -45,11 +45,11 @@ class Header extends React.Component {
         <div id="menu" className="navbar-menu">
           <div className="navbar-end">
             <div className="navbar-item links">
-              <a href="#" className="Bitmex-link">
+              <a href="https://blog.bitmex.com/research/" target="_blank" className="Bitmex-link">
                 BitMEX
               </a>
               <span className="line">|</span>
-              <a href="#" className="TokenAnalyst-link">
+              <a href="https://www.tokenanalyst.io/" target="_blank" className="TokenAnalyst-link">
                 TokenAnalyst
               </a>
             </div>

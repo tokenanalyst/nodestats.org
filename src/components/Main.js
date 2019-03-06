@@ -497,6 +497,7 @@ class Main extends React.Component {
               <div className="columns">
                 <div className="level is-mobile column is-4-desktop is-offset-4">
                   <div className="level-left-mobile has-text-centered">
+                  <a href="https://blog.bitmex.com/research/" target="_blank">
                     <figure className="image is-128x128 bitmex-logo level-item">
                       <img
                         className=""
@@ -504,15 +505,18 @@ class Main extends React.Component {
                         alt="Bitmex Logo"
                       />
                     </figure>
+                    </a>
                   </div>
                   <div className="level-right-mobile has-text-centered">
-                    <figure className="image is-156x156 tokenanalyst-logo level-item">
+                  <a href="https://www.tokenanalyst.io/" target="_blank">
+                    <figure className="image is-130x130 tokenanalyst-logo level-item">
                       <img
                         className=""
                         src={talogo}
                         alt="TokenAnalyst Logo"
                       />
                     </figure>
+                    </a>
                   </div>
                 </div>
               </div>
