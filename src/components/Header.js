@@ -43,7 +43,7 @@ class Header extends React.Component {
           <div className="navbar-end">
             <div className="navbar-item links">
               <a href="https://blog.bitmex.com/research/" target="_blank" className="Bitmex-link">
-                BitMEX
+                BitMEX Research
               </a>
               <span className="line">|</span>
               <a href="https://www.tokenanalyst.io/" target="_blank" className="TokenAnalyst-link">
