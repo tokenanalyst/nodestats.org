@@ -2,7 +2,7 @@ import React from "react";
 import Chart from "react-google-charts";
 import axios from "axios";
 
-import * as Sentry from '@sentry/browser';
+import * as Sentry from "@sentry/browser";
 
 var url = "http://nodestats.tokenanalyst.io";
 
@@ -10,25 +10,30 @@ class Charts extends React.Component {
   constructor(props) {
     super(props);
     this.url = props.url;
-    this.datatype = props.datatype
   }
-  // syncdataparse(syncdata){
-
-  // }
   componentDidMount() {
-    axios.get(url + this.url).then(data => {
-      this.setState(data);
-      localStorage.setItem(this.url, JSON.stringify(data)); // caching for fallback
-    }).catch(err => {
-      const cachedMetric = JSON.parse(localStorage.getItem(this.url));
-      if(cachedMetric != null) {
-        this.setState(cachedMetric);
-        Sentry.captureException(new Error("Loaded from cache instead of API, API not reachable; Fallback used."));
-      } else {
-        console.log("No cache and no API")
-        Sentry.captureException(new Error("No Cache and no API, Fatal error"));
-      }
-    });
+    axios
+      .get(url + this.url)
+      .then(data => {
+        this.setState(data);
+        localStorage.setItem(this.url, JSON.stringify(data)); // caching for fallback
+      })
+      .catch(err => {
+        const cachedMetric = JSON.parse(localStorage.getItem(this.url));
+        if (cachedMetric != null) {
+          this.setState(cachedMetric);
+          Sentry.captureException(
+            new Error(
+              "Loaded from cache instead of API, API not reachable; Fallback used."
+            )
+          );
+        } else {
+          console.log("No cache and no API");
+          Sentry.captureException(
+            new Error("No Cache and no API, Fatal error")
+          );
+        }
+      });
   }
   render() {
     if (this.state != null) {
@@ -40,16 +45,13 @@ class Charts extends React.Component {
           <div className="chart-box">
             {(() => {
               for (let i = 0; i < data.length; i++) {
-                if (data[i].value == true){
-                    var value = 1
-                }
-                else if (data[i].value == false){
-                    var value = 0
-                }
-                else if (data[i].blockNumber || data[i].blockHash){
-                  value = 0 //placehold for conflict sync chart
-                }
-                else var value = data[i].value
+                if (data[i].value == true) {
+                  var value = 1;
+                } else if (data[i].value == false) {
+                  var value = 0;
+                } else if (data[i].blockNumber || data[i].blockHash) {
+                  value = 0; //placehold for conflict sync chart
+                } else var value = data[i].value;
                 arrayValues.push(value);
                 arrayTimes.push(data[i].time.slice(11, 19));
               }
