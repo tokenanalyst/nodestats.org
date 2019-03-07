@@ -55,7 +55,7 @@ class Row extends React.Component {
       return 0
     }
     else {
-      return 100*(notinsynccounter/comparetotal);
+      return 0*(notinsynccounter/comparetotal);
     }
   }
 

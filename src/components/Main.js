@@ -536,8 +536,8 @@ class Main extends React.Component {
                 from sources we believe to be reliable. Such information has not
                 been verified and we make no representation or warranty as to
                 its accuracy, completeness or correctness. The website is
-                produced by BitMEX Research and <a href="https://www.tokenanalyst.io/" target="_blank">TokenAnalyst</a>, neither BitMEX,
-                <a href="https://www.tokenanalyst.io/" target="_blank">TokenAnalyst</a> nor any other entity, will be liable whatsoever for
+                produced by BitMEX Research and <a href="https://www.tokenanalyst.io/" target="_blank">TokenAnalyst</a>, neither BitMEX, 
+                <a href="https://www.tokenanalyst.io/" target="_blank"> TokenAnalyst</a> nor any other entity, will be liable whatsoever for
                 any direct or consequential loss arising from the use of this
                 publication/communication or its contents.
               </p>
