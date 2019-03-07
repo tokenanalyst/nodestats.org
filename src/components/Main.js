@@ -520,6 +520,11 @@ class Main extends React.Component {
                   </div>
                 </div>
               </div>
+              <p>
+                This material is produced by querying various Ethereum nodes every 5
+                seconds, storing the results. Various rolling averages of these
+                results are displayed on the website.
+              </p>
               <p className="disclaimer">
                 This material should not be the basis for making investment
                 decisions, nor be construed as a recommendation to engage in

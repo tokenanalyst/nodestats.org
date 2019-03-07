@@ -15,10 +15,6 @@ class Header extends React.Component {
     burger.classList.toggle("is-active");
     burgerButton.classList.toggle("is-active");
   }
-  openModal() {
-    const infoModal = document.getElementById("infoModal");
-    infoModal.classList.toggle("is-active");
-  }
 
   render() {
     return (
@@ -52,11 +48,6 @@ class Header extends React.Component {
               <a href="https://www.tokenanalyst.io/" target="_blank" className="TokenAnalyst-link">
                 TokenAnalyst
               </a>
-            </div>
-            <div className="button-box is-centered-mobile">
-              <button className="button navbar-item" onClick={this.openModal}>
-                About
-              </button>
             </div>
           </div>
         </div>

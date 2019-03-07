@@ -35,10 +35,6 @@ const mobileTooltips = (
   </ul>
 );
 
-function closeInfoModal() {
-  const infoModal = document.getElementById("infoModal");
-  infoModal.classList.toggle("is-active");
-}
 function closeParityFullModal() {
   const parityFullModal = document.getElementById("parityFullModal");
   parityFullModal.classList.toggle("is-active");
@@ -58,31 +54,6 @@ function closeGethFastModal() {
 function closeParityArchiveModal() {
   const parityArchiveModal = document.getElementById("parityArchiveModal");
   parityArchiveModal.classList.toggle("is-active");
-}
-
-export function InfoModal() {
-  return (
-    <div className="modal" id="infoModal">
-      <div className="modal-background" />
-      <div className="modal-card">
-        <header className="modal-card-head">
-          <div className="modal-card-title">About this site</div>
-        </header>
-        <section className="modal-card-body">
-          <span>
-            This material is produced by querying various Ethereum nodes every 5
-            seconds, storing the results. Various rolling averages of these
-            results are displayed on the website
-          </span>
-        </section>
-        <footer className="modal-card-foot">
-          <button className="button" onClick={closeInfoModal}>
-            Close
-          </button>
-        </footer>
-      </div>
-    </div>
-  );
 }
 
 export function ParityFullModal() {

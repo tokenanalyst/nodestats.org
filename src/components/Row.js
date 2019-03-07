@@ -66,6 +66,7 @@ class Row extends React.Component {
       case "cpu":
         return value.metric.data[0].mean.toFixed(2) + " %";
       case "ram":
+        return (value.metric.data[0].mean / 1024 / 1024 / 1024 / 15.25 * 100).toFixed(2) + " GiB"
       case "disk":
         return (
           (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB"
@@ -89,7 +90,7 @@ class Row extends React.Component {
     if (this.datatype === 'netrx') return 'Downstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
     if (this.datatype === 'peers') return 'Peer count: The number of peers currently connected to the node'
     if (this.datatype === 'disk') return 'Chain Data Size: The disk space taken up by the node client - including all of the chain '
-    if (this.datatype === 'conflict%') return '% at conflicting tip: The proportion of time Geth and Parity have different block hashes at the same block height' 
+    if (this.datatype === 'conflict%') return '% at conflicting tip: The proportion of time Geth and Parity have different block hashes at the same block height'
   }
 
   componentDidMount() {
