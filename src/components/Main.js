@@ -121,12 +121,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/parity-full-disk-1h-avg"
-                  charturl="/parity-full-disk-24h"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/parity-full-nettx-1h-avg"
                   charturl="/parity-full-nettx-24h"
@@ -137,6 +131,12 @@ class Main extends React.Component {
                   metricurl="/parity-full-netrx-1h-avg"
                   charturl="/parity-full-netrx-24h"
                   datatype="netrx"
+                />
+                <Row
+                  text="Chain data size"
+                  metricurl="/parity-full-disk-1h-avg"
+                  charturl="/parity-full-disk-24h"
+                  datatype="disk"
                 />
               </div>
               <div className="column is-6 half">
@@ -206,13 +206,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/geth-full-disk-1h-avg"
-                  charturl="/geth-full-disk-24h"
-                  reverseOrder="true"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/geth-full-nettx-1h-avg"
                   charturl="/geth-full-nettx-24h"
@@ -225,6 +218,13 @@ class Main extends React.Component {
                   charturl="/geth-full-netrx-24h"
                   reverseOrder="true"
                   datatype="netrx"
+                />
+                <Row
+                  text="Chain data size"
+                  metricurl="/geth-full-disk-1h-avg"
+                  charturl="/geth-full-disk-24h"
+                  reverseOrder="true"
+                  datatype="disk"
                 />
               </div>
             </div>
@@ -292,12 +292,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/parity-fast-disk-1h-avg"
-                  charturl="/parity-fast-disk-24h"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/parity-fast-nettx-1h-avg"
                   charturl="/parity-fast-nettx-24h"
@@ -308,6 +302,12 @@ class Main extends React.Component {
                   metricurl="/parity-fast-netrx-1h-avg"
                   charturl="/parity-fast-netrx-24h"
                   datatype="netrx"
+                />
+                <Row
+                  text="Chain data size"
+                  metricurl="/parity-fast-disk-1h-avg"
+                  charturl="/parity-fast-disk-24h"
+                  datatype="disk"
                 />
               </div>
               <div className="column is-6">
@@ -375,13 +375,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/geth-fast-disk-1h-avg"
-                  charturl="/geth-fast-disk-24h"
-                  reverseOrder="true"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/geth-fast-nettx-1h-avg"
                   charturl="/geth-fast-nettx-24h"
@@ -394,6 +387,13 @@ class Main extends React.Component {
                   charturl="/geth-fast-netrx-24h"
                   reverseOrder="true"
                   datatype="netrx"
+                />
+                <Row
+                  text="Chain data size"
+                  metricurl="/geth-fast-disk-1h-avg"
+                  charturl="/geth-fast-disk-24h"
+                  reverseOrder="true"
+                  datatype="disk"
                 />
               </div>
             </div>
@@ -454,12 +454,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/parity-archive-disk-1h-avg"
-                  charturl="/parity-archive-disk-24h"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/parity-archive-nettx-1h-avg"
                   charturl="/parity-archive-nettx-24h"
@@ -470,6 +464,12 @@ class Main extends React.Component {
                   metricurl="/parity-archive-netrx-1h-avg"
                   charturl="/parity-archive-netrx-24h"
                   datatype="netrx"
+                />
+                <Row
+                  text="Chain data size"
+                  metricurl="/parity-archive-disk-1h-avg"
+                  charturl="/parity-archive-disk-24h"
+                  datatype="disk"
                 />
               </div>
             </div>

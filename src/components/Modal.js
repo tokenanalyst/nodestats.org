@@ -126,7 +126,7 @@ export function ParityFastModal() {
           <div className="modal-inner-card">
             <h3>Version:</h3>
             <p>
-              Version
+              version
               Parity-Ethereum/v2.2.11-stable-8e31051-20190220/x86_64-linux-gnu/rustc1.32.0
             </p>
           </div>
@@ -184,7 +184,7 @@ export function ParityArchiveModal() {
           <div className="modal-inner-card">
             <h3>Version:</h3>
             <p>
-              Version
+              version
               Parity-Ethereum/v2.3.4-beta-0e95db1-20190220/x86_64-linux-gnu/rustc1.32.0
             </p>
           </div>
