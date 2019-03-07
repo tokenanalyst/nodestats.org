@@ -1,6 +1,5 @@
 import React from "react";
 import nodestatslogo from '../images/nodestatslogo.png'
-import {InfoModal} from "./Modal";
 
 
 class Header extends React.Component {
@@ -20,10 +19,12 @@ class Header extends React.Component {
     return (
       <nav className="navbar is-vcentered" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <img
-            className="logo"
-            src={nodestatslogo}
-          />
+          <a href="http://nodestats-test.s3-website.eu-west-2.amazonaws.com/nodestats" target="_blank" alt="link to nodestats">
+            <img
+              className="logo"
+              src={nodestatslogo}
+            />
+          </a>
           <a
             role="button"
             className="navbar-burger burger"
@@ -51,7 +52,6 @@ class Header extends React.Component {
             </div>
           </div>
         </div>
-        <InfoModal/>
       </nav>
     );
   }
