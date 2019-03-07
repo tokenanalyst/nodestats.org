@@ -74,13 +74,13 @@ class Row extends React.Component {
         }
       case "disk":
         return (
-          (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(2) + " GiB"
+          (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(1) + " GiB"
         );
       case "peers":
         return Math.floor(value.metric.data[0].mean);
       case "nettx":
       case "netrx":
-        return value.metric.data[0].mean.toFixed(2) + " KiB/s";
+        return value.metric.data[0].mean.toFixed(1) + " KiB/s";
       case "conflict%":
 
         return this.conflict(value.metric.data, value.conflict.data).toFixed(2) + "%";
