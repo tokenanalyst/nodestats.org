@@ -52,7 +52,7 @@ class Row extends React.Component {
         }
       });
     if (comparetotal == 0){
-      return 100
+      return 0
     }
     else {
       return 100*(notinsynccounter/comparetotal);
@@ -76,7 +76,8 @@ class Row extends React.Component {
       case "netrx":
         return value.metric.data[0].mean.toFixed(2) + " KiB/s";
       case "conflict%":
-        return this.conflict(value.metric.data, value.conflict.data);
+
+        return this.conflict(value.metric.data, value.conflict.data) + " %";
     }
   }
 
@@ -88,6 +89,7 @@ class Row extends React.Component {
     if (this.datatype === 'netrx') return 'Downstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
     if (this.datatype === 'peers') return 'Peer count: The number of peers currently connected to the node'
     if (this.datatype === 'disk') return 'Chain Data Size: The disk space taken up by the node client - including all of the chain '
+    if (this.datatype === 'conflict%') return '% at conflicting tip: The proportion of time Geth and Parity have different block hashes at the same block height' 
   }
 
   componentDidMount() {
@@ -146,7 +148,7 @@ class Row extends React.Component {
         <p className="column is-9-desktop">
           {this.text} <span className="mobile-table-header">(1hr)</span>
         </p>
-        <span className="icon has-text-info tooltip column is-3-desktop is-3">
+        <span className="icon small-tooltips tooltip column is-3-desktop is-3">
 
           <p className="tooltiptext">{this.tooltip()}</p>
 
@@ -171,7 +173,7 @@ class Row extends React.Component {
           <section className="columns is-vcentered desktop-only">
             <div className="column is-4 data">{this.mean()}</div>
             <div className="column is-4 text">{this.description()}</div>
-            <div className="column is-4">{this.chart()}</div>
+            <div className="column is-4 is-centered">{this.chart()}</div>
           </section>
           <div className="mobile-row mobile-only is-vcentered">
             <div className="column text">{this.description()}</div>

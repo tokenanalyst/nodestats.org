@@ -2,7 +2,7 @@ import React from "react";
 import Chart from "react-google-charts";
 import axios from "axios";
 
-import * as Sentry from '@sentry/browser';
+import * as Sentry from "@sentry/browser";
 
 var url = "http://nodestats.tokenanalyst.io";
 
@@ -12,19 +12,28 @@ class Charts extends React.Component {
     this.url = props.url;
   }
   componentDidMount() {
-    axios.get(url + this.url).then(data => {
-      this.setState(data);
-      localStorage.setItem(this.url, JSON.stringify(data)); // caching for fallback
-    }).catch(err => {
-      const cachedMetric = JSON.parse(localStorage.getItem(this.url));
-      if(cachedMetric != null) {
-        this.setState(cachedMetric);
-        Sentry.captureException(new Error("Loaded from cache instead of API, API not reachable; Fallback used."));
-      } else {
-        console.log("No cache and no API")
-        Sentry.captureException(new Error("No Cache and no API, Fatal error"));
-      }
-    });
+    axios
+      .get(url + this.url)
+      .then(data => {
+        this.setState(data);
+        localStorage.setItem(this.url, JSON.stringify(data)); // caching for fallback
+      })
+      .catch(err => {
+        const cachedMetric = JSON.parse(localStorage.getItem(this.url));
+        if (cachedMetric != null) {
+          this.setState(cachedMetric);
+          Sentry.captureException(
+            new Error(
+              "Loaded from cache instead of API, API not reachable; Fallback used."
+            )
+          );
+        } else {
+          console.log("No cache and no API");
+          Sentry.captureException(
+            new Error("No Cache and no API, Fatal error")
+          );
+        }
+      });
   }
   render() {
     if (this.state != null) {
@@ -36,7 +45,14 @@ class Charts extends React.Component {
           <div className="chart-box">
             {(() => {
               for (let i = 0; i < data.length; i++) {
-                arrayValues.push(data[i].value);
+                if (data[i].value == true) {
+                  var value = 1;
+                } else if (data[i].value == false) {
+                  var value = 0;
+                } else if (data[i].blockNumber || data[i].blockHash) {
+                  value = 0; //placehold for conflict sync chart
+                } else var value = data[i].value;
+                arrayValues.push(value);
                 arrayTimes.push(data[i].time.slice(11, 19));
               }
             })()}
@@ -51,7 +67,6 @@ class Charts extends React.Component {
                     <i className="fa fa-spinner fa-spin chart-spinner" />
                   </div>
                 }
-                
                 data={[
                   ["Time", "Value"],
                   [arrayTimes[0], arrayValues[0]],
@@ -71,22 +86,23 @@ class Charts extends React.Component {
                   [arrayTimes[1400] || [], arrayValues[1400]]
                 ]}
                 options={{
-                  'tooltip' : {
-                    trigger: 'none'
-                  },
                   lineWidth: 3,
                   legend: "none",
                   chart: {},
                   vAxis: {
                     gridlines: {
-                        color: 'transparent',
-                        
+                      color: "transparent"
                     },
-                    textPosition: 'none' 
-                },
-                hAxis: { textPosition: 'none' },
-                curveType: 'function',
-                colors:['#0080ff']
+                    textPosition: "none"
+                  },
+                  hAxis: {
+                    gridlines: {
+                      color: "transparent"
+                    },
+                    textPosition: "none"
+                  },
+                  curveType: "function",
+                  colors: ["#3070ff"]
                 }}
               />
             </div>
@@ -95,7 +111,7 @@ class Charts extends React.Component {
       );
     } else {
       return (
-        <p>
+        <p className="spinner-box">
           <i className="fa fa-spinner fa-spin chart-spinner" />
         </p>
       );

@@ -120,13 +120,13 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/parity-full-nettx-1h-avg"
                   charturl="/parity-full-nettx-24h"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/parity-full-netrx-1h-avg"
                   charturl="/parity-full-netrx-24h"
                   datatype="netrx"
@@ -134,6 +134,7 @@ class Main extends React.Component {
                 <Row
                   metricurl="/parity-full-current-24h"
                   conflicturl="/geth-full-current-24h"
+                  charturl="/parity-full-current-24h"
                   text="% of time in conflict"
                   datatype="conflict%"
                 />
@@ -150,7 +151,7 @@ class Main extends React.Component {
                     className="icon company-icon tooltip"
                     onClick={this.fullGethModal}
                   >
-                    <span>
+                    <span className='pointer'>
                       <GethFullModal />
                     </span>
 
@@ -204,14 +205,14 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/geth-full-nettx-1h-avg"
                   charturl="/geth-full-nettx-24h"
                   reverseOrder="true"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/geth-full-netrx-1h-avg"
                   charturl="/geth-full-netrx-24h"
                   reverseOrder="true"
@@ -220,6 +221,7 @@ class Main extends React.Component {
                 <Row
                   metricurl="/geth-full-current-24h"
                   conflicturl="/parity-full-current-24h"
+                  charturl="/geth-full-current-24h"
                   text="% of time in conflict"
                   reverseOrder="true"
                   datatype="conflict%"
@@ -289,13 +291,13 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/parity-fast-nettx-1h-avg"
                   charturl="/parity-fast-nettx-24h"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/parity-fast-netrx-1h-avg"
                   charturl="/parity-fast-netrx-24h"
                   datatype="netrx"
@@ -303,6 +305,7 @@ class Main extends React.Component {
                 <Row
                   metricurl="/parity-fast-current-24h"
                   conflicturl="/geth-fast-current-24h"
+                  charturl="/parity-fast-current-24h"
                   text="% of time in conflict"
                   datatype="conflict%"
                 />
@@ -371,14 +374,14 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/geth-fast-nettx-1h-avg"
                   charturl="/geth-fast-nettx-24h"
                   reverseOrder="true"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/geth-fast-netrx-1h-avg"
                   charturl="/geth-fast-netrx-24h"
                   reverseOrder="true"
@@ -387,6 +390,7 @@ class Main extends React.Component {
                 <Row
                   metricurl="/geth-fast-current-24h"
                   conflicturl="/parity-fast-current-24h"
+                  charturl="/geth-fast-current-24h"
                   text="% of time in conflict"
                   reverseOrder="true"
                   datatype="conflict%"
@@ -456,13 +460,13 @@ class Main extends React.Component {
                   datatype="disk"
                 />
                 <Row
-                  text="Upstream"
+                  text="Upstream Bandwidth"
                   metricurl="/parity-archive-nettx-1h-avg"
                   charturl="/parity-archive-nettx-24h"
                   datatype="nettx"
                 />
                 <Row
-                  text="Downstream"
+                  text="Downstream Bandwidth"
                   metricurl="/parity-archive-netrx-1h-avg"
                   charturl="/parity-archive-netrx-24h"
                   datatype="netrx"
@@ -493,6 +497,7 @@ class Main extends React.Component {
               <div className="columns">
                 <div className="level is-mobile column is-4-desktop is-offset-4">
                   <div className="level-left-mobile has-text-centered">
+                  <a href="https://blog.bitmex.com/research/" target="_blank">
                     <figure className="image is-128x128 bitmex-logo level-item">
                       <img
                         className=""
@@ -500,15 +505,18 @@ class Main extends React.Component {
                         alt="Bitmex Logo"
                       />
                     </figure>
+                    </a>
                   </div>
                   <div className="level-right-mobile has-text-centered">
-                    <figure className="image is-156x156 tokenanalyst-logo level-item">
+                  <a href="https://www.tokenanalyst.io/" target="_blank">
+                    <figure className="image is-130x130 tokenanalyst-logo level-item">
                       <img
                         className=""
                         src={talogo}
                         alt="TokenAnalyst Logo"
                       />
                     </figure>
+                    </a>
                   </div>
                 </div>
               </div>
