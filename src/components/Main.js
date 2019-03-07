@@ -509,7 +509,7 @@ class Main extends React.Component {
                   </div>
                   <div className="level-right-mobile has-text-centered">
                     <a href="https://www.tokenanalyst.io/" target="_blank">
-                      <figure className="image is-130x130 tokenanalyst-logo level-item">
+                      <figure className="image tokenanalyst-logo level-item">
                         <img
                           className=""
                           src={talogo}
