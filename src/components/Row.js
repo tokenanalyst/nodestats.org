@@ -64,7 +64,7 @@ class Row extends React.Component {
       case "sync%":
         return this.percentsync(value.metric.data).toFixed(2) + "%";
       case "cpu":
-        return value.metric.data[0].mean.toFixed(2) + " %";
+        return value.metric.data[0].mean.toFixed(2) + "%";
       case "ram":
         return (value.metric.data[0].mean / 1024 / 1024 / 1024 / 15.25 * 100).toFixed(2) + " GiB"
       case "disk":
@@ -78,7 +78,7 @@ class Row extends React.Component {
         return value.metric.data[0].mean.toFixed(2) + " KiB/s";
       case "conflict%":
 
-        return this.conflict(value.metric.data, value.conflict.data) + " %";
+        return this.conflict(value.metric.data, value.conflict.data).toFixed(2) + "%";
     }
   }
 

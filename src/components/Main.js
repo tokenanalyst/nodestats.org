@@ -96,6 +96,13 @@ class Main extends React.Component {
                   datatype="sync%"
                 />
                 <Row
+                  metricurl="/parity-full-current-24h"
+                  conflicturl="/geth-full-current-24h"
+                  charturl="/parity-full-current-24h"
+                  text="% of time in conflict"
+                  datatype="conflict%"
+                />
+                <Row
                   metricurl="/parity-full-cpu-1h-avg"
                   charturl="/parity-full-cpu-24h"
                   text="CPU Usage"
@@ -130,13 +137,6 @@ class Main extends React.Component {
                   metricurl="/parity-full-netrx-1h-avg"
                   charturl="/parity-full-netrx-24h"
                   datatype="netrx"
-                />
-                <Row
-                  metricurl="/parity-full-current-24h"
-                  conflicturl="/geth-full-current-24h"
-                  charturl="/parity-full-current-24h"
-                  text="% of time in conflict"
-                  datatype="conflict%"
                 />
               </div>
               <div className="column is-6 half">
@@ -175,6 +175,14 @@ class Main extends React.Component {
                   text="% of time in sync"
                   reverseOrder="true"
                   datatype="sync%"
+                />
+                <Row
+                  metricurl="/geth-full-current-24h"
+                  conflicturl="/parity-full-current-24h"
+                  charturl="/geth-full-current-24h"
+                  text="% of time in conflict"
+                  reverseOrder="true"
+                  datatype="conflict%"
                 />
                 <Row
                   metricurl="/geth-full-cpu-1h-avg"
@@ -218,14 +226,6 @@ class Main extends React.Component {
                   reverseOrder="true"
                   datatype="netrx"
                 />
-                <Row
-                  metricurl="/geth-full-current-24h"
-                  conflicturl="/parity-full-current-24h"
-                  charturl="/geth-full-current-24h"
-                  text="% of time in conflict"
-                  reverseOrder="true"
-                  datatype="conflict%"
-                />
               </div>
             </div>
           </div>
@@ -267,6 +267,13 @@ class Main extends React.Component {
                   datatype="sync%"
                 />
                 <Row
+                  metricurl="/parity-fast-current-24h"
+                  conflicturl="/geth-fast-current-24h"
+                  charturl="/parity-fast-current-24h"
+                  text="% of time in conflict"
+                  datatype="conflict%"
+                />
+                <Row
                   metricurl="/parity-fast-cpu-1h-avg"
                   charturl="/parity-fast-cpu-24h"
                   text="CPU Usage"
@@ -301,13 +308,6 @@ class Main extends React.Component {
                   metricurl="/parity-fast-netrx-1h-avg"
                   charturl="/parity-fast-netrx-24h"
                   datatype="netrx"
-                />
-                <Row
-                  metricurl="/parity-fast-current-24h"
-                  conflicturl="/geth-fast-current-24h"
-                  charturl="/parity-fast-current-24h"
-                  text="% of time in conflict"
-                  datatype="conflict%"
                 />
               </div>
               <div className="column is-6">
@@ -344,6 +344,14 @@ class Main extends React.Component {
                   text="% of time in sync"
                   reverseOrder="true"
                   datatype="sync%"
+                />
+                <Row
+                  metricurl="/geth-fast-current-24h"
+                  conflicturl="/parity-fast-current-24h"
+                  charturl="/geth-fast-current-24h"
+                  text="% of time in conflict"
+                  reverseOrder="true"
+                  datatype="conflict%"
                 />
                 <Row
                   metricurl="/geth-fast-cpu-1h-avg"
@@ -386,14 +394,6 @@ class Main extends React.Component {
                   charturl="/geth-fast-netrx-24h"
                   reverseOrder="true"
                   datatype="netrx"
-                />
-                <Row
-                  metricurl="/geth-fast-current-24h"
-                  conflicturl="/parity-fast-current-24h"
-                  charturl="/geth-fast-current-24h"
-                  text="% of time in conflict"
-                  reverseOrder="true"
-                  datatype="conflict%"
                 />
               </div>
             </div>
@@ -497,25 +497,25 @@ class Main extends React.Component {
               <div className="columns">
                 <div className="level is-mobile column is-4-desktop is-offset-4">
                   <div className="level-left-mobile has-text-centered">
-                  <a href="https://blog.bitmex.com/research/" target="_blank">
-                    <figure className="image is-128x128 bitmex-logo level-item">
-                      <img
-                        className=""
-                        src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png"
-                        alt="Bitmex Logo"
-                      />
-                    </figure>
+                    <a href="https://blog.bitmex.com/research/" target="_blank">
+                      <figure className="image is-128x128 bitmex-logo level-item">
+                        <img
+                          className=""
+                          src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png"
+                          alt="Bitmex Logo"
+                        />
+                      </figure>
                     </a>
                   </div>
                   <div className="level-right-mobile has-text-centered">
-                  <a href="https://www.tokenanalyst.io/" target="_blank">
-                    <figure className="image is-130x130 tokenanalyst-logo level-item">
-                      <img
-                        className=""
-                        src={talogo}
-                        alt="TokenAnalyst Logo"
-                      />
-                    </figure>
+                    <a href="https://www.tokenanalyst.io/" target="_blank">
+                      <figure className="image is-130x130 tokenanalyst-logo level-item">
+                        <img
+                          className=""
+                          src={talogo}
+                          alt="TokenAnalyst Logo"
+                        />
+                      </figure>
                     </a>
                   </div>
                 </div>
