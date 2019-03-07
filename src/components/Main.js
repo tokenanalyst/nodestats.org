@@ -61,7 +61,7 @@ class Main extends React.Component {
               <div className="column is-6 half">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
-                    <span className="company">Parity</span>
+                    <span className="company">Ethereum Parity</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
@@ -96,6 +96,13 @@ class Main extends React.Component {
                   datatype="sync%"
                 />
                 <Row
+                  metricurl="/parity-full-current-24h"
+                  conflicturl="/geth-full-current-24h"
+                  charturl="/parity-full-current-24h"
+                  text="% of time in conflict"
+                  datatype="conflict%"
+                />
+                <Row
                   metricurl="/parity-full-cpu-1h-avg"
                   charturl="/parity-full-cpu-24h"
                   text="CPU Usage"
@@ -114,12 +121,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/parity-full-disk-1h-avg"
-                  charturl="/parity-full-disk-24h"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/parity-full-nettx-1h-avg"
                   charturl="/parity-full-nettx-24h"
@@ -132,17 +133,16 @@ class Main extends React.Component {
                   datatype="netrx"
                 />
                 <Row
-                  metricurl="/parity-full-current-24h"
-                  conflicturl="/geth-full-current-24h"
-                  charturl="/parity-full-current-24h"
-                  text="% of time in conflict"
-                  datatype="conflict%"
+                  text="Chain data size"
+                  metricurl="/parity-full-disk-1h-avg"
+                  charturl="/parity-full-disk-24h"
+                  datatype="disk"
                 />
               </div>
               <div className="column is-6 half">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
-                    <span className="company">Geth</span>
+                    <span className="company">Ethereum Geth</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type not-used">
@@ -177,6 +177,14 @@ class Main extends React.Component {
                   datatype="sync%"
                 />
                 <Row
+                  metricurl="/geth-full-current-24h"
+                  conflicturl="/parity-full-current-24h"
+                  charturl="/geth-full-current-24h"
+                  text="% of time in conflict"
+                  reverseOrder="true"
+                  datatype="conflict%"
+                />
+                <Row
                   metricurl="/geth-full-cpu-1h-avg"
                   charturl="/geth-full-cpu-24h"
                   text="CPU Usage"
@@ -198,13 +206,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/geth-full-disk-1h-avg"
-                  charturl="/geth-full-disk-24h"
-                  reverseOrder="true"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/geth-full-nettx-1h-avg"
                   charturl="/geth-full-nettx-24h"
@@ -219,12 +220,11 @@ class Main extends React.Component {
                   datatype="netrx"
                 />
                 <Row
-                  metricurl="/geth-full-current-24h"
-                  conflicturl="/parity-full-current-24h"
-                  charturl="/geth-full-current-24h"
-                  text="% of time in conflict"
+                  text="Chain data size"
+                  metricurl="/geth-full-disk-1h-avg"
+                  charturl="/geth-full-disk-24h"
                   reverseOrder="true"
-                  datatype="conflict%"
+                  datatype="disk"
                 />
               </div>
             </div>
@@ -235,7 +235,7 @@ class Main extends React.Component {
               <div className="column is-6">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
-                    <span className="company">Parity</span>
+                    <span className="company">Ethereum Parity</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
@@ -267,6 +267,13 @@ class Main extends React.Component {
                   datatype="sync%"
                 />
                 <Row
+                  metricurl="/parity-fast-current-24h"
+                  conflicturl="/geth-fast-current-24h"
+                  charturl="/parity-fast-current-24h"
+                  text="% of time in conflict"
+                  datatype="conflict%"
+                />
+                <Row
                   metricurl="/parity-fast-cpu-1h-avg"
                   charturl="/parity-fast-cpu-24h"
                   text="CPU Usage"
@@ -285,12 +292,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/parity-fast-disk-1h-avg"
-                  charturl="/parity-fast-disk-24h"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/parity-fast-nettx-1h-avg"
                   charturl="/parity-fast-nettx-24h"
@@ -303,17 +304,16 @@ class Main extends React.Component {
                   datatype="netrx"
                 />
                 <Row
-                  metricurl="/parity-fast-current-24h"
-                  conflicturl="/geth-fast-current-24h"
-                  charturl="/parity-fast-current-24h"
-                  text="% of time in conflict"
-                  datatype="conflict%"
+                  text="Chain data size"
+                  metricurl="/parity-fast-disk-1h-avg"
+                  charturl="/parity-fast-disk-24h"
+                  datatype="disk"
                 />
               </div>
               <div className="column is-6">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
-                    <span className="company">Geth</span>
+                    <span className="company">Ethereum Geth</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type not-used">
@@ -346,6 +346,14 @@ class Main extends React.Component {
                   datatype="sync%"
                 />
                 <Row
+                  metricurl="/geth-fast-current-24h"
+                  conflicturl="/parity-fast-current-24h"
+                  charturl="/geth-fast-current-24h"
+                  text="% of time in conflict"
+                  reverseOrder="true"
+                  datatype="conflict%"
+                />
+                <Row
                   metricurl="/geth-fast-cpu-1h-avg"
                   charturl="/geth-fast-cpu-24h"
                   text="CPU Usage"
@@ -367,13 +375,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/geth-fast-disk-1h-avg"
-                  charturl="/geth-fast-disk-24h"
-                  reverseOrder="true"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/geth-fast-nettx-1h-avg"
                   charturl="/geth-fast-nettx-24h"
@@ -388,12 +389,11 @@ class Main extends React.Component {
                   datatype="netrx"
                 />
                 <Row
-                  metricurl="/geth-fast-current-24h"
-                  conflicturl="/parity-fast-current-24h"
-                  charturl="/geth-fast-current-24h"
-                  text="% of time in conflict"
+                  text="Chain data size"
+                  metricurl="/geth-fast-disk-1h-avg"
+                  charturl="/geth-fast-disk-24h"
                   reverseOrder="true"
-                  datatype="conflict%"
+                  datatype="disk"
                 />
               </div>
             </div>
@@ -403,7 +403,7 @@ class Main extends React.Component {
               <div className="column is-6">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
-                    <span className="company">Parity</span>
+                    <span className="company">Ethereum Parity</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
@@ -454,12 +454,6 @@ class Main extends React.Component {
                   datatype="peers"
                 />
                 <Row
-                  text="Chain data size"
-                  metricurl="/parity-archive-disk-1h-avg"
-                  charturl="/parity-archive-disk-24h"
-                  datatype="disk"
-                />
-                <Row
                   text="Upstream Bandwidth"
                   metricurl="/parity-archive-nettx-1h-avg"
                   charturl="/parity-archive-nettx-24h"
@@ -470,6 +464,12 @@ class Main extends React.Component {
                   metricurl="/parity-archive-netrx-1h-avg"
                   charturl="/parity-archive-netrx-24h"
                   datatype="netrx"
+                />
+                <Row
+                  text="Chain data size"
+                  metricurl="/parity-archive-disk-1h-avg"
+                  charturl="/parity-archive-disk-24h"
+                  datatype="disk"
                 />
               </div>
             </div>
@@ -497,29 +497,34 @@ class Main extends React.Component {
               <div className="columns">
                 <div className="level is-mobile column is-4-desktop is-offset-4">
                   <div className="level-left-mobile has-text-centered">
-                  <a href="https://blog.bitmex.com/research/" target="_blank">
-                    <figure className="image is-128x128 bitmex-logo level-item">
-                      <img
-                        className=""
-                        src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png"
-                        alt="Bitmex Logo"
-                      />
-                    </figure>
+                    <a href="https://blog.bitmex.com/research/" target="_blank">
+                      <figure className="image is-128x128 bitmex-logo level-item">
+                        <img
+                          className=""
+                          src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png"
+                          alt="Bitmex Logo"
+                        />
+                      </figure>
                     </a>
                   </div>
                   <div className="level-right-mobile has-text-centered">
-                  <a href="https://www.tokenanalyst.io/" target="_blank">
-                    <figure className="image is-130x130 tokenanalyst-logo level-item">
-                      <img
-                        className=""
-                        src={talogo}
-                        alt="TokenAnalyst Logo"
-                      />
-                    </figure>
+                    <a href="https://www.tokenanalyst.io/" target="_blank">
+                      <figure className="image tokenanalyst-logo level-item">
+                        <img
+                          className=""
+                          src={talogo}
+                          alt="TokenAnalyst Logo"
+                        />
+                      </figure>
                     </a>
                   </div>
                 </div>
               </div>
+              <p>
+                This material is produced by querying various Ethereum nodes every 5
+                seconds, storing the results. Various rolling averages of these
+                results are displayed on the website.
+              </p>
               <p className="disclaimer">
                 This material should not be the basis for making investment
                 decisions, nor be construed as a recommendation to engage in
@@ -531,8 +536,8 @@ class Main extends React.Component {
                 from sources we believe to be reliable. Such information has not
                 been verified and we make no representation or warranty as to
                 its accuracy, completeness or correctness. The website is
-                produced by BitMEX Research and TokenAnalyst, neither BitMEX,
-                TokenAnalyst nor any other entity, will be liable whatsoever for
+                produced by BitMEX Research and <a href="https://www.tokenanalyst.io/" target="_blank">TokenAnalyst</a>, neither BitMEX,
+                <a href="https://www.tokenanalyst.io/" target="_blank">TokenAnalyst</a> nor any other entity, will be liable whatsoever for
                 any direct or consequential loss arising from the use of this
                 publication/communication or its contents.
               </p>

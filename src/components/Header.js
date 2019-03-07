@@ -1,6 +1,5 @@
 import React from "react";
 import nodestatslogo from '../images/nodestatslogo.png'
-import {InfoModal} from "./Modal";
 
 
 class Header extends React.Component {
@@ -15,19 +14,17 @@ class Header extends React.Component {
     burger.classList.toggle("is-active");
     burgerButton.classList.toggle("is-active");
   }
-  openModal() {
-    const infoModal = document.getElementById("infoModal");
-    infoModal.classList.toggle("is-active");
-  }
 
   render() {
     return (
       <nav className="navbar is-vcentered" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <img
-            className="logo"
-            src={nodestatslogo}
-          />
+          <a href="#" target="_blank">
+            <img
+              className="logo"
+              src={nodestatslogo}
+            />
+          </a>
           <a
             role="button"
             className="navbar-burger burger"
@@ -46,21 +43,15 @@ class Header extends React.Component {
           <div className="navbar-end">
             <div className="navbar-item links">
               <a href="https://blog.bitmex.com/research/" target="_blank" className="Bitmex-link">
-                BitMEX
+                BitMEX Research
               </a>
               <span className="line">|</span>
               <a href="https://www.tokenanalyst.io/" target="_blank" className="TokenAnalyst-link">
                 TokenAnalyst
               </a>
             </div>
-            <div className="button-box is-centered-mobile">
-              <button className="button navbar-item" onClick={this.openModal}>
-                About
-              </button>
-            </div>
           </div>
         </div>
-        <InfoModal/>
       </nav>
     );
   }

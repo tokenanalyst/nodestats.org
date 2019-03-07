@@ -29,7 +29,7 @@ h3 {
   margin-left: -3px;
   top: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 5;
 }
 
 .Bitmex-link {
@@ -140,6 +140,7 @@ h3 {
 }
 .tokenanalyst-logo {
   margin: auto;
+  width: 12rem;
 }
 .please-wait {
   opacity: 1;
@@ -166,7 +167,7 @@ nav {
 .footer {
   border-top: 2px solid #999999;
   position: relative;
-  z-index: 2;
+  z-index: 6;
   background-color: white;
 }
 
@@ -181,11 +182,11 @@ nav {
   background-color: white;
   width: 100%;
   height: 40px;
+  z-index: 4;
 }
 .company {
   margin-right: 8px;
   font-size: ms(3);
-  z-index: 2;
 }
 .company-icon {
   font-size: ms(2);
@@ -241,6 +242,7 @@ nav {
   position: absolute;
   visibility: visible;
   opacity: 1;
+  z-index: 99;
 }
 .small-tooltips {
   color: #3070ff;
@@ -287,7 +289,7 @@ nav {
   background: -webkit-linear-gradient(#eee, #3070ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: auto;
+  margin-left: 70px;
 
 }
 .spinner {
@@ -369,6 +371,9 @@ nav {
   }
   .chart {
     display: none;
+  }
+  .name {
+    height: 5rem;
   }
   .text {
     min-height: 50px;
