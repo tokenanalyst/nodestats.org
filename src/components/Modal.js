@@ -13,7 +13,7 @@ const mobileTooltips = (
     </li>
     <li>
       Memory Usage: The memory usage for the node client process on a dedicated
-      machine with 14GB of total memory available
+      machine with 15.25GiB of total memory available
     </li>
     <li>
       Upstream Bandwidth: The upstream network throughput on the network
@@ -68,8 +68,7 @@ export function ParityFullModal() {
           <div className="modal-inner-card">
             <h3>Version:</h3>
             <p>
-              Version
-              Parity-Ethereum/v2.2.11-stable-8e31051-20190220/x86_64-linuxgnu-rustc1.32.0
+              version Parity-Ethereum/v2.2.11-stable-8e31051-20190220/x86_64-linux-gnu/rustc1.32.0
             </p>
           </div>
           <p className="flags">
@@ -193,7 +192,39 @@ export function ParityArchiveModal() {
             /usr/bin/parity --cache-size=100000 --db-compaction=ssd --ws-
             interface=0.0.0.0 --jsonrpc-interface=0.0.0.0 --pruning=archive --
           </p>
-          {mobileTooltips}
+          <ul className="mobile-list">
+            <li>
+              % of time in sync: The % of time in the past hour that the node
+              has downloaded and verified all the block data for what its peers
+              are informing it is the current highest chain tip
+            </li>
+            <li>
+              CPU Usage: The CPU usage for the node client process which is
+              running on an Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz machine
+              with 16 cores
+            </li>
+            <li>
+              Memory Usage: The memory (RAM) usage of the node client process
+              on a dedicated machine with 122GiB of total memory available
+            </li>
+            <li>
+              Upstream Bandwidth: The upstream network throughput on the network
+              interface of the machine on which the node runs
+            </li>
+            <li>
+              Downstream Bandwidth: The upstream network throughput on the network
+              interface of the machine on which the node runs
+            </li>
+            <li>Peer count: The number of peers currently connected to the node</li>
+            <li>
+              Chain Data Size: The disk space taken up by the node client - including
+              all of the chain
+            </li>
+            <li>
+              % at conflicting tip: The proportion of time Geth and Parity have
+              different block hashes at the same block height
+            </li>
+          </ul>
         </section>
         <footer className="modal-card-foot">
           <button className="button">Close</button>
