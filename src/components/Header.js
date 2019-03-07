@@ -19,7 +19,7 @@ class Header extends React.Component {
     return (
       <nav className="navbar is-vcentered" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a href="http://nodestats-test.s3-website.eu-west-2.amazonaws.com/nodestats" target="_blank">
+          <a href="#" target="_blank">
             <img
               className="logo"
               src={nodestatslogo}
