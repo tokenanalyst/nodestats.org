@@ -13,7 +13,7 @@ const mobileTooltips = (
     </li>
     <li>
       Memory Usage: The memory usage for the node client process on a dedicated
-      machine with 15.25GiB of total memory available
+      machine with 14GB of total memory available
     </li>
     <li>
       Upstream Bandwidth: The upstream network throughput on the network
@@ -205,7 +205,7 @@ export function ParityArchiveModal() {
             </li>
             <li>
               Memory Usage: The memory (RAM) usage of the node client process
-              on a dedicated machine with 122GiB of total memory available
+              on a dedicated machine with 120GB of total memory available
             </li>
             <li>
               Upstream Bandwidth: The upstream network throughput on the network

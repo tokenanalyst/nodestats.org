@@ -70,17 +70,17 @@ class Row extends React.Component {
           return (value.metric.data[0].mean / 1024 / 1024 / 1024 / 122 * 100).toFixed(2) + "%"
         }
         else {
-          return (value.metric.data[0].mean / 1024 / 1024 / 1024 / 15.25 * 100).toFixed(2) + "%"
+          return ((value.metric.data[0].mean / 1024 / 1024 / 1024) / 15.25 * 100).toFixed(2) + "%"
         }
       case "disk":
         return (
-          (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(1) + " GiB"
+          (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(1) + " GB"
         );
       case "peers":
         return Math.floor(value.metric.data[0].mean);
       case "nettx":
       case "netrx":
-        return value.metric.data[0].mean.toFixed(1) + " KiB/s";
+        return value.metric.data[0].mean.toFixed(1) + " KB/s";
       case "conflict%":
 
         return this.conflict(value.metric.data, value.conflict.data).toFixed(2) + "%";
@@ -91,8 +91,8 @@ class Row extends React.Component {
     if (this.datatype === 'sync%') return '% of time in sync: The % of time in the past hour that the node has downloaded and verified all the block data for what its peers are informing it is the current highest chain tip'
     if (this.datatype === 'cpu' && this.metricurl === '/parity-archive-cpu-1h-avg') return 'CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz machine with 16 cores'
     if (this.datatype === 'cpu') return 'CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 @ 2.30GHz machine with two cores'
-    if (this.datatype === 'ram' && this.metricurl === '/parity-archive-ram-1h-avg') return  'Memory Usage: The memory (RAM) usage of the node client process on a dedicated machine with 122GiB of total memory available'
-    if (this.datatype === 'ram') return  'Memory Usage: The memory usage for the node client process on a dedicated machine with 15.25GiB of total memory available'
+    if (this.datatype === 'ram' && this.metricurl === '/parity-archive-ram-1h-avg') return  'Memory Usage: The memory (RAM) usage of the node client process on a dedicated machine with 120GB of total memory available'
+    if (this.datatype === 'ram') return  'Memory Usage: The memory usage for the node client process on a dedicated machine with 14GB of total memory available'
     if (this.datatype === 'nettx') return 'Upstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
     if (this.datatype === 'netrx') return 'Downstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
     if (this.datatype === 'peers') return 'Peer count: The number of peers currently connected to the node'
