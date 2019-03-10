@@ -65,7 +65,7 @@ class Row extends React.Component {
       case "sync%":
         return this.percentsync(value.metric.data).toFixed(2) + "%";
       case "cpu":
-        if (this.infoBar === 'true') return value.metric.data[0].time.slice(11, 22);
+        if (this.infoBar === 'true') return value.metric.data[0].time.slice(11, 19) + " UTC";
         else return value.metric.data[0].mean.toFixed(2) + "%";
       case "ram":
         if (this.metricurl === "/parity-archive-ram-1h-avg") {
@@ -76,7 +76,7 @@ class Row extends React.Component {
         }
       case "disk":
         return (
-          (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(1) + " GB"
+          parseInt((value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(2)).toLocaleString() + " GB"
         );
       case "peers":
         return Math.floor(value.metric.data[0].mean);
@@ -192,7 +192,6 @@ class Row extends React.Component {
         </div>
       );
     } if (this.infoBar === 'true') {
-      console.log('mounted', this.mean())
       return (
         <div className="columns is-mobile is-vcentered info-bar">
           <div className="column is-4">
