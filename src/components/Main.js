@@ -78,6 +78,12 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/parity-full-cpu-1h-avg"
+                  text="CPU Usage"
+                  datatype="cpu"
+                />
                 <div className="columns is-mobile has-text-centered">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
@@ -158,6 +164,12 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/geth-full-cpu-1h-avg"
+                  text="CPU Usage"
+                  datatype="cpu"
+                />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
@@ -249,6 +261,12 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle node-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/parity-fast-cpu-1h-avg"
+                  text="CPU Usage"
+                  datatype="cpu"
+                />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
@@ -327,6 +345,12 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/geth-fast-cpu-1h-avg"
+                  text="CPU Usage"
+                  datatype="cpu"
+                />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
@@ -418,6 +442,12 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/parity-archive-cpu-1h-avg"
+                  text="CPU Usage"
+                  datatype="cpu"
+                />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>

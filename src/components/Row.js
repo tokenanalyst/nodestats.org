@@ -15,6 +15,7 @@ class Row extends React.Component {
     this.metricurl = props.metricurl;
     this.charturl = props.charturl;
     this.conflicturl = props.conflicturl;
+    this.infoBar = props.infoBar;
   }
 
   percentsync(syncdata) {
@@ -64,7 +65,8 @@ class Row extends React.Component {
       case "sync%":
         return this.percentsync(value.metric.data).toFixed(2) + "%";
       case "cpu":
-        return value.metric.data[0].mean.toFixed(2) + "%";
+        if (this.infoBar === 'true') return value.metric.data[0].time.slice(11, 22);
+        else return value.metric.data[0].mean.toFixed(2) + "%";
       case "ram":
         if (this.metricurl === "/parity-archive-ram-1h-avg") {
           return (value.metric.data[0].mean / 1024 / 1024 / 1024 / 122 * 100).toFixed(2) + "%"
@@ -189,6 +191,32 @@ class Row extends React.Component {
           </div>
         </div>
       );
+    } if (this.infoBar === 'true') {
+      console.log('mounted', this.mean())
+      return (
+        <div className="columns is-mobile is-vcentered info-bar">
+          <div className="column is-4">
+            {(() => {
+              if (this.state === null) {
+                return <div className="columns is-vcentered has-text-centered">
+                  <span className="red column is-10">Offline</span>
+                  <span className="offline"></span>
+                </div>
+              } else
+                return <div className="columns is-vcentered has-text-centered">
+                  <span className="green column is-10">Online</span>
+                  <span className="online"></span>
+                </div>
+            })()}
+          </div>
+          <div className="column is-8">
+            <div className="columns time-box is-vcentered">
+              <span className="column is-6 time-text">Last updated:</span>
+              <span className="column time">{this.mean()}</span>
+            </div>
+          </div>
+        </div>
+      )
     } else {
       return (
         <section className="columns mobile-row is-vcentered">

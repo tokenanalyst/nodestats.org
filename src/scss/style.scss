@@ -151,6 +151,39 @@ h3 {
   background-size: cover;
   background-position: center;
 }
+.info-bar {
+  background-color: #eeeeee;
+  margin: 0;
+  max-height: 50px;
+}
+.time-text {
+  text-align: right;
+}
+.time {
+  text-align: left;
+}
+.online {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #33dd66;
+  display: inline-block;
+}
+.offline {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #dd3366;
+  display: inline-block;
+}
+.red {
+  color: red;
+  text-align: right;
+}
+.green {
+  color: green;
+  text-align: right;
+}
 nav {
   border-bottom: 1px solid #ccc;
   margin-bottom: 50px;
@@ -307,12 +340,6 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.red {
-  color: red;
-}
-.green {
-  color: green;
-}
 .black {
   color: black;
 }
@@ -445,6 +472,26 @@ nav {
   }
   .small-tooltips {
     display: none;
+    display: none;
+  }
+  .info-bar {
+    max-height: 50px;
+  }
+  .time {
+    height: 50px;
+    p {
+      margin: 0;
+      padding: 0;
+      top: 0;
+    }
+}
+  .time-text {
+    display: none
+  }
+  .red {
+    display: none
+  }
+  .green {
     display: none;
   }
 }
