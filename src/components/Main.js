@@ -85,7 +85,7 @@ class Main extends React.Component {
                 />
                 <div className="columns is-mobile has-text-centered">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
-                    <h3>24hr avg</h3>
+                    <h3>24hr Data</h3>
                   </div>
                   <div className="column is-one-third table-header">
                     <h3>Description</h3>
