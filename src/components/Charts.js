@@ -11,7 +11,6 @@ class Charts extends React.Component {
     super(props);
     this.url = props.url;
     this.datatype = props.datatype;
-    this.charturl = props.charturl;
   }
   componentDidMount() {
     axios
@@ -47,8 +46,8 @@ class Charts extends React.Component {
   dataTransform(data) {
     if (this.datatype === 'disk') return parseFloat((data / 1024 / 1024 / 1024).toFixed(2))
     if (this.datatype === 'nettx' || this.datatype === 'netrx') return parseFloat(data.toFixed(2))
+    if (this.datatype === 'ram' && this.url === "/parity-archive-ram-24h") return parseFloat((data / 1024 / 1024 / 1024 / 122 * 100).toFixed(2))
     if (this.datatype === 'ram') return parseFloat((data / 1024 / 1024 / 1024 / 15.25 * 100).toFixed(2))
-    if (this.datatype === 'ram' && this.charturl === "/parity-archive-ram-24h") return parseFloat(((data / 1024 / 1024 / 1024 / 120) * 100).toFixed(2))
     else return data;
   }
 
