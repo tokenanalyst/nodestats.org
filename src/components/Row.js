@@ -210,16 +210,16 @@ class Row extends React.Component {
       );
     } if (this.infoBar === 'true') {
       return (
-        <div className="columns is-mobile is-vcentered info-bar">
+        <div className="columns is-vcentered info-bar">
           <div className="column is-2 is-offset-1">
             {(() => {
               if (this.state === null) {
-                return <div className="columns is-vcentered">
+                return <div className="columns is-vcentered has-text-centered">
                   <span className="red column is-10">Offline</span>
                   <span className="offline"></span>
                 </div>
               } else
-                return <div className="columns is-vcentered">
+                return <div className="columns is-vcentered has-text-centered">
                   <span className="green column is-10">Online</span>
                   <span className="online"></span>
                 </div>
