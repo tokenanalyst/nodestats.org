@@ -91,7 +91,7 @@ class Main extends React.Component {
                     <h3>Description</h3>
                   </div>
                   <div className="column is-one-third table-header">
-                    <h3>1hr Data</h3>
+                    <h3>1hr Avg</h3>
                   </div>
                 </div>
                 <Row
