@@ -98,9 +98,11 @@ class Row extends React.Component {
       case "netrx":
         return value.metric.data[0].mean.toFixed(1) + " KB/s";
       case "conflict%":
+        return this.conflict(value.metric.data, value.conflict.data).toFixed(2) + "%";
+      case "blockHeight":
         if (this.infoBar === "true") {
           return this.blockMax(value)
-        } else return this.conflict(value.metric.data, value.conflict.data).toFixed(2) + "%";
+        }
     }
   }
 

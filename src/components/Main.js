@@ -81,7 +81,7 @@ class Main extends React.Component {
                 <Row
                   infoBar="true"
                   metricurl="/parity-full-current-24h"
-                  datatype="conflict%"
+                  datatype="blockHeight"
                 />
                 <div className="columns is-mobile has-text-centered">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
@@ -166,7 +166,7 @@ class Main extends React.Component {
                 <Row
                   infoBar="true"
                   metricurl="/geth-full-current-24h"
-                  datatype="conflict%"
+                  datatype="blockHeight"
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
@@ -262,7 +262,7 @@ class Main extends React.Component {
                 <Row
                   infoBar="true"
                   metricurl="/parity-fast-current-24h"
-                  datatype="conflict%"
+                  datatype="blockHeight"
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
@@ -345,7 +345,7 @@ class Main extends React.Component {
                 <Row
                   infoBar="true"
                   metricurl="/geth-fast-current-24h"
-                  datatype="conflict%"
+                  datatype="blockHeight"
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
@@ -441,8 +441,7 @@ class Main extends React.Component {
                 <Row
                   infoBar="true"
                   metricurl="/parity-archive-current-24h"
-                  text="CPU Usage"
-                  datatype="conflict%"
+                  datatype="blockHeight"
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
