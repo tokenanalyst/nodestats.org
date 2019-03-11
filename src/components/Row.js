@@ -107,7 +107,7 @@ class Row extends React.Component {
   }
 
   tooltip() {
-    if (this.datatype === 'sync%') return '% of time in sync: The % of time in the past hour that the node has downloaded and verified all the block data for what its peers are informing it is the current highest chain tip'
+    if (this.datatype === 'sync%') return '% of time in sync: The % of time in the past hour that the node has downloaded and verified all the block data for what its peers are informing it is the current highest chain tip. Chart displays when in sync (1) and not (0)'
     if (this.datatype === 'cpu' && this.metricurl === '/parity-archive-cpu-1h-avg') return 'CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz machine with 16 cores'
     if (this.datatype === 'cpu') return 'CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 @ 2.30GHz machine with two cores'
     if (this.datatype === 'ram' && this.metricurl === '/parity-archive-ram-1h-avg') return  'Memory Usage: The memory (RAM) usage of the node client process on a dedicated machine with 120GB of total memory available'
