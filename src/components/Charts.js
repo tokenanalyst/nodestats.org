@@ -10,6 +10,8 @@ class Charts extends React.Component {
   constructor(props) {
     super(props);
     this.url = props.url;
+    this.datatype = props.datatype;
+    this.charturl = props.charturl;
   }
   componentDidMount() {
     axios
@@ -35,6 +37,21 @@ class Charts extends React.Component {
         }
       });
   }
+
+  dataDescription() {
+    if (this.datatype === 'nettx' || this.datatype === 'netrx') return "KB/s";
+    if (this.datatype === 'disk') return "GB";
+    if (this.datatype === 'ram' || this.datatype === 'cpu' || this.datatype === 'conflict%' || this.datatype === 'sync%') return "%";
+    if (this.datatype === 'peers') return "Peers";
+  }
+  dataTransform(data) {
+    if (this.datatype === 'disk') return parseFloat((data / 1024 / 1024 / 1024).toFixed(2))
+    if (this.datatype === 'nettx' || this.datatype === 'netrx') return parseFloat(data.toFixed(2))
+    if (this.datatype === 'ram') return parseFloat((data / 1024 / 1024 / 1024 / 15.25 * 100).toFixed(2))
+    if (this.datatype === 'ram' && this.charturl === "/parity-archive-ram-24h") return parseFloat(((data / 1024 / 1024 / 1024 / 120) * 100).toFixed(2))
+    else return data;
+  }
+
   render() {
     if (this.state != null) {
       var data = this.state.data;
@@ -68,22 +85,22 @@ class Charts extends React.Component {
                   </div>
                 }
                 data={[
-                  ["Time", "Value"],
-                  [arrayTimes[0], arrayValues[0]],
-                  [arrayTimes[100] || [], arrayValues[100]],
-                  [arrayTimes[200] || [], arrayValues[200]],
-                  [arrayTimes[300] || [], arrayValues[300]],
-                  [arrayTimes[400] || [], arrayValues[400]],
-                  [arrayTimes[500] || [], arrayValues[500]],
-                  [arrayTimes[600] || [], arrayValues[600]],
-                  [arrayTimes[700] || [], arrayValues[700]],
-                  [arrayTimes[800] || [], arrayValues[800]],
-                  [arrayTimes[900] || [], arrayValues[900]],
-                  [arrayTimes[1000] || [], arrayValues[1000]],
-                  [arrayTimes[1100] || [], arrayValues[1100]],
-                  [arrayTimes[1200] || [], arrayValues[1200]],
-                  [arrayTimes[1300] || [], arrayValues[1300]],
-                  [arrayTimes[1400] || [], arrayValues[1400]]
+                  ["Time", this.dataDescription()],
+                  [arrayTimes[0], this.dataTransform(arrayValues[0])],
+                  [arrayTimes[100] || [], this.dataTransform(arrayValues[100])],
+                  [arrayTimes[200] || [], this.dataTransform(arrayValues[200])],
+                  [arrayTimes[300] || [], this.dataTransform(arrayValues[300])],
+                  [arrayTimes[400] || [], this.dataTransform(arrayValues[400])],
+                  [arrayTimes[500] || [], this.dataTransform(arrayValues[500])],
+                  [arrayTimes[600] || [], this.dataTransform(arrayValues[600])],
+                  [arrayTimes[700] || [], this.dataTransform(arrayValues[700])],
+                  [arrayTimes[800] || [], this.dataTransform(arrayValues[800])],
+                  [arrayTimes[900] || [], this.dataTransform(arrayValues[900])],
+                  [arrayTimes[1000] || [], this.dataTransform(arrayValues[1000])],
+                  [arrayTimes[1100] || [], this.dataTransform(arrayValues[1100])],
+                  [arrayTimes[1200] || [], this.dataTransform(arrayValues[1200])],
+                  [arrayTimes[1300] || [], this.dataTransform(arrayValues[1300])],
+                  [arrayTimes[1400] || [], this.dataTransform(arrayValues[1400])]
                 ]}
                 options={{
                   lineWidth: 3,

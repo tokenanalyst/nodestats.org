@@ -69,10 +69,10 @@ class Row extends React.Component {
       z.push(x[i].blockNumber);
       y.push(x[i].time.slice(11, 16))
     }
-    return <div className="info columns has-text-centered">
+    return <span className="info columns has-text-centered">
       <span className="column is-6">Block Height: {Math.max(...z)}</span>
-      <span className="column is-6">Last Updated:{y.pop()} UTC</span>
-    </div>
+      <span className="column is-6">Last Updated: {y.pop()} UTC</span>
+    </span>
   }
 
   transform(value) {
@@ -207,10 +207,9 @@ class Row extends React.Component {
         </div>
       );
     } if (this.infoBar === 'true') {
-      console.log('parityCurrent is')
       return (
         <div className="columns is-mobile is-vcentered info-bar">
-          <div className="column is-4">
+          <div className="column is-2 is-offset-1">
             {(() => {
               if (this.state === null) {
                 return <div className="columns is-vcentered">
@@ -224,7 +223,7 @@ class Row extends React.Component {
                 </div>
             })()}
           </div>
-          <div className="column is-8">
+          <div className="column is-8 is-offset-1">
             <div className="columns time-box is-vcentered">
               <span className="column time">{this.mean()}</span>
             </div>

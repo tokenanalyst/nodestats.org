@@ -440,7 +440,7 @@ class Main extends React.Component {
                 </div>
                 <Row
                   infoBar="true"
-                  metricurl="/parity-archive-sync-24h"
+                  metricurl="/parity-archive-current-24h"
                   text="CPU Usage"
                   datatype="conflict%"
                 />
