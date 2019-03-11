@@ -80,9 +80,8 @@ class Main extends React.Component {
                 </div>
                 <Row
                   infoBar="true"
-                  metricurl="/parity-full-cpu-1h-avg"
-                  text="CPU Usage"
-                  datatype="cpu"
+                  metricurl="/parity-full-current-24h"
+                  datatype="conflict%"
                 />
                 <div className="columns is-mobile has-text-centered">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
@@ -145,14 +144,14 @@ class Main extends React.Component {
                   datatype="disk"
                 />
               </div>
-              <div className="column is-6 half">
+              <div className="column is-6 half" id="full">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Ethereum Geth</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type not-used">
-                  <span id="full">Full Node</span>
+                  <span>Full Node</span>
                   <span
                     className="icon company-icon tooltip"
                     onClick={this.fullGethModal}
@@ -166,9 +165,8 @@ class Main extends React.Component {
                 </div>
                 <Row
                   infoBar="true"
-                  metricurl="/geth-full-cpu-1h-avg"
-                  text="CPU Usage"
-                  datatype="cpu"
+                  metricurl="/geth-full-current-24h"
+                  datatype="conflict%"
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
@@ -244,14 +242,14 @@ class Main extends React.Component {
           <br />
           <div className="columns">
             <div className="columns column is-10 is-offset-1 is-mobile">
-              <div className="column is-6">
+              <div className="column is-6" id="fast">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Ethereum Parity</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
-                  <span id="fast">Fast Node</span>
+                  <span>Fast Node</span>
                   <span
                     className="company-icon tooltip"
                     onClick={this.fastParityModal}
@@ -263,9 +261,8 @@ class Main extends React.Component {
                 </div>
                 <Row
                   infoBar="true"
-                  metricurl="/parity-fast-cpu-1h-avg"
-                  text="CPU Usage"
-                  datatype="cpu"
+                  metricurl="/parity-fast-current-24h"
+                  datatype="conflict%"
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
@@ -347,9 +344,8 @@ class Main extends React.Component {
                 </div>
                 <Row
                   infoBar="true"
-                  metricurl="/geth-fast-cpu-1h-avg"
-                  text="CPU Usage"
-                  datatype="cpu"
+                  metricurl="/geth-fast-current-24h"
+                  datatype="conflict%"
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
@@ -424,14 +420,14 @@ class Main extends React.Component {
           </div>
           <div className="columns">
             <div className="columns column is-10 is-offset-1 is-mobile">
-              <div className="column is-6">
+              <div className="column is-6" id="archive">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Ethereum Parity</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
-                  <span id="archive">Archive Node</span>
+                  <span>Archive Node</span>
                   <span
                     className="company-icon tooltip"
                     onClick={this.archiveParityModal}
@@ -444,9 +440,9 @@ class Main extends React.Component {
                 </div>
                 <Row
                   infoBar="true"
-                  metricurl="/parity-archive-cpu-1h-avg"
+                  metricurl="/parity-archive-sync-24h"
                   text="CPU Usage"
-                  datatype="cpu"
+                  datatype="conflict%"
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">

@@ -23,7 +23,7 @@ h3 {
 
 .page-divide {
   border-left: 1px solid #ccc;
-  height: 3800px;
+  height: 3930px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
@@ -156,6 +156,11 @@ h3 {
   margin: 0;
   max-height: 50px;
 }
+.info {
+  span {
+    text-align: center;
+  }
+}
 .time-text {
   text-align: right;
   padding-right: 0
@@ -165,6 +170,8 @@ h3 {
   p {
     text-align: left;
     padding-left: 10px;
+    font-size: 13px;
+    color: #888888
   }
 }
 .online {
@@ -173,6 +180,7 @@ h3 {
   border-radius: 50%;
   background-color: #33dd66;
   display: inline-block;
+  text-align: left;
 }
 .offline {
   width: 16px;
@@ -183,11 +191,13 @@ h3 {
 }
 .red {
   color: red;
-  text-align: right;
+  text-align: center;
+  padding-right: 0;
 }
 .green {
   color: green;
-  text-align: right;
+  text-align: center;
+  padding-right: 0;
 }
 nav {
   border-bottom: 1px solid #ccc;
@@ -414,6 +424,7 @@ nav {
     font-weight: bold;
     padding-left: 20px;
     padding-bottom: 10px;
+    text-align: center;
   }
   .spinner {
     font-size: 30px;
@@ -574,6 +585,9 @@ nav {
   }
   .button {
     width: 140px;
+  }
+  .name {
+    height: 5rem;
   }
 }
 @media (max-width: 430px) {

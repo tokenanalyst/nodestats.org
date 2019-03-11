@@ -60,13 +60,27 @@ class Row extends React.Component {
     }
   }
 
+  blockMax(value) {
+
+    var x = value.metric.data
+    var z = []
+    var y = []
+    for (var i = 0; i < x.length; i++) {
+      z.push(x[i].blockNumber);
+      y.push(x[i].time.slice(11, 16))
+    }
+    return <div className="info columns has-text-centered">
+      <span className="column is-6">Block Height: {Math.max(...z)}</span>
+      <span className="column is-6">Last Updated:{y.pop()} UTC</span>
+    </div>
+  }
+
   transform(value) {
     switch (this.datatype) {
       case "sync%":
         return this.percentsync(value.metric.data).toFixed(2) + "%";
       case "cpu":
-        if (this.infoBar === 'true') return value.metric.data[0].time.slice(11, 19) + " UTC";
-        else return value.metric.data[0].mean.toFixed(2) + "%";
+        return value.metric.data[0].mean.toFixed(2) + "%";
       case "ram":
         if (this.metricurl === "/parity-archive-ram-1h-avg") {
           return (value.metric.data[0].mean / 1024 / 1024 / 1024 / 122 * 100).toFixed(2) + "%"
@@ -84,8 +98,9 @@ class Row extends React.Component {
       case "netrx":
         return value.metric.data[0].mean.toFixed(1) + " KB/s";
       case "conflict%":
-
-        return this.conflict(value.metric.data, value.conflict.data).toFixed(2) + "%";
+        if (this.infoBar === "true") {
+          return this.blockMax(value)
+        } else return this.conflict(value.metric.data, value.conflict.data).toFixed(2) + "%";
     }
   }
 
@@ -96,7 +111,7 @@ class Row extends React.Component {
     if (this.datatype === 'ram' && this.metricurl === '/parity-archive-ram-1h-avg') return  'Memory Usage: The memory (RAM) usage of the node client process on a dedicated machine with 120GB of total memory available'
     if (this.datatype === 'ram') return  'Memory Usage: The memory usage for the node client process on a dedicated machine with 14GB of total memory available'
     if (this.datatype === 'nettx') return 'Upstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
-    if (this.datatype === 'netrx') return 'Downstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
+    if (this.datatype === 'netrx') return 'Downstream Bandwidth: The downstream network throughput on the network interface of the machine on which the node runs'
     if (this.datatype === 'peers') return 'Peer count: The number of peers currently connected to the node'
     if (this.datatype === 'disk') return 'Chain Data Size: The disk space taken up by the node client - including all of the chain '
     if (this.datatype === 'conflict%') return '% at conflicting tip: The proportion of time Geth and Parity have different block hashes at the same block height'
@@ -171,7 +186,7 @@ class Row extends React.Component {
   chart() {
     return (
       <div className="column is-5 graph chart">
-        <Charts url={this.charturl} />
+        <Charts url={this.charturl} datatype={this.datatype}/>
       </div>
     );
   }
@@ -192,17 +207,18 @@ class Row extends React.Component {
         </div>
       );
     } if (this.infoBar === 'true') {
+      console.log('parityCurrent is')
       return (
         <div className="columns is-mobile is-vcentered info-bar">
           <div className="column is-4">
             {(() => {
               if (this.state === null) {
-                return <div className="columns is-vcentered has-text-centered">
+                return <div className="columns is-vcentered">
                   <span className="red column is-10">Offline</span>
                   <span className="offline"></span>
                 </div>
               } else
-                return <div className="columns is-vcentered has-text-centered">
+                return <div className="columns is-vcentered">
                   <span className="green column is-10">Online</span>
                   <span className="online"></span>
                 </div>
@@ -210,7 +226,6 @@ class Row extends React.Component {
           </div>
           <div className="column is-8">
             <div className="columns time-box is-vcentered">
-              <span className="column is-6 time-text">Last updated:</span>
               <span className="column time">{this.mean()}</span>
             </div>
           </div>
