@@ -15,6 +15,7 @@ class Row extends React.Component {
     this.metricurl = props.metricurl;
     this.charturl = props.charturl;
     this.conflicturl = props.conflicturl;
+    this.infoBar = props.infoBar;
   }
 
   percentsync(syncdata) {
@@ -59,6 +60,21 @@ class Row extends React.Component {
     }
   }
 
+  blockMax(value) {
+
+    var x = value.metric.data
+    var z = []
+    var y = []
+    for (var i = 0; i < x.length; i++) {
+      z.push(x[i].blockNumber);
+      y.push(x[i].time.slice(11, 16))
+    }
+    return <span className="info columns has-text-centered">
+      <span className="column is-6">Block Height: {Math.max(...z)}</span>
+      <span className="column is-6">Last Updated: {y.pop()} UTC</span>
+    </span>
+  }
+
   transform(value) {
     switch (this.datatype) {
       case "sync%":
@@ -70,20 +86,23 @@ class Row extends React.Component {
           return (value.metric.data[0].mean / 1024 / 1024 / 1024 / 122 * 100).toFixed(2) + "%"
         }
         else {
-          return (value.metric.data[0].mean / 1024 / 1024 / 1024 / 15.25 * 100).toFixed(2) + "%"
+          return ((value.metric.data[0].mean / 1024 / 1024 / 1024) / 15.25 * 100).toFixed(2) + "%"
         }
       case "disk":
         return (
-          (value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(1) + " GiB"
+          (value.metric.data[0].mean / 1024 / 1024 / 1024).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " GB"
         );
       case "peers":
         return Math.floor(value.metric.data[0].mean);
       case "nettx":
       case "netrx":
-        return value.metric.data[0].mean.toFixed(1) + " KiB/s";
+        return value.metric.data[0].mean.toFixed(1) + " KB/s";
       case "conflict%":
-
         return this.conflict(value.metric.data, value.conflict.data).toFixed(2) + "%";
+      case "blockHeight":
+        if (this.infoBar === "true") {
+          return this.blockMax(value)
+        }
     }
   }
 
@@ -91,10 +110,10 @@ class Row extends React.Component {
     if (this.datatype === 'sync%') return '% of time in sync: The % of time in the past hour that the node has downloaded and verified all the block data for what its peers are informing it is the current highest chain tip'
     if (this.datatype === 'cpu' && this.metricurl === '/parity-archive-cpu-1h-avg') return 'CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz machine with 16 cores'
     if (this.datatype === 'cpu') return 'CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 @ 2.30GHz machine with two cores'
-    if (this.datatype === 'ram' && this.metricurl === '/parity-archive-ram-1h-avg') return  'Memory Usage: The memory (RAM) usage of the node client process on a dedicated machine with 122GiB of total memory available'
-    if (this.datatype === 'ram') return  'Memory Usage: The memory usage for the node client process on a dedicated machine with 15.25GiB of total memory available'
+    if (this.datatype === 'ram' && this.metricurl === '/parity-archive-ram-1h-avg') return  'Memory Usage: The memory (RAM) usage of the node client process on a dedicated machine with 120GB of total memory available'
+    if (this.datatype === 'ram') return  'Memory Usage: The memory usage for the node client process on a dedicated machine with 14GB of total memory available'
     if (this.datatype === 'nettx') return 'Upstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
-    if (this.datatype === 'netrx') return 'Downstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
+    if (this.datatype === 'netrx') return 'Downstream Bandwidth: The downstream network throughput on the network interface of the machine on which the node runs'
     if (this.datatype === 'peers') return 'Peer count: The number of peers currently connected to the node'
     if (this.datatype === 'disk') return 'Chain Data Size: The disk space taken up by the node client - including all of the chain '
     if (this.datatype === 'conflict%') return '% at conflicting tip: The proportion of time Geth and Parity have different block hashes at the same block height'
@@ -169,7 +188,7 @@ class Row extends React.Component {
   chart() {
     return (
       <div className="column is-5 graph chart">
-        <Charts url={this.charturl} />
+        <Charts url={this.charturl} datatype={this.datatype}/>
       </div>
     );
   }
@@ -189,6 +208,30 @@ class Row extends React.Component {
           </div>
         </div>
       );
+    } if (this.infoBar === 'true') {
+      return (
+        <div className="columns is-mobile is-vcentered info-bar">
+          <div className="column is-2 is-offset-1">
+            {(() => {
+              if (this.state === null) {
+                return <div className="columns is-vcentered">
+                  <span className="red column is-10">Offline</span>
+                  <span className="offline"></span>
+                </div>
+              } else
+                return <div className="columns is-vcentered">
+                  <span className="green column is-10">Online</span>
+                  <span className="online"></span>
+                </div>
+            })()}
+          </div>
+          <div className="column is-8 is-offset-1">
+            <div className="columns time-box is-vcentered">
+              <span className="column time">{this.mean()}</span>
+            </div>
+          </div>
+        </div>
+      )
     } else {
       return (
         <section className="columns mobile-row is-vcentered">

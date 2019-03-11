@@ -23,7 +23,7 @@ h3 {
 
 .page-divide {
   border-left: 1px solid #ccc;
-  height: 3800px;
+  height: 3930px;
   position: absolute;
   left: 50%;
   margin-left: -3px;
@@ -150,6 +150,54 @@ h3 {
   background-image: url("/images/Screenshot 2019-03-03 at 11.42.30.png");
   background-size: cover;
   background-position: center;
+}
+.info-bar {
+  background-color: #eeeeee;
+  margin: 0;
+  max-height: 50px;
+}
+.info {
+  span {
+    text-align: center;
+  }
+}
+.time-text {
+  text-align: right;
+  padding-right: 0
+}
+.time {
+  padding-left: 0;
+  p {
+    text-align: left;
+    padding-left: 10px;
+    font-size: 13px;
+    color: #888888
+  }
+}
+.online {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #33dd66;
+  display: inline-block;
+  text-align: left;
+}
+.offline {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #dd3366;
+  display: inline-block;
+}
+.red {
+  color: red;
+  text-align: center;
+  padding-right: 0;
+}
+.green {
+  color: green;
+  text-align: center;
+  padding-right: 0;
 }
 nav {
   border-bottom: 1px solid #ccc;
@@ -307,12 +355,6 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.red {
-  color: red;
-}
-.green {
-  color: green;
-}
 .black {
   color: black;
 }
@@ -382,6 +424,7 @@ nav {
     font-weight: bold;
     padding-left: 20px;
     padding-bottom: 10px;
+    text-align: center;
   }
   .spinner {
     font-size: 30px;
@@ -445,6 +488,25 @@ nav {
   }
   .small-tooltips {
     display: none;
+    display: none;
+  }
+  .info-bar {
+    height: 150px;
+  }
+  .time {
+    p {
+      margin: 0;
+      padding: 0;
+      top: 0;
+    }
+}
+  .time-text {
+    display: none
+  }
+  .red {
+    display: none
+  }
+  .green {
     display: none;
   }
 }
@@ -522,6 +584,9 @@ nav {
   }
   .button {
     width: 140px;
+  }
+  .name {
+    height: 5rem;
   }
 }
 @media (max-width: 430px) {

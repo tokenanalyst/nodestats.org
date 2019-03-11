@@ -78,6 +78,11 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/parity-full-current-24h"
+                  datatype="blockHeight"
+                />
                 <div className="columns is-mobile has-text-centered">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
@@ -139,14 +144,14 @@ class Main extends React.Component {
                   datatype="disk"
                 />
               </div>
-              <div className="column is-6 half">
+              <div className="column is-6 half" id="full">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Ethereum Geth</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type not-used">
-                  <span id="full">Full Node</span>
+                  <span>Full Node</span>
                   <span
                     className="icon company-icon tooltip"
                     onClick={this.fullGethModal}
@@ -158,6 +163,11 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/geth-full-current-24h"
+                  datatype="blockHeight"
+                />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
@@ -232,14 +242,14 @@ class Main extends React.Component {
           <br />
           <div className="columns">
             <div className="columns column is-10 is-offset-1 is-mobile">
-              <div className="column is-6">
+              <div className="column is-6" id="fast">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Ethereum Parity</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
-                  <span id="fast">Fast Node</span>
+                  <span>Fast Node</span>
                   <span
                     className="company-icon tooltip"
                     onClick={this.fastParityModal}
@@ -249,6 +259,11 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle node-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/parity-fast-current-24h"
+                  datatype="blockHeight"
+                />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
@@ -327,6 +342,11 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/geth-fast-current-24h"
+                  datatype="blockHeight"
+                />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
                     <h3>1hr avg</h3>
@@ -400,14 +420,14 @@ class Main extends React.Component {
           </div>
           <div className="columns">
             <div className="columns column is-10 is-offset-1 is-mobile">
-              <div className="column is-6">
+              <div className="column is-6" id="archive">
                 <span className="content has-text-centered company-name">
                   <h2 className="name">
                     <span className="company">Ethereum Parity</span>
                   </h2>
                 </span>
                 <div className="content has-text-centered node-type">
-                  <span id="archive">Archive Node</span>
+                  <span>Archive Node</span>
                   <span
                     className="company-icon tooltip"
                     onClick={this.archiveParityModal}
@@ -418,6 +438,11 @@ class Main extends React.Component {
                     <i className="fas fa-question-circle" />
                   </span>
                 </div>
+                <Row
+                  infoBar="true"
+                  metricurl="/parity-archive-current-24h"
+                  datatype="blockHeight"
+                />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
                     <h3>24hr avg</h3>
@@ -536,7 +561,7 @@ class Main extends React.Component {
                 from sources we believe to be reliable. Such information has not
                 been verified and we make no representation or warranty as to
                 its accuracy, completeness or correctness. The website is
-                produced by BitMEX Research and <a href="https://www.tokenanalyst.io/" target="_blank">TokenAnalyst</a>, neither BitMEX, 
+                produced by BitMEX Research and <a href="https://www.tokenanalyst.io/" target="_blank">TokenAnalyst</a>, neither BitMEX,
                 <a href="https://www.tokenanalyst.io/" target="_blank"> TokenAnalyst</a> nor any other entity, will be liable whatsoever for
                 any direct or consequential loss arising from the use of this
                 publication/communication or its contents.
