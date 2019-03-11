@@ -97,6 +97,9 @@ h3 {
   color: white;
   font-size: ms(4);
 }
+.content:not(:last-child) {
+  margin-bottom: 0;
+}
 
 .table-header {
   text-align: center;
@@ -491,24 +494,41 @@ nav {
     display: none;
   }
   .info-bar {
-    height: 150px;
+    .is-offset-1 {
+      padding: 0;
+    }
+    min-height: 80px;
+    padding: 10px 0 0;
+    position: relative;
+    margin-top: 10px;
+  }
+  .info {
+    .is-6 {
+      padding: 0;
+    }
+  }
+  .online {
+    display: none
+  }
+  .offline {
+    display: none
+  }
+  .red {
+    padding: 0;
+  }
+  .green {
+    padding: 0;
+    font-size: 14px
   }
   .time {
+    padding: 0;
     p {
       margin: 0;
       padding: 0;
       top: 0;
     }
 }
-  .time-text {
-    display: none
-  }
-  .red {
-    display: none
-  }
-  .green {
-    display: none;
-  }
+
 }
 
 @media (max-width: 775px) {

@@ -40,8 +40,9 @@ class Charts extends React.Component {
   dataDescription() {
     if (this.datatype === 'nettx' || this.datatype === 'netrx') return "KB/s";
     if (this.datatype === 'disk') return "GB";
-    if (this.datatype === 'ram' || this.datatype === 'cpu' || this.datatype === 'conflict%' || this.datatype === 'sync%') return "%";
+    if (this.datatype === 'ram' || this.datatype === 'cpu' || this.datatype === 'conflict%') return "%";
     if (this.datatype === 'peers') return "Peers";
+    if (this.datatype === 'sync%') return "Sync Status";
   }
   dataTransform(data) {
     if (this.datatype === 'disk') return parseFloat((data / 1024 / 1024 / 1024).toFixed(2))
