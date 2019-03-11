@@ -91,7 +91,7 @@ class Main extends React.Component {
                     <h3>Description</h3>
                   </div>
                   <div className="column is-one-third table-header">
-                    <h3>1hr avg</h3>
+                    <h3>1hr Data</h3>
                   </div>
                 </div>
                 <Row
@@ -170,13 +170,13 @@ class Main extends React.Component {
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
-                    <h3>1hr avg</h3>
+                    <h3>1hr Avg</h3>
                   </div>
                   <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
                   <div className="column is-one-third-desktop table-header">
-                    <h3>24hr avg</h3>
+                    <h3>24hr Data</h3>
                   </div>
                 </div>
                 <Row
@@ -266,13 +266,13 @@ class Main extends React.Component {
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
-                    <h3>24hr avg</h3>
+                    <h3>24hr Data</h3>
                   </div>
                   <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
                   <div className="column is-one-third table-header">
-                    <h3>1hr avg</h3>
+                    <h3>1hr Avg</h3>
                   </div>
                 </div>
                 <Row
@@ -349,13 +349,13 @@ class Main extends React.Component {
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third table-header">
-                    <h3>1hr avg</h3>
+                    <h3>1hr Avg</h3>
                   </div>
                   <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
                   <div className="column is-one-third-desktop table-header">
-                    <h3>24hr avg</h3>
+                    <h3>24hr Data</h3>
                   </div>
                 </div>
                 <Row
@@ -445,13 +445,13 @@ class Main extends React.Component {
                 />
                 <div className="columns is-mobile">
                   <div className="column is-one-third is-one-quarter-desktop table-header">
-                    <h3>24hr avg</h3>
+                    <h3>24hr Data</h3>
                   </div>
                   <div className="column is-one-third table-header">
                     <h3>Description</h3>
                   </div>
                   <div className="column is-one-third table-header">
-                    <h3>1hr avg</h3>
+                    <h3>1hr Avg</h3>
                   </div>
                 </div>
                 <Row
