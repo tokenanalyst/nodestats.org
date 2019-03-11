@@ -76,7 +76,7 @@ class Row extends React.Component {
         }
       case "disk":
         return (
-          parseInt((value.metric.data[0].mean / 1024 / 1024 / 1024).toFixed(2)).toLocaleString() + " GB"
+          (value.metric.data[0].mean / 1024 / 1024 / 1024).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " GB"
         );
       case "peers":
         return Math.floor(value.metric.data[0].mean);
