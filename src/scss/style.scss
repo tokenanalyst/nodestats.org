@@ -189,11 +189,11 @@ h3 {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #dd3366;
+  background-color: #999999;
   display: inline-block;
 }
-.red {
-  color: red;
+.grey {
+  color: #999999;
   text-align: center;
   padding-right: 0;
 }
@@ -524,7 +524,7 @@ nav {
   .offline {
     display: none
   }
-  .red {
+  .grey {
     padding: 0;
   }
   .green {

@@ -215,7 +215,7 @@ class Row extends React.Component {
             {(() => {
               if (this.state === null) {
                 return <div className="columns is-vcentered has-text-centered">
-                  <span className="red column is-10">Offline</span>
+                  <span className="red column is-10">Loading</span>
                   <span className="offline"></span>
                 </div>
               } else
