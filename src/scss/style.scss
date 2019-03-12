@@ -540,6 +540,12 @@ nav {
       top: 0;
     }
 }
+figure.image {
+  margin: 0 auto;
+}
+.tokenanalyst-logo {
+  border-bottom: 40px solid white;;
+}
 
 }
 
@@ -643,11 +649,5 @@ nav {
     width: 90%;
     height: 250px;
     transform: rotate(90deg);
-  }
-}
-@media (max-width: 380px) {
-  .content figure {
-    margin-left: 0;
-    margin-right: 0;
   }
 }

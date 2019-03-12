@@ -520,10 +520,10 @@ class Main extends React.Component {
           <footer className="footer">
             <div className="content has-text-centered">
               <div className="columns">
-                <div className="level is-mobile column is-4-desktop is-offset-4">
-                  <div className="level-left-mobile has-text-centered">
+                <div className="column is-4 is-offset-4 columns">
+                  <div className="has-text-centered column is-6">
                     <a href="https://blog.bitmex.com/research/" target="_blank">
-                      <figure className="image is-128x128 bitmex-logo level-item">
+                      <figure className="image is-128x128 bitmex-logo">
                         <img
                           className=""
                           src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png"
@@ -532,9 +532,9 @@ class Main extends React.Component {
                       </figure>
                     </a>
                   </div>
-                  <div className="level-right-mobile has-text-centered">
+                  <div className="has-text-centered column is-6">
                     <a href="https://www.tokenanalyst.io/" target="_blank">
-                      <figure className="image tokenanalyst-logo level-item">
+                      <figure className="image tokenanalyst-logo">
                         <img
                           className=""
                           src={talogo}
