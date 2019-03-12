@@ -74,7 +74,6 @@ class Charts extends React.Component {
               }
             })()}
             <div style={{ maxWidth: 1000 }}>
-              {console.log('test')}
               <Chart
                 className="charts"
                 width="100%"
