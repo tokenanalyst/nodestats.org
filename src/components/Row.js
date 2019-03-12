@@ -107,16 +107,16 @@ class Row extends React.Component {
   }
 
   tooltip() {
-    if (this.datatype === 'sync%') return '% of time in sync: The % of time in the past hour that the node has downloaded and verified all the block data for what its peers are informing it is the current highest chain tip'
-    if (this.datatype === 'cpu' && this.metricurl === '/parity-archive-cpu-1h-avg') return 'CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz machine with 16 cores'
-    if (this.datatype === 'cpu') return 'CPU Usage: The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 @ 2.30GHz machine with two cores'
-    if (this.datatype === 'ram' && this.metricurl === '/parity-archive-ram-1h-avg') return  'Memory Usage: The memory (RAM) usage of the node client process on a dedicated machine with 120GB of total memory available'
-    if (this.datatype === 'ram') return  'Memory Usage: The memory usage for the node client process on a dedicated machine with 14GB of total memory available'
-    if (this.datatype === 'nettx') return 'Upstream Bandwidth: The upstream network throughput on the network interface of the machine on which the node runs'
-    if (this.datatype === 'netrx') return 'Downstream Bandwidth: The downstream network throughput on the network interface of the machine on which the node runs'
-    if (this.datatype === 'peers') return 'Peer count: The number of peers currently connected to the node'
-    if (this.datatype === 'disk') return 'Chain Data Size: The disk space taken up by the node client - including all of the chain '
-    if (this.datatype === 'conflict%') return '% at conflicting tip: The proportion of time Geth and Parity have different block hashes at the same block height'
+    if (this.datatype === 'sync%') return 'The % of time in the past hour that the node has downloaded and verified the block data for what its peers are informing it is the current highest block. Chart displays when in sync (1) and not (0)'
+    if (this.datatype === 'cpu' && this.metricurl === '/parity-archive-cpu-1h-avg') return 'The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz machine with 16 cores'
+    if (this.datatype === 'cpu') return 'The CPU usage for the node client process which is running on an Intel(R) Xeon(R) CPU E5-2686 @ 2.30GHz machine with two cores'
+    if (this.datatype === 'ram' && this.metricurl === '/parity-archive-ram-1h-avg') return  'The memory (RAM) usage of the node client process on a dedicated machine with 120GB of total memory available'
+    if (this.datatype === 'ram') return  'The memory usage for the node client process on a dedicated machine with 14GB of total memory available'
+    if (this.datatype === 'nettx') return 'The upstream network throughput on the network interface of the machine on which the node runs'
+    if (this.datatype === 'netrx') return 'The downstream network throughput on the network interface of the machine on which the node runs'
+    if (this.datatype === 'peers') return 'The number of peers currently connected to the node'
+    if (this.datatype === 'disk') return 'The total disk space taken up by the node client - including all of the chain. This is the actual total chaindata size, not an average.'
+    if (this.datatype === 'conflict%') return 'The proportion of time Geth and Parity have different block hashes at the same block height'
   }
 
   componentDidMount() {

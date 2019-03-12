@@ -24,7 +24,7 @@ class App extends React.Component {
           <Header />
           <div>
             <Switch>
-              <Route exact path='/nodestats' component={Main}/>
+              <Route exact path='/' component={Main}/>
             </Switch>
           </div>
         </main>
