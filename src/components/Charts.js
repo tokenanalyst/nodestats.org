@@ -76,12 +76,12 @@ class Charts extends React.Component {
             <div style={{ maxWidth: 1000 }}>
               <Chart
                 className="charts"
-                width={180}
+                width="100%"
                 height={80}
                 chartType="AreaChart"
                 loader={
                   <div>
-                    <i className="fa fa-spinner fa-spin chart-spinner" />
+                    <i className="fa fa-spinner fa-spin spinner" />
                   </div>
                 }
                 data={[
@@ -119,7 +119,8 @@ class Charts extends React.Component {
                     textPosition: "none"
                   },
                   curveType: "function",
-                  colors: ["#3070ff"]
+                  colors: ["#3070ff"],
+                  fontSize: 10
                 }}
               />
             </div>
@@ -129,7 +130,7 @@ class Charts extends React.Component {
     } else {
       return (
         <p className="spinner-box">
-          <i className="fa fa-spinner fa-spin chart-spinner" />
+          <i className="fa fa-spinner fa-spin spinner" />
         </p>
       );
     }

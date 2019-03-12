@@ -212,7 +212,7 @@ export function ParityArchiveModal() {
               interface of the machine on which the node runs
             </li>
             <li>
-              Downstream Bandwidth: The upstream network throughput on the network
+              Downstream Bandwidth: The downstream network throughput on the network
               interface of the machine on which the node runs
             </li>
             <li>Peer count: The number of peers currently connected to the node</li>

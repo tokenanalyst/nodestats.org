@@ -189,11 +189,11 @@ h3 {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #dd3366;
+  background-color: #999999;
   display: inline-block;
 }
-.red {
-  color: red;
+.grey {
+  color: #999999;
   text-align: center;
   padding-right: 0;
 }
@@ -254,7 +254,6 @@ nav {
   padding: 0;
   height: 144px;
 }
-
 .icon:hover {
   cursor: pointer;
 }
@@ -310,7 +309,8 @@ nav {
   cursor: pointer;
   padding: 15px;
   height: 50px;
-  z-index: 1;
+  z-index: 4;
+  border-radius: 3%;
 }
 .navs {
   position: absolute;
@@ -334,14 +334,6 @@ nav {
   bottom: 60px;
   right: 40px;
   color: #3070ff;
-}
-.chart-spinner {
-  font-size: 40px;
-  background: -webkit-linear-gradient(#eee, #3070ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-left: 70px;
-
 }
 .spinner {
   font-size: 40px;
@@ -404,6 +396,25 @@ nav {
   }
 }
 @media (max-width: 1024px) {
+  .online {
+    display: none;
+  }
+  .offline {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .data {
+    font-size: 15px;
+  }
+  .text {
+    font-size: 15px
+  }
+  .google-visualization-tooltip {
+    display: none;
+  }
+}
+@media (max-width: 770px) {
   .mobile-only {
     display: block;
   }
@@ -428,6 +439,7 @@ nav {
     padding-left: 20px;
     padding-bottom: 10px;
     text-align: center;
+    font-size: 1rem
   }
   .spinner {
     font-size: 30px;
@@ -513,7 +525,7 @@ nav {
   .offline {
     display: none
   }
-  .red {
+  .grey {
     padding: 0;
   }
   .green {
@@ -531,7 +543,7 @@ nav {
 
 }
 
-@media (max-width: 775px) {
+@media (max-width: 769px) {
   .is-one-quarter-desktop {
     display: none;
   }
