@@ -70,7 +70,7 @@ class Row extends React.Component {
       y.push(x[i].time.slice(11, 16))
     }
     return <span className="info columns has-text-centered">
-      <span className="column is-6">Block Height: {Math.max(...z)}</span>
+      <span className="column is-6">Block Height: {Math.max(...z).toLocaleString()}</span>
       <span className="column is-6">Last Updated: {y.pop()} UTC</span>
     </span>
   }
@@ -187,7 +187,7 @@ class Row extends React.Component {
 
   chart() {
     return (
-      <div className="column is-5 graph chart">
+      <div className="column is-12 graph chart">
         <Charts url={this.charturl} datatype={this.datatype}/>
       </div>
     );

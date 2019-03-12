@@ -254,7 +254,6 @@ nav {
   padding: 0;
   height: 144px;
 }
-
 .icon:hover {
   cursor: pointer;
 }
@@ -335,14 +334,6 @@ nav {
   right: 40px;
   color: #3070ff;
 }
-.chart-spinner {
-  font-size: 40px;
-  background: -webkit-linear-gradient(#eee, #3070ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-left: 70px;
-
-}
 .spinner {
   font-size: 40px;
   background: -webkit-linear-gradient(#eee, #3070ff);
@@ -404,6 +395,25 @@ nav {
   }
 }
 @media (max-width: 1024px) {
+  .online {
+    display: none;
+  }
+  .offline {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .data {
+    font-size: 15px;
+  }
+  .text {
+    font-size: 15px
+  }
+  .google-visualization-tooltip {
+    display: none;
+  }
+}
+@media (max-width: 770px) {
   .mobile-only {
     display: block;
   }
@@ -428,6 +438,7 @@ nav {
     padding-left: 20px;
     padding-bottom: 10px;
     text-align: center;
+    font-size: 1rem
   }
   .spinner {
     font-size: 30px;
@@ -531,7 +542,7 @@ nav {
 
 }
 
-@media (max-width: 775px) {
+@media (max-width: 769px) {
   .is-one-quarter-desktop {
     display: none;
   }
