@@ -74,6 +74,7 @@ class Charts extends React.Component {
               }
             })()}
             <div style={{ maxWidth: 1000 }}>
+              {console.log('test')}
               <Chart
                 className="charts"
                 width="100%"
@@ -120,7 +121,7 @@ class Charts extends React.Component {
                   },
                   curveType: "function",
                   colors: ["#3070ff"],
-                  fontSize: 11
+                  fontSize: 10
                 }}
               />
             </div>
