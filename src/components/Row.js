@@ -4,7 +4,7 @@ import axios from "axios";
 
 import * as Sentry from '@sentry/browser';
 
-var url = "http://nodestats.tokenanalyst.io";
+var url = "https://nodestats.tokenanalyst.io";
 
 class Row extends React.Component {
   constructor(props) {

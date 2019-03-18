@@ -4,7 +4,7 @@ import axios from "axios";
 
 import * as Sentry from "@sentry/browser";
 
-var url = "http://nodestats.tokenanalyst.io";
+var url = "https://nodestats.tokenanalyst.io";
 
 class Charts extends React.Component {
   constructor(props) {
@@ -73,7 +73,9 @@ class Charts extends React.Component {
                 arrayTimes.push(data[i].time.slice(11, 19));
               }
             })()}
+
             <div style={{ maxWidth: 1000 }}>
+
               <Chart
                 className="charts"
                 width="100%"
@@ -84,38 +86,17 @@ class Charts extends React.Component {
                     <i className="fa fa-spinner fa-spin spinner" />
                   </div>
                 }
-                data={[
-                  ["Time", this.dataDescription()],
-                  [arrayTimes[0], this.dataTransform(arrayValues[0])],
-                  [arrayTimes[Math.floor(arrayTimes.length/10)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/10)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/9)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/9)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/7.5)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/7.5)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/6.5)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/6.5)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/5.5)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/5.5)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/5)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/5)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/4.2)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/4.2)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/3.8)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/3.8)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/3.4)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/3.4)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/3)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/3)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/2.6)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/2.6)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/2.3)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/2.3)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/2)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/2)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.95)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.95)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.9)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.9)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.85)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.85)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.8)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.8)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.7)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.7)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.65)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.65)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.5)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.5)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.45)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.45)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.3)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.3)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.25)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.25)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.15)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.15)])],
-                  [arrayTimes[Math.floor(arrayTimes.length/1.1)] || [], this.dataTransform(arrayValues[Math.floor(arrayValues.length/1.1)])],
-                  [arrayTimes[arrayTimes.length-1] || [], this.dataTransform(arrayValues[arrayValues.length-1])]
-                ]}
+                data=
+                  {(() => {
+                    const chartData = [['Time', this.dataDescription()]]
+                    for (let i = 0; i < arrayTimes.length; arrayTimes.length > 5000 ? i += 1: i += 10) {
+                      chartData.push([arrayTimes[i], this.dataTransform(arrayValues[i])])
+                    }
+                    return chartData
+                  })()}
+
                 options={{
-                  lineWidth: 3,
+                  lineWidth: 1,
                   legend: "none",
                   chart: {},
                   vAxis: {
