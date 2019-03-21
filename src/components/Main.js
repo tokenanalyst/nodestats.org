@@ -21,13 +21,16 @@ import {
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isShowingModal: false
+    };
   }
 
 
   componentDidMount() {
     ReactGA.initialize('UA-113322596-5');
     ReactGA.pageview(window.location.pathname + window.location.search);
+    this.setState({isShowingModal: false})
   }
   fullParityModal() {
     const parityFullModal = document.getElementById("parityFullModal");
@@ -52,6 +55,7 @@ class Main extends React.Component {
   }
 
   render() {
+    console.log('test', this.state.isShowingModal)
     return (
       <section className="">
         <div>
