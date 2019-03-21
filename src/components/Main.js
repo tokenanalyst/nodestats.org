@@ -55,7 +55,6 @@ class Main extends React.Component {
   }
 
   render() {
-    console.log('test', this.state.isShowingModal)
     return (
       <section className="">
         <div>

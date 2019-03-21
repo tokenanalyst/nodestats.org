@@ -354,6 +354,17 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.modal-spinner-box {
+  margin-left: 40%;
+}
+.modal-spinner {
+  margin: auto;
+  text-align: center;
+  font-size: 80px;
+  background: -webkit-linear-gradient(#eee, #3070ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .main-spinner {
   font-size: 200px;
   position: absolute;

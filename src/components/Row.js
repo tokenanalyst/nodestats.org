@@ -240,7 +240,6 @@ class Row extends React.Component {
         )}
       </span>
     )
-    // } else return []
   }
 
   render() {
