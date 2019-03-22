@@ -20,7 +20,20 @@ html {
 h3 {
   font-size: ms(3);
 }
-
+.empty {
+  display: none;
+}
+.chart-modal {
+  height: 75%;
+  width: 75%;
+}
+.chart:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.modal-chart {
+  top: 50%
+}
 .page-divide {
   border-left: 1px solid #ccc;
   height: 3930px;
@@ -337,6 +350,17 @@ nav {
 }
 .spinner {
   font-size: 40px;
+  background: -webkit-linear-gradient(#eee, #3070ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.modal-spinner-box {
+  margin-left: 40%;
+}
+.modal-spinner {
+  margin: auto;
+  text-align: center;
+  font-size: 80px;
   background: -webkit-linear-gradient(#eee, #3070ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

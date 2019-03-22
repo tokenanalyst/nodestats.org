@@ -1,6 +1,7 @@
 import React from "react";
 import Charts from "./Charts";
 import axios from "axios";
+import ModalChart from "./ModalChart";
 
 import * as Sentry from '@sentry/browser';
 
@@ -16,6 +17,7 @@ class Row extends React.Component {
     this.charturl = props.charturl;
     this.conflicturl = props.conflicturl;
     this.infoBar = props.infoBar;
+
   }
 
   percentsync(syncdata) {
@@ -123,11 +125,11 @@ class Row extends React.Component {
     if (this.conflicturl) {
       axios.all([axios.get(url + this.metricurl), axios.get(url + this.conflicturl)])
         .then(axios.spread((metricres, conflictres)  => {
-          this.setState({ metric: metricres, conflict: conflictres });
+          this.setState({ metric: metricres, conflict: conflictres, isShowingModal: false});
           localStorage.setItem(this.metricurl, JSON.stringify(metricres)); // caching for fallback
           localStorage.setItem(this.conflicturl, JSON.stringify(conflictres)); // caching for fallback
         })
-      )
+        )
         .catch(err => {
           const cachedMetric = JSON.parse(localStorage.getItem(this.metricurl))
           const cachedConflict = JSON.parse(localStorage.getItem(this.conflicturl))
@@ -140,7 +142,7 @@ class Row extends React.Component {
         })
     } else {
       axios.get(url + this.metricurl).then(data => {
-        this.setState({ metric: data });
+        this.setState({ metric: data, isShowingModal: false});
         localStorage.setItem(this.metricurl, JSON.stringify(data)); // caching for fallback
       })
       .catch(err => {
@@ -193,6 +195,53 @@ class Row extends React.Component {
     );
   }
 
+  handleClick = () => this.setState({isShowingModal: true})
+  handleClose = () => this.setState({isShowingModal: false})
+
+  modal(company) {
+    return (
+      <span>
+        {this.state == null ? (
+          <p className="empty">
+              nothing
+          </p>
+        ) : (
+          <span>
+            {this.state.isShowingModal ? (
+              <div className="modal is-active">
+                <div className="modal-background" onClick={this.handleClose}></div>
+                <div className="modal-card chart-modal">
+                  <header className="modal-card-head">
+                    <div className="modal-card-title title">{company} {this.text}</div>
+                    <div className="modal-card-title title"></div>
+                    <div>{this.mean()} 1 Hr Avg </div>
+                  </header>
+                  <div className="modal-card-body">
+                    <div className="modal-chart">
+                      <h2 className="subtitle">24 Hr Avg</h2>
+                      <div className=""><ModalChart url={this.charturl} datatype={this.datatype}/></div>
+                    </div>
+                  </div>
+                  <footer className="modal-card-foot columns is-vcentered">
+                    <div className="container has-text-centered">
+                      <button className="button is-info" onClick={this.handleClose}>Close</button>
+                    </div>
+                  </footer>
+                </div>
+                <button className="modal-close is-large" aria-label="close" onClick={this.handleClose}></button>
+              </div>
+            ) : (
+              <p className="empty">
+                  nothing
+              </p>
+            )
+            }
+          </span>
+        )}
+      </span>
+    )
+  }
+
   render() {
     if (this.reverseOrder) {
       return (
@@ -200,7 +249,8 @@ class Row extends React.Component {
           <section className="columns is-vcentered desktop-only">
             <div className="column is-4 data">{this.mean()}</div>
             <div className="column is-4 text">{this.description()}</div>
-            <div className="column is-4 is-centered">{this.chart()}</div>
+            <div className="column is-4 is-centered" onClick={this.handleClick.bind(this)}>{this.chart()}</div>
+            {this.modal('Ethereum Geth')}
           </section>
           <div className="mobile-row mobile-only is-vcentered">
             <div className="column text">{this.description()}</div>
@@ -235,9 +285,10 @@ class Row extends React.Component {
     } else {
       return (
         <section className="columns mobile-row is-vcentered">
-          <div className="column is-4 chart">{this.chart()}</div>
+          <div className="column is-4 chart" onClick={this.handleClick.bind(this)}>{this.chart()}</div>
           <div className="column is-4 text">{this.description()}</div>
           <div className="column is-4 data">{this.mean()}</div>
+          {this.modal('Ethereum Parity')}
         </section>
       );
     }
