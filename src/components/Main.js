@@ -526,10 +526,10 @@ class Main extends React.Component {
                 <div className="column is-4 is-offset-4 columns">
                   <div className="has-text-centered column is-6">
                     <a href="https://blog.bitmex.com/research/" target="_blank">
-                      <figure className="image is-128x128 bitmex-logo">
+                      <figure className="image is-135x135 bitmex-logo">
                         <img
                           className=""
-                          src="https://blog.bitmex.com/wp-content/uploads/2018/11/BitMEX-Research-Logo-Color-RGB.png"
+                          src="https://blog.bitmex.com/wp-content/uploads/2019/05/BitMEX-Research-Logo-Color-RGB.png"
                           alt="Bitmex Logo"
                         />
                       </figure>
@@ -537,7 +537,7 @@ class Main extends React.Component {
                   </div>
                   <div className="has-text-centered column is-6">
                     <a href="https://www.tokenanalyst.io/" target="_blank">
-                      <figure className="image tokenanalyst-logo">
+                      <figure className="image is-135x135 tokenanalyst-logo">
                         <img
                           className=""
                           src={talogo}
